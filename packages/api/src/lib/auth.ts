@@ -9,8 +9,8 @@ export async function authenticate(
     // grab the token from the request
     const jwt = getTokenFromRequest(request);
 
-    const issuer = `https://${env.AUTH0_DOMAIN}/`;
-    const audience = env.AUTH0_CLIENT_AUDIENCE;
+    const issuer = env.API_AUTH0_DOMAIN;
+    const audience = env.API_AUTH0_CLIENT_AUDIENCE;
 
     // parse and verify the jwt
     const jwtResult = await parseJwt(jwt, issuer, audience);

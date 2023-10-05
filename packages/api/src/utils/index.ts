@@ -26,9 +26,9 @@ export interface Env {
   // MY_QUEUE: Queue;
   //
   //   Vars:
-  AUTH0_DOMAIN: string;
-  AUTH0_CLIENT_ID: string;
-  AUTH0_CLIENT_AUDIENCE: string;
+  API_AUTH0_DOMAIN: string;
+  API_AUTH0_CLIENT_ID: string;
+  API_AUTH0_CLIENT_AUDIENCE: string;
 }
 
 class AppError extends Error {
