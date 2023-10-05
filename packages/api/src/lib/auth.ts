@@ -6,14 +6,16 @@ export async function authenticate(
   env: Env
 ): Promise<boolean> {
   try {
+    // grab the token from the request
     const jwt = getTokenFromRequest(request);
 
     const issuer = `https://${env.AUTH0_DOMAIN}/`;
     const audience = env.AUTH0_CLIENT_AUDIENCE;
 
+    // parse and verify the jwt
     const jwtResult = await parseJwt(jwt, issuer, audience);
 
-    // If it fails to parse
+    // If it fails to parse, throw the reason
     if (!jwtResult.valid) throw jwtResult.reason;
 
     return true;
