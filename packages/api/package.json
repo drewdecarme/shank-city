@@ -1,26 +1,32 @@
 {
-	"name": "@shank-city/api",
-	"version": "0.0.0",
-	"private": true,
-	"description": "A central api for ShankCity",
-	"main": "index.js",
-	"author": "Drew DeCarme (drewdecarme@gmail.com)",
-	"license": "MIT",
-	"scripts": {
-		"deploy": "wrangler deploy",
-		"dev": "wrangler dev"
-	},
-	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20230419.0",
-		"typescript": "^5.0.4",
-		"wrangler": "^3.0.0"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/drewdecarme/shank-city.git"
-	},
-	"bugs": {
-		"url": "https://github.com/drewdecarme/shank-city/issues"
-	},
-	"homepage": "https://github.com/drewdecarme/shank-city#readme"
+  "name": "@shank-city/api",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A central api for ShankCity",
+  "main": "index.js",
+  "author": "Drew DeCarme (drewdecarme@gmail.com)",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev --port=8282"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230419.0",
+    "@types/node": "^20.8.2",
+    "typescript": "^5.0.4",
+    "wrangler": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drewdecarme/shank-city.git"
+  },
+  "bugs": {
+    "url": "https://github.com/drewdecarme/shank-city/issues"
+  },
+  "homepage": "https://github.com/drewdecarme/shank-city#readme",
+  "dependencies": {
+    "@cfworker/jwt": "^4.0.6",
+    "@types/jsonwebtoken": "^9.0.3",
+    "supertokens-node": "^16.2.0"
+  }
 }

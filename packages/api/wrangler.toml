@@ -1,12 +1,12 @@
-name = "young-forest-ab0d"
+name = "shank-city"
 main = "src/index.ts"
-compatibility_date = "2023-10-02"
+compatibility_date = "2023-09-22"
+# node_compat=true
 
-# Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
-# Note: Use secrets to store sensitive data.
-# Docs: https://developers.cloudflare.com/workers/platform/environment-variables
-# [vars]
-# MY_VARIABLE = "production_value"
+[vars]
+AUTH0_DOMAIN="dev-stdnegw6mftqybrz.us.auth0.com"
+AUTH0_CLIENT_ID="pJi3CPHN6RQMyipajXRtq27dkfbuJjtR"
+AUTH0_CLIENT_AUDIENCE="https://shank-city-dev"
 
 # Bind a KV Namespace. Use KV as persistent storage for small key-value pairs.
 # Docs: https://developers.cloudflare.com/workers/runtime-apis/kv

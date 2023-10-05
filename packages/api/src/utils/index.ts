@@ -24,6 +24,11 @@ export interface Env {
   //
   // Example binding to a Queue. Learn more at https://developers.cloudflare.com/queues/javascript-apis/
   // MY_QUEUE: Queue;
+  //
+  //   Vars:
+  AUTH0_DOMAIN: string;
+  AUTH0_CLIENT_ID: string;
+  AUTH0_CLIENT_AUDIENCE: string;
 }
 
 class AppError extends Error {
@@ -66,6 +71,24 @@ export class UnauthorizedError extends AppError {
       status_code: 401,
       status_text: "Unauthorized",
     });
-    this.name = "NotFoundError";
+    this.name = "UnauthorizedError";
   }
 }
+
+export const errorHandler = (error: unknown) => {
+  // if the error is handled then just throw the error
+  if (error instanceof NotFoundError || error instanceof UnauthorizedError) {
+    return new Response(
+      JSON.stringify({
+        message: error.message,
+        status_code: error.status_code,
+        status_text: error.status_text,
+      }),
+      {
+        status: error.status_code,
+        statusText: error.status_text,
+      }
+    );
+  }
+  throw new Error("Internal Server Error: Unhandled.");
+};

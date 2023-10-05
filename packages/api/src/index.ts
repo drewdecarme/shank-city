@@ -8,13 +8,7 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import {
-  Env,
-  Handler,
-  NotFoundError,
-  RouteDefinition,
-  UnauthorizedError,
-} from "./utils";
+import { Handler, NotFoundError, RouteDefinition, errorHandler } from "./utils";
 import * as routes from "./features";
 
 const fetch: Handler = async (request, env, ctx) => {
@@ -39,22 +33,7 @@ const fetch: Handler = async (request, env, ctx) => {
     // Run the handler
     return route.handler(request, env, ctx);
   } catch (error) {
-    // if the error is handled then just throw the error
-    if (error instanceof NotFoundError || error instanceof UnauthorizedError) {
-      return new Response(
-        JSON.stringify({
-          message: error.message,
-          status_code: error.status_code,
-          status_text: error.status_text,
-        }),
-        {
-          status: error.status_code,
-          statusText: error.status_text,
-        }
-      );
-    }
-    // if it's unhandled then throw an unhandled error.
-    throw new Error("Internal Server Error: Unhandled.");
+    return errorHandler(error);
   }
 };
 
