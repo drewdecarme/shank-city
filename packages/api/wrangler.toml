@@ -1,12 +1,15 @@
 name = "shank-city"
 main = "src/index.ts"
 compatibility_date = "2023-09-22"
-# node_compat=true
 
 [vars]
-AUTH0_DOMAIN="dev-stdnegw6mftqybrz.us.auth0.com"
-AUTH0_CLIENT_ID="pJi3CPHN6RQMyipajXRtq27dkfbuJjtR"
-AUTH0_CLIENT_AUDIENCE="https://shank-city-dev"
+AUTH0_DOMAIN = "dev-stdnegw6mftqybrz.us.auth0.com"
+AUTH0_CLIENT_ID = "pJi3CPHN6RQMyipajXRtq27dkfbuJjtR"
+AUTH0_CLIENT_AUDIENCE = "https://shank-city-dev"
+# AUTH0_CLIENT_SECRET = "secret"
+
+
+################ Boilerplate TOML Helpers ################
 
 # Bind a KV Namespace. Use KV as persistent storage for small key-value pairs.
 # Docs: https://developers.cloudflare.com/workers/runtime-apis/kv
