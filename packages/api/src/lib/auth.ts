@@ -3,7 +3,8 @@ import { parseJwt } from "@cfworker/jwt";
 
 export async function authenticateRequest(
   request: Request,
-  env: Env
+  env: Env,
+  context: ExecutionContext
 ): Promise<boolean> {
   try {
     // grab the token from the request

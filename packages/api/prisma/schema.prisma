@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Team {
+  id         String       @id @unique @default(cuid())
+  name       String
+  PlayerTeam PlayerTeam[]
+}
+
+model PlayerTeam {
+  id        String @id @unique @default(cuid())
+  team_id   Team   @relation(fields: [teamId], references: [id])
+  player_id Player @relation(fields: [playerId], references: [id])
+  teamId    String
+  playerId  String
+}
+
+model Match {
+  id          String        @id @unique @default(cuid())
+  game_type   game_type
+  MatchPlayer MatchPlayer[]
+  Group       Group[]
+}
+
+model MatchPlayer {
+  id        String @id @unique @default(cuid())
+  match_id  Match  @relation(fields: [matchId], references: [id])
+  player_id Player @relation(fields: [playerId], references: [id])
+  matchId   String
+  playerId  String
+}
+
+model Player {
+  id          String        @id @unique @default(cuid())
+  PlayerTeam  PlayerTeam[]
+  MatchPlayer MatchPlayer[]
+  PlayerGroup PlayerGroup[]
+}
+
+model PlayerGroup {
+  id        String @id @unique @default(cuid())
+  player_id Player @relation(fields: [playerId], references: [id])
+  group_id  Group  @relation(fields: [groupId], references: [id])
+  playerId  String
+  groupId   String
+}
+
+model Group {
+  id          String        @id @unique @default(cuid())
+  match_id    Match         @relation(fields: [matchId], references: [id])
+  PlayerGroup PlayerGroup[]
+  matchId     String
+  Scorecard   Scorecard[]
+}
+
+model Scorecard {
+  id       String @id @unique @default(cuid())
+  group_id Group  @relation(fields: [groupId], references: [id])
+  groupId  String
+}
+
+enum game_type {
+  FOUR_BALL
+  SCRAMBLE
+  BETTER_BALL
+  SINGLE
+}

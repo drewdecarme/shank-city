@@ -18,6 +18,7 @@ export interface Env {
   API_AUTH0_DOMAIN: string;
   API_AUTH0_CLIENT_ID: string;
   API_AUTH0_CLIENT_AUDIENCE: string;
+  DATABASE_URL: string;
 }
 
 class AppError extends Error {

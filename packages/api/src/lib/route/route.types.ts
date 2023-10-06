@@ -1,4 +1,5 @@
 import { Env } from "../../utils";
+import { createPrismaClient } from "../prisma";
 
 export type ApiRequestSegments = Record<string, string>;
 
@@ -13,5 +14,7 @@ declare global {
     T extends ApiRequestSegments = ApiRequestSegments,
   > {
     segments: T | undefined;
+    prisma: ReturnType<typeof createPrismaClient>;
+    user: { id: number } | undefined;
   }
 }

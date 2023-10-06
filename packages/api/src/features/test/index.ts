@@ -30,6 +30,13 @@ RouteTest.register<GetSingleTestApiResponse, GetSingleTestApiSegments>({
   },
   handler: async (req, env, context, res) => {
     if (!context.segments?.id) throw new ErrorBadRequest("Missing :id in URL");
+    const query = await context.prisma.team.findMany({
+      where: {
+        id: "1",
+      },
+    });
+    console.log(query);
+
     return res({
       json: { message: "Hello test", id: context.segments.id },
       status: 200,

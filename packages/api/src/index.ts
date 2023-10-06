@@ -8,18 +8,22 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import { App } from "./lib/app";
+import { App, middlewarePrisma } from "./lib";
 import { RouteTest } from "./features";
 import { HandlerArgs } from "./lib/route/route.types";
 
 // Declare a new application
 export const ShankCityApp = new App("shank-city");
 
+// Add Middleware
+ShankCityApp.addMiddleware(middlewarePrisma);
+
 // Add routes
 ShankCityApp.addRoute(RouteTest);
 
 export default {
   fetch: async function (...args: HandlerArgs) {
+    console.log(args[1]);
     return ShankCityApp.run(...args);
   },
 };
