@@ -3,10 +3,9 @@ main = "src/index.ts"
 compatibility_date = "2023-09-22"
 
 [vars]
-AUTH0_DOMAIN = "dev-stdnegw6mftqybrz.us.auth0.com"
-AUTH0_CLIENT_ID = "pJi3CPHN6RQMyipajXRtq27dkfbuJjtR"
-AUTH0_CLIENT_AUDIENCE = "https://shank-city-dev"
-# AUTH0_CLIENT_SECRET = "secret"
+API_AUTH0_DOMAIN = "https://dev-stdnegw6mftqybrz.us.auth0.com/"
+API_AUTH0_CLIENT_ID = "pJi3CPHN6RQMyipajXRtq27dkfbuJjtR"
+API_AUTH0_CLIENT_AUDIENCE = "https://shank-city-dev"
 
 
 ################ Boilerplate TOML Helpers ################
