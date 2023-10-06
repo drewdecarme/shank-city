@@ -94,7 +94,6 @@ export class CFRoute implements CFRouteConstructorParams {
       },
       {}
     );
-    console.log(JSON.stringify(segmentSchemaDef, null, 2));
     const segmentSchema = z.object(segmentSchemaDef);
 
     try {
@@ -102,7 +101,6 @@ export class CFRoute implements CFRouteConstructorParams {
       context.segments = parsedSegments;
     } catch (error) {
       if (error instanceof ZodError) {
-        console.log(JSON.stringify(error, null, 2));
         throw new ErrorValidation({
           message: `Failed to validate URL segments`,
           data: error.issues.reduce(
@@ -145,7 +143,7 @@ export class CFRoute implements CFRouteConstructorParams {
 
       // validate the authorization headers
       if (route.authenticate) {
-        await authenticateRequest(request, env);
+        await authenticateRequest(request, env, context);
       }
 
       // validate segment completeness

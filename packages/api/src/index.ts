@@ -23,7 +23,6 @@ ShankCityApp.addRoute(RouteTest);
 
 export default {
   fetch: async function (...args: HandlerArgs) {
-    console.log(args[1]);
     return ShankCityApp.run(...args);
   },
 };

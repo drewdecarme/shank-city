@@ -7,7 +7,6 @@ import { createPrismaClient } from "./createPrismaClient";
  */
 export const middlewarePrisma: Middleware = async (request, env, context) => {
   console.log("Middleware: Creating PrismaClient and adding to context...");
-  console.log(env);
   const prisma = createPrismaClient(env.DATABASE_URL);
   context.prisma = prisma;
   console.log(
