@@ -8,33 +8,18 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import { Handler, NotFoundError, RouteDefinition, errorHandler } from "./utils";
-import * as routes from "./features";
+import { App } from "./lib/app";
+import { RouteTest } from "./features";
+import { HandlerArgs } from "./lib/route/route.types";
 
-const fetch: Handler = async (request, env, ctx) => {
-  const { pathname } = new URL(request.url);
+// Declare a new application
+export const ShankCityApp = new App("shank-city");
 
-  // Reduce over the routes to find a route
-  // that matches the beginning of the pathname
-  const route = Object.entries(
-    routes as Record<string, RouteDefinition>
-  ).reduce<RouteDefinition | undefined>((accum, [, routeDef]) => {
-    if (pathname.startsWith(routeDef.namespace)) return routeDef;
-    return accum;
-  }, undefined);
+// Add routes
+ShankCityApp.addRoute(RouteTest);
 
-  try {
-    // If there isn't a route that matches the
-    // pathname, then throw an error
-    if (typeof route === "undefined") {
-      throw new NotFoundError("The route does not exist.");
-    }
-
-    // Run the handler
-    return route.handler(request, env, ctx);
-  } catch (error) {
-    return errorHandler(error);
-  }
+export default {
+  fetch: async function (...args: HandlerArgs) {
+    return ShankCityApp.run(...args);
+  },
 };
-
-export default { fetch };

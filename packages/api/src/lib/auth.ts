@@ -1,7 +1,7 @@
-import { Env, UnauthorizedError } from "../utils";
+import { Env, ErrorUnauthorized } from "../utils";
 import { parseJwt } from "@cfworker/jwt";
 
-export async function authenticate(
+export async function authenticateRequest(
   request: Request,
   env: Env
 ): Promise<boolean> {
@@ -20,7 +20,7 @@ export async function authenticate(
 
     return true;
   } catch (error) {
-    throw new UnauthorizedError(error as string);
+    throw new ErrorUnauthorized(error as string);
   }
 }
 
