@@ -9,7 +9,7 @@
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "wrangler dev --port=8282",
-    "db": "dotenv -e ../../.env --",
+    "db": "dotenv -e ../../.env -- yarn prisma",
     "db:generate": "yarn prisma generate --no-engine"
   },
   "devDependencies": {

@@ -8,6 +8,16 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+model User {
+  id         Int      @id @unique @default(autoincrement())
+  username   String   @unique
+  email      String?
+  first_name String?
+  last_name  String?
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
 model Team {
   id         String       @id @unique @default(cuid())
   name       String

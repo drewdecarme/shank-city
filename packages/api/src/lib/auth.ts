@@ -19,6 +19,26 @@ export async function authenticateRequest(
     // If it fails to parse, throw the reason
     if (!jwtResult.valid) throw jwtResult.reason;
 
+    // get the Auth0 username which is the subject form the payload
+    const username = jwtResult.payload.sub;
+
+    // Find or create the user in the DB
+    const user = await context.prisma.user.upsert({
+      where: {
+        username,
+      },
+      update: {},
+      create: {
+        username,
+      },
+    });
+
+    // set the user to the context.auth
+    context.auth = {
+      authenticated: true,
+      user,
+    };
+
     return true;
   } catch (error) {
     throw new ErrorUnauthorized(error as string);
