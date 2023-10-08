@@ -1,5 +1,5 @@
 {
-  "name": "@shank-city/api",
+  "name": "@flare-kit/api",
   "version": "0.0.0",
   "private": true,
   "description": "A central api for ShankCity",
@@ -21,17 +21,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drewdecarme/shank-city.git"
+    "url": "git+https://github.com/drewdecarme/flare-kit.git"
   },
   "bugs": {
-    "url": "https://github.com/drewdecarme/shank-city/issues"
+    "url": "https://github.com/drewdecarme/flare-kit/issues"
   },
-  "homepage": "https://github.com/drewdecarme/shank-city#readme",
+  "homepage": "https://github.com/drewdecarme/flare-kit#readme",
   "dependencies": {
     "@cfworker/jwt": "^4.0.6",
+    "@flare-kit/logger": "workspace:^",
     "@prisma/client": "^5.4.1",
     "@prisma/extension-accelerate": "^0.6.2",
-    "@shank-city/logger": "workspace:^",
     "@types/jsonwebtoken": "^9.0.3",
     "prisma": "^5.4.1",
     "zod": "^3.22.4"

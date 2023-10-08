@@ -1,5 +1,5 @@
 {
-  "name": "@shank-city/logger",
+  "name": "@flare-kit/logger",
   "version": "1.0.0",
   "description": "Node and Browser logging utilities",
   "main": "dist/index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/drewdecarme/shank-city.git"
+    "url": "git+ssh://git@github.com/drewdecarme/flare-kit.git"
   },
   "author": "Drew DeCarme",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/drewdecarme/shank-city/issues"
+    "url": "https://github.com/drewdecarme/flare-kit/issues"
   },
-  "homepage": "https://github.com/drewdecarme/shank-city#readme",
+  "homepage": "https://github.com/drewdecarme/flare-kit#readme",
   "devDependencies": {
     "typescript": "^5.2.2"
   }

@@ -1,0 +1,26 @@
+{
+  "name": "@flare-kit/docs",
+  "version": "1.0.0",
+  "description": "Documentation for this template",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev --port 3010"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/drewdecarme/flare-kit.git"
+  },
+  "author": "Drew DeCarme",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drewdecarme/flare-kit/issues"
+  },
+  "homepage": "https://github.com/drewdecarme/flare-kit#readme",
+  "dependencies": {
+    "next": "^13.5.4",
+    "nextra": "^2.13.2",
+    "nextra-theme-docs": "^2.13.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

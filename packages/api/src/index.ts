@@ -14,7 +14,7 @@ import { HandlerArgs } from "./lib/route/route.types";
 import { log } from "./utils";
 
 // Declare a new application
-export const ShankCityApp = new App("shank-city");
+export const ShankCityApp = new App("flare-kit");
 
 // Add Middleware
 ShankCityApp.addMiddleware(middlewarePrisma);
