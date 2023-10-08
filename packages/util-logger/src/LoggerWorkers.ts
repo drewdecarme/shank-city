@@ -1,8 +1,10 @@
 export type LogLevel = "debug" | "info" | "warn" | "error";
+export type LoggingType = "simple" | "json";
 
 interface WorkersLoggerOptions {
   name?: string;
   level?: LogLevel;
+  loggingType?: LoggingType;
 }
 
 export class WorkersLogger {
@@ -10,11 +12,17 @@ export class WorkersLogger {
   private level: LogLevel;
   private logColors: Record<string, string>;
   private resetColor: string;
+  private loggingType: string;
 
   constructor(options: WorkersLoggerOptions = {}) {
-    const { name = "WorkersLogger", level = "info" } = options;
+    const {
+      name = "WorkersLogger",
+      level = "info",
+      loggingType = "json",
+    } = options;
     this.name = name;
     this.level = level;
+    this.loggingType = loggingType;
     this.logColors = {
       debug: "\x1b[90m", // Grey
       info: "\x1b[34m", // Blue
@@ -22,6 +30,7 @@ export class WorkersLogger {
       error: "\x1b[31m", // Red
     };
     this.resetColor = "\x1b[0m";
+    this.setLoggingType(loggingType);
 
     this.setName(name);
   }
@@ -30,16 +39,23 @@ export class WorkersLogger {
     this.name = name;
   }
 
+  setLoggingType(loggingType: LoggingType): void {
+    this.loggingType = loggingType;
+  }
+
   log(level: string, message: string, data: Record<string, any> = {}): void {
     if (this.isLogLevelEnabled(level)) {
       const color = this.logColors[level] || "";
-      const logMessage = JSON.stringify({
-        level,
-        name: this.name,
-        message,
-        timestamp: new Date().toISOString(),
-        data,
-      });
+      const logMessage =
+        this.loggingType === "json"
+          ? JSON.stringify({
+              level,
+              name: this.name,
+              message,
+              timestamp: new Date().toISOString(),
+              data,
+            })
+          : `${this.name} [${level.toUpperCase()}] - ${message}`;
 
       console.log(`${color}${logMessage}${this.resetColor}`);
     }

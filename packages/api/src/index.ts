@@ -27,6 +27,7 @@ export default {
   fetch: async function (...args: HandlerArgs) {
     // set the log level
     log.setLogLevel(args[1].LOG_LEVEL || "debug");
+    log.setLoggingType(args[1].LOG_TYPE || "json");
 
     // run the app
     return ShankCityApp.run(...args);

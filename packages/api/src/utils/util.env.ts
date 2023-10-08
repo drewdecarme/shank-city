@@ -1,4 +1,4 @@
-import { LogLevel, WorkersLogger } from "@shank-city/logger";
+import { LogLevel, LoggingType, WorkersLogger } from "@shank-city/logger";
 
 export interface Env {
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
@@ -22,4 +22,7 @@ export interface Env {
   API_AUTH0_CLIENT_AUDIENCE: string;
   DATABASE_URL: string;
   LOG_LEVEL: LogLevel;
+  LOG_TYPE: LoggingType;
+
+  HYPERDRIVE: Hyperdrive;
 }

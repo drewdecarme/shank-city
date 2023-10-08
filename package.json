@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "A real-time golf scoring application that allows you to see the status of your team's progress in various games",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "workspaces": {
     "packages": [
       "packages/**"
@@ -23,7 +20,7 @@
   "homepage": "https://github.com/drewdecarme/shank-city#readme",
   "packageManager": "yarn@3.6.4",
   "devDependencies": {
-    "eslint": "^8.50.0",
+    "eslint": "^8.51.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   }
