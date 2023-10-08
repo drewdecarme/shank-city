@@ -6,6 +6,7 @@ compatibility_date = "2023-09-22"
 API_AUTH0_DOMAIN = "https://dev-stdnegw6mftqybrz.us.auth0.com/"
 API_AUTH0_CLIENT_ID = "pJi3CPHN6RQMyipajXRtq27dkfbuJjtR"
 API_AUTH0_CLIENT_AUDIENCE = "https://shank-city-dev"
+LOG_LEVEL = "debug"
 
 
 ################ Boilerplate TOML Helpers ################

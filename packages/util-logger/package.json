@@ -2,8 +2,11 @@
   "name": "@shank-city/logger",
   "version": "1.0.0",
   "description": "Node and Browser logging utilities",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "yarn tsc --project tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/drewdecarme/shank-city/issues"
   },
-  "homepage": "https://github.com/drewdecarme/shank-city#readme"
+  "homepage": "https://github.com/drewdecarme/shank-city#readme",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
 }

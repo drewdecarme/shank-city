@@ -576,6 +576,7 @@ __metadata:
     "@cloudflare/workers-types": ^4.20231002.0
     "@prisma/client": ^5.4.1
     "@prisma/extension-accelerate": ^0.6.2
+    "@shank-city/logger": "workspace:^"
     "@types/jsonwebtoken": ^9.0.3
     "@types/node": ^20.8.2
     dotenv-cli: ^7.3.0
@@ -583,6 +584,14 @@ __metadata:
     typescript: ^5.2.2
     wrangler: ^3.11.0
     zod: ^3.22.4
+  languageName: unknown
+  linkType: soft
+
+"@shank-city/logger@workspace:^, @shank-city/logger@workspace:packages/util-logger":
+  version: 0.0.0-use.local
+  resolution: "@shank-city/logger@workspace:packages/util-logger"
+  dependencies:
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 

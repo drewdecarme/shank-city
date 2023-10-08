@@ -1,11 +1,13 @@
+export type LogLevel = "debug" | "info" | "warn" | "error";
+
 interface WorkersLoggerOptions {
   name?: string;
-  level?: string;
+  level?: LogLevel;
 }
 
 export class WorkersLogger {
   private name: string;
-  private level: string;
+  private level: LogLevel;
   private logColors: Record<string, string>;
   private resetColor: string;
 
@@ -66,7 +68,7 @@ export class WorkersLogger {
   }
 
   // Function to set the log level dynamically
-  setLogLevel(level: string): void {
+  setLogLevel(level: LogLevel): void {
     if (["debug", "info", "warn", "error"].includes(level)) {
       this.level = level;
     } else {

@@ -1,4 +1,3 @@
-import { middleware } from "supertokens-node/lib/build/framework/express";
 import { Env, ErrorNotFound, errorHandler } from "../../utils";
 import { CFRoute } from "../route/Route";
 import { HandlerArgs } from "../route/route.types";

@@ -31,6 +31,7 @@
     "@cfworker/jwt": "^4.0.6",
     "@prisma/client": "^5.4.1",
     "@prisma/extension-accelerate": "^0.6.2",
+    "@shank-city/logger": "workspace:^",
     "@types/jsonwebtoken": "^9.0.3",
     "prisma": "^5.4.1",
     "zod": "^3.22.4"

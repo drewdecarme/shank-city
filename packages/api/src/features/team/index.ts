@@ -1,6 +1,6 @@
 import { Team } from "@prisma/client";
 import { CFRoute } from "../../lib";
-import { ErrorBadRequest } from "../../utils";
+import { ErrorBadRequest, errorHandler, log } from "../../utils";
 import { ApiResponse } from "../../lib/types";
 
 export const RouteTeam = new CFRoute({ basePath: "/team" });
@@ -12,11 +12,18 @@ RouteTeam.register<GetAllTeamsApiResponse>({
   method: "GET",
   authenticate: true,
   handler: async (req, env, context, res) => {
-    const data = await context.prisma.team.findMany();
-    return res({
-      json: {
-        data,
-      },
-    });
+    try {
+      log.setName("Feature:Teams");
+      log.debug("Fetching all teams");
+      const data = await context.prisma.team.findMany();
+      log.debug("Fetching all teams... successful", data);
+      return res({
+        json: {
+          data,
+        },
+      });
+    } catch (error) {
+      return errorHandler(error);
+    }
   },
 });
