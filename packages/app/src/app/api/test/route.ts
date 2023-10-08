@@ -18,7 +18,6 @@ const GET = withApiAuthRequired(async (req, res) => {
       return NextResponse.json(data);
     }
   } catch (error) {
-    console.log(error);
     const message = "Something went wrong";
 
     return NextResponse.json(message, { status: 500 });

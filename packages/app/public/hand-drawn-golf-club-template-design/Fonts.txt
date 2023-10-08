@@ -1,0 +1,9 @@
+Fonts used in this design:
+
+Font: Bungee
+Author: David Jonathan Ross
+Url: https://fonts.google.com/specimen/Bungee
+
+Font: Catamaran
+Author: Pria Ravichandran
+Url: https://fonts.google.com/specimen/Catamaran

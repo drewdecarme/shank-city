@@ -1,2 +1,4 @@
 export * from "./auth";
-export * from "./route/Route";
+export * from "./route";
+export * from "./app";
+export * from "./prisma";

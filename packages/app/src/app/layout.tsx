@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import React from "react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { link } from "fs";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,6 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/gra2ndu.css" />
+      </head>
       <UserProvider>
         <body className={inter.className}>{children}</body>
       </UserProvider>
