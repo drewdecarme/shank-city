@@ -10,7 +10,9 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev --port=8282 --remote",
     "db": "dotenv -e ../../.env -- yarn prisma",
-    "db:generate": "yarn prisma generate --no-engine"
+    "db:generate": "yarn prisma generate --no-engine",
+    "build:types": "tsc --project tsconfig.types.json",
+    "build": "yarn db:generate & yarn build:types"
   },
   "repository": {
     "type": "git",
