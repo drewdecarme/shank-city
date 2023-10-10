@@ -1,6 +1,5 @@
-import { Route } from "@flare-city/core";
-import { ApiResponse } from "../../../../flare-city/core/src/utils/util.types";
-import { ErrorBadRequest } from "../../../../flare-city/core/src/utils";
+import { ApiResponse, ErrorBadRequest, Route } from "@flare-city/core";
+import { middlewareRequireAuth } from "../../lib";
 
 export const RouteTest = new Route({ basePath: "/test" });
 
@@ -9,7 +8,7 @@ export type GetAllTestApiResponse = ApiResponse<{ message: string }>;
 RouteTest.register<GetAllTestApiResponse>({
   path: "",
   method: "GET",
-  authenticate: true,
+  middleware: [middlewareRequireAuth],
   handler: async (req, env, context, res) => {
     return res({
       json: {
@@ -26,10 +25,11 @@ export type GetSingleTestApiResponse = ApiResponse<{
   id: string;
 }>;
 export type GetSingleTestApiSegments = { id: string };
+
 RouteTest.register<GetSingleTestApiResponse, GetSingleTestApiSegments>({
   path: "/:id",
   method: "GET",
-  authenticate: true,
+  middleware: [middlewareRequireAuth],
   validate: {
     segments: { id: null },
   },

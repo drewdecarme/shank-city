@@ -9,6 +9,7 @@ import {
   ApiResponse,
   RequestURLSegments,
 } from "../utils";
+import { Middleware } from "../app";
 
 interface RouteConstructorParams {
   basePath: string;
@@ -36,7 +37,7 @@ export type RouteDefinition<
 > = {
   path: string;
   method: RouteMethod;
-  authenticate?: boolean;
+  middleware?: Middleware[];
   validate?: {
     segments?: { [key in keyof S]: string | null };
   };
@@ -147,10 +148,12 @@ export class Route implements RouteConstructorParams {
         throw new ErrorNotFound("The route does not exist");
       }
 
-      // validate the authorization headers
-      // if (route.authenticate) {
-      //   await authenticateRequest(request, env, context);
-      // }
+      // Run any middlewares if they exist
+      if (typeof route.middleware !== "undefined") {
+        for await (const middlewareFn of route.middleware) {
+          await middlewareFn(request, env, context);
+        }
+      }
 
       // validate segment completeness
       this.validateRequestSegments(route, request, context);

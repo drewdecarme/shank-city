@@ -1,20 +1,15 @@
+import { Route, ApiResponse, errorHandler } from "@flare-city/core";
 import { Team } from "@prisma/client";
-import { CFRoute } from "../../lib";
-import {
-  ErrorBadRequest,
-  errorHandler,
-  log,
-} from "../../../../flare-city/core/src/utils";
-import { ApiResponse } from "../../../../flare-city/core/src/utils/util.types";
+import { log, middlewareRequireAuth } from "../../lib";
 
-export const RouteTeam = new CFRoute({ basePath: "/team" });
+export const RouteTeam = new Route({ basePath: "/team" });
 
 // Get All Teams
 export type GetAllTeamsApiResponse = ApiResponse<Team[]>;
 RouteTeam.register<GetAllTeamsApiResponse>({
   path: "",
   method: "GET",
-  authenticate: true,
+  middleware: [middlewareRequireAuth],
   handler: async (req, env, context, res) => {
     try {
       log.setName("Feature:Teams");

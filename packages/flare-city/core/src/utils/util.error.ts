@@ -1,3 +1,5 @@
+import { log } from "./util.log";
+
 class AppError extends Error {
   status_code: number;
   status_text: string;
@@ -76,6 +78,9 @@ export const errorHandler = (error: unknown) => {
     error instanceof ErrorBadRequest ||
     error instanceof ErrorValidation
   ) {
+    log.setName("ErrorHandler");
+    log.error(error.message);
+
     return new Response(
       JSON.stringify({
         message: error.message,
@@ -89,5 +94,6 @@ export const errorHandler = (error: unknown) => {
       }
     );
   }
+  log.error(error as string);
   throw new Error("Internal Server Error: Unhandled.");
 };

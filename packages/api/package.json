@@ -12,13 +12,6 @@
     "db": "dotenv -e ../../.env -- yarn prisma",
     "db:generate": "yarn prisma generate --no-engine"
   },
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20231002.0",
-    "@types/node": "^20.8.3",
-    "dotenv-cli": "^7.3.0",
-    "typescript": "^5.2.2",
-    "wrangler": "^3.11.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/drewdecarme/shank-city.git"
@@ -34,5 +27,12 @@
     "@prisma/client": "^5.4.1",
     "prisma": "^5.4.1",
     "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20231002.0",
+    "@types/node": "^20.8.3",
+    "dotenv-cli": "^7.3.0",
+    "typescript": "^5.2.2",
+    "wrangler": "^3.11.0"
   }
 }
