@@ -1,5 +1,5 @@
 {
-  "name": "@flare-kit/logger",
+  "name": "@flare-city/logger",
   "version": "1.0.0",
   "description": "Node and Browser logging utilities",
   "main": "dist/index.js",

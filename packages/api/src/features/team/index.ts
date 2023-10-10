@@ -1,7 +1,11 @@
 import { Team } from "@prisma/client";
 import { CFRoute } from "../../lib";
-import { ErrorBadRequest, errorHandler, log } from "../../utils";
-import { ApiResponse } from "../../lib/types";
+import {
+  ErrorBadRequest,
+  errorHandler,
+  log,
+} from "../../../../flare-city/core/src/utils";
+import { ApiResponse } from "../../../../flare-city/core/src/utils/util.types";
 
 export const RouteTeam = new CFRoute({ basePath: "/team" });
 

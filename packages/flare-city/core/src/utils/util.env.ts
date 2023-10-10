@@ -1,4 +1,4 @@
-import { LogLevel, LoggingType, WorkersLogger } from "@flare-kit/logger";
+import { LogLevel, LoggingType } from "@flare-city/logger";
 
 export interface Env {
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/

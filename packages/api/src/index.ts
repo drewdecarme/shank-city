@@ -1,35 +1,30 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
-
-import { App, middlewarePrisma } from "./lib";
+import { middlewarePrisma } from "./lib";
+import { App } from "@flare-city/core";
 import { RouteTest, RouteTeam } from "./features";
-import { HandlerArgs } from "./lib/route/route.types";
-import { log } from "./utils";
+import { Env, log } from "../../flare-city/core/src/utils";
 
 // Declare a new application
-export const ShankCityApp = new App("flare-kit");
+export const API = new App("shank-city");
 
 // Add Middleware
-ShankCityApp.addMiddleware(middlewarePrisma);
+API.addMiddleware(middlewarePrisma);
 
 // Add routes
-ShankCityApp.addRoute(RouteTest);
-ShankCityApp.addRoute(RouteTeam);
+API.addRoute(RouteTest);
+API.addRoute(RouteTeam);
 
 export default {
-  fetch: async function (...args: HandlerArgs) {
+  fetch: async function (
+    request: Request,
+    env: Env,
+    context: ExecutionContext
+  ) {
+    console.log(JSON.stringify({ request, env, context }, null, 2));
     // set the log level
-    log.setLogLevel(args[1].LOG_LEVEL || "debug");
-    log.setLoggingType(args[1].LOG_TYPE || "json");
+    log.setLogLevel(env.LOG_LEVEL || "debug");
+    log.setLoggingType(env.LOG_TYPE || "json");
 
     // run the app
-    return ShankCityApp.run(...args);
+    return API.run(request, env, context);
   },
 };

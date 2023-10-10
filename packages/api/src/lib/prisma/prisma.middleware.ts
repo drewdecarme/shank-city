@@ -1,6 +1,6 @@
-import { log } from "../../utils";
-import { Middleware } from "../app";
+import { Middleware } from "@flare-city/core";
 import { createPrismaClient } from "./createPrismaClient";
+import { log } from "../logger";
 
 /**
  * Middleware to add the Prisma client to the execution
@@ -8,17 +8,9 @@ import { createPrismaClient } from "./createPrismaClient";
  */
 export const middlewarePrisma: Middleware = async (request, env, context) => {
   log.setName("Middleware:Prisma");
-  console.log(typeof env.HYPERDRIVE);
-  log.debug(
-    `Middleware: Hyperdrive status: "${
-      typeof env.HYPERDRIVE === "undefined"
-        ? "undefined"
-        : env.HYPERDRIVE.connectionString
-    }"`,
-    {}
-  );
+
   log.info("Middleware: Creating PrismaClient and adding to context...");
-  const prisma = createPrismaClient(env.DATABASE_URL);
+  const prisma = createPrismaClient(env.HYPERDRIVE.connectionString);
   context.prisma = prisma;
   log.info("Middleware: Creating PrismaClient and adding to context... done.");
 };

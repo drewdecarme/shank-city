@@ -1,56 +1,61 @@
 import { ZodError, z } from "zod";
-import { Env, ErrorNotFound, ErrorValidation, errorHandler } from "../../utils";
-import { authenticateRequest } from "../auth";
-import { ApiRequestSegments } from "./route.types";
+// import { authenticateRequest } from "../auth";
 import { extractSegmentsFromURL, isPathnameMatch } from "./route.utils";
-import { ApiResponse } from "../types";
+import {
+  Env,
+  ErrorValidation,
+  ErrorNotFound,
+  errorHandler,
+  ApiResponse,
+  RequestURLSegments,
+} from "../utils";
 
-interface CFRouteConstructorParams {
+interface RouteConstructorParams {
   basePath: string;
   authenticate?: boolean;
 }
 
-export type CFRouteHandlerResponse<T extends Record<string, unknown>> = (
+export type RouteHandlerResponse<T extends Record<string, unknown>> = (
   params: { json: T } & { status?: 200 | 301 }
 ) => Promise<Response>;
 
-type CFRouteMethod = "GET" | "POST";
-type CFRouteHandler<
+type RouteMethod = "GET" | "POST";
+type RouteHandler<
   T extends Record<string, unknown> = Record<string, unknown>,
-  S extends ApiRequestSegments = ApiRequestSegments,
+  S extends RequestURLSegments = RequestURLSegments,
 > = (
   request: Request,
   env: Env,
   ctx: ExecutionContext<S>,
-  res: CFRouteHandlerResponse<T>
+  res: RouteHandlerResponse<T>
 ) => Promise<Response>;
 
-export type CFRouteDefinition<
+export type RouteDefinition<
   T extends Record<string, unknown> = Record<string, unknown>,
-  S extends ApiRequestSegments = ApiRequestSegments,
+  S extends RequestURLSegments = RequestURLSegments,
 > = {
   path: string;
-  method: CFRouteMethod;
+  method: RouteMethod;
   authenticate?: boolean;
   validate?: {
     segments?: { [key in keyof S]: string | null };
   };
-  handler: CFRouteHandler<T, S>;
+  handler: RouteHandler<T, S>;
 };
 
-export class CFRoute implements CFRouteConstructorParams {
+export class Route implements RouteConstructorParams {
   basePath: string;
-  requests: CFRouteDefinition[];
+  requests: RouteDefinition[];
 
-  constructor(params: CFRouteConstructorParams) {
+  constructor(params: RouteConstructorParams) {
     this.basePath = params.basePath;
     this.requests = [];
   }
 
   register<
     T extends ApiResponse<unknown>,
-    S extends ApiRequestSegments = ApiRequestSegments,
-  >(params: CFRouteDefinition<T, S>) {
+    S extends RequestURLSegments = RequestURLSegments,
+  >(params: RouteDefinition<T, S>) {
     /**
      * RATIONALE: Don't really care about the internal
      * types of this... all we care is that it get's stored
@@ -61,7 +66,7 @@ export class CFRoute implements CFRouteConstructorParams {
   }
 
   private validateRequestSegments(
-    route: CFRouteDefinition,
+    route: RouteDefinition,
     request: Request,
     context: ExecutionContext
   ) {
@@ -118,14 +123,14 @@ export class CFRoute implements CFRouteConstructorParams {
 
   async run(request: Request, env: Env, context: ExecutionContext) {
     // create a response handler
-    const res: CFRouteHandlerResponse<Record<string, unknown>> = async ({
+    const res: RouteHandlerResponse<Record<string, unknown>> = async ({
       json,
       status = 200,
     }) => new Response(JSON.stringify(json), { status });
     const { pathname: requestURL } = new URL(request.url);
 
     // Match the route with the request URL
-    const route = this.requests.reduce<CFRouteDefinition | undefined>(
+    const route = this.requests.reduce<RouteDefinition | undefined>(
       (accum, routeDef) => {
         const routePath = `${this.basePath}${routeDef.path}`;
         const pathnamesMatch = isPathnameMatch(routePath, requestURL);
@@ -143,9 +148,9 @@ export class CFRoute implements CFRouteConstructorParams {
       }
 
       // validate the authorization headers
-      if (route.authenticate) {
-        await authenticateRequest(request, env, context);
-      }
+      // if (route.authenticate) {
+      //   await authenticateRequest(request, env, context);
+      // }
 
       // validate segment completeness
       this.validateRequestSegments(route, request, context);

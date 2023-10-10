@@ -347,28 +347,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flare-kit/api@workspace:packages/api":
+"@flare-city/core@workspace:^, @flare-city/core@workspace:packages/flare-city/core":
   version: 0.0.0-use.local
-  resolution: "@flare-kit/api@workspace:packages/api"
+  resolution: "@flare-city/core@workspace:packages/flare-city/core"
   dependencies:
     "@cfworker/jwt": ^4.0.6
     "@cloudflare/workers-types": ^4.20231002.0
-    "@flare-kit/logger": "workspace:^"
-    "@prisma/client": ^5.4.1
-    "@prisma/extension-accelerate": ^0.6.2
-    "@types/jsonwebtoken": ^9.0.3
+    "@flare-city/logger": "workspace:^"
     "@types/node": ^20.8.3
     dotenv-cli: ^7.3.0
-    prisma: ^5.4.1
     typescript: ^5.2.2
     wrangler: ^3.11.0
     zod: ^3.22.4
   languageName: unknown
   linkType: soft
 
-"@flare-kit/docs@workspace:packages/docs":
+"@flare-city/docs@workspace:packages/flare-city/docs":
   version: 0.0.0-use.local
-  resolution: "@flare-kit/docs@workspace:packages/docs"
+  resolution: "@flare-city/docs@workspace:packages/flare-city/docs"
   dependencies:
     next: ^13.5.4
     nextra: ^2.13.2
@@ -378,20 +374,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@flare-city/logger@workspace:^, @flare-city/logger@workspace:packages/flare-city/logger":
+  version: 0.0.0-use.local
+  resolution: "@flare-city/logger@workspace:packages/flare-city/logger"
+  dependencies:
+    typescript: ^5.2.2
+  languageName: unknown
+  linkType: soft
+
 "@flare-kit/flare-kit@workspace:.":
   version: 0.0.0-use.local
   resolution: "@flare-kit/flare-kit@workspace:."
   dependencies:
     eslint: ^8.51.0
     prettier: ^3.0.3
-    typescript: ^5.2.2
-  languageName: unknown
-  linkType: soft
-
-"@flare-kit/logger@workspace:^, @flare-kit/logger@workspace:packages/util-logger":
-  version: 0.0.0-use.local
-  resolution: "@flare-kit/logger@workspace:packages/util-logger"
-  dependencies:
     typescript: ^5.2.2
   languageName: unknown
   linkType: soft
@@ -783,21 +779,49 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/extension-accelerate@npm:^0.6.2":
-  version: 0.6.2
-  resolution: "@prisma/extension-accelerate@npm:0.6.2"
-  peerDependencies:
-    "@prisma/client": ">=4.16.1"
-  checksum: bf506942660bd7cff1de0280932be3a9b4233cf6acb7cb07cdd8fcc0e0f2e30a23b261db3a7470b36eaaa1737d14ca59fc72024cab7899ddebfc4aa2056c9838
-  languageName: node
-  linkType: hard
-
 "@rushstack/eslint-patch@npm:^1.3.3":
   version: 1.5.1
   resolution: "@rushstack/eslint-patch@npm:1.5.1"
   checksum: e4c25322312dbaa29e835a7ab4fbac53c8731dd0da65e46646e38945e296429e7fb91c2ef3da5af5d5938d44b0cde1d5290438ebb3dcb015e02b80b5e2530d24
   languageName: node
   linkType: hard
+
+"@shank-city/api@workspace:packages/api":
+  version: 0.0.0-use.local
+  resolution: "@shank-city/api@workspace:packages/api"
+  dependencies:
+    "@cfworker/jwt": ^4.0.6
+    "@cloudflare/workers-types": ^4.20231002.0
+    "@flare-city/core": "workspace:^"
+    "@flare-city/logger": "workspace:^"
+    "@prisma/client": ^5.4.1
+    "@types/node": ^20.8.3
+    dotenv-cli: ^7.3.0
+    prisma: ^5.4.1
+    typescript: ^5.2.2
+    wrangler: ^3.11.0
+    zod: ^3.22.4
+  languageName: unknown
+  linkType: soft
+
+"@shank-city/app@workspace:packages/app":
+  version: 0.0.0-use.local
+  resolution: "@shank-city/app@workspace:packages/app"
+  dependencies:
+    "@auth0/nextjs-auth0": ^3.2.0
+    "@types/node": ^20.8.3
+    "@types/react": ^18.2.25
+    "@types/react-dom": ^18.2.11
+    dotenv: ^16.3.1
+    dotenv-cli: ^7.3.0
+    eslint: ^8.51.0
+    eslint-config-next: 13.5.4
+    next: 13.5.4
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    typescript: ^5.2.2
+  languageName: unknown
+  linkType: soft
 
 "@sideway/address@npm:^4.1.3":
   version: 4.1.4
@@ -949,15 +973,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jsonwebtoken@npm:^9.0.3":
-  version: 9.0.3
-  resolution: "@types/jsonwebtoken@npm:9.0.3"
-  dependencies:
-    "@types/node": "*"
-  checksum: 2debf3adb19b827a023205234ec439b7258aee6ca9273472abe360738a84f08db78c6e853172e842ec303169ec0bb2df39701ab9a13b9e7868fe284ef9136567
-  languageName: node
-  linkType: hard
-
 "@types/katex@npm:^0.16.0":
   version: 0.16.3
   resolution: "@types/katex@npm:0.16.3"
@@ -994,13 +1009,6 @@ __metadata:
   version: 0.7.32
   resolution: "@types/ms@npm:0.7.32"
   checksum: 610744605c5924aa2657c8a62d307052af4f0e38e2aa015f154ef03391fabb4fd903f9c9baacb41f6e5798b8697e898463c351e5faf638738603ed29137b5254
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:*":
-  version: 20.8.2
-  resolution: "@types/node@npm:20.8.2"
-  checksum: 3da73e25d821bfcdb7de98589027e08bb4848e55408671c4a83ec0341e124b5313a0b20e1e4b4eff1168ea17a86f622ad73fcb04b761abd77496b9a27cbd5de5
   languageName: node
   linkType: hard
 
@@ -1256,25 +1264,6 @@ __metadata:
   checksum: 3e044fd6d1d26545f235a9fe4d7a534e2029d8e59fa7fd9f2a6eb21230f6b5380ea1eaf55136e60cbf8e613544b3b766e7a6fa2102e2a3a117505466e3025dc2
   languageName: node
   linkType: hard
-
-"app@workspace:packages/app":
-  version: 0.0.0-use.local
-  resolution: "app@workspace:packages/app"
-  dependencies:
-    "@auth0/nextjs-auth0": ^3.2.0
-    "@types/node": ^20.8.3
-    "@types/react": ^18.2.25
-    "@types/react-dom": ^18.2.11
-    dotenv: ^16.3.1
-    dotenv-cli: ^7.3.0
-    eslint: ^8.51.0
-    eslint-config-next: 13.5.4
-    next: 13.5.4
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    typescript: ^5.2.2
-  languageName: unknown
-  linkType: soft
 
 "aproba@npm:^1.0.3 || ^2.0.0":
   version: 2.0.0

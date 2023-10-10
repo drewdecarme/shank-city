@@ -1,6 +1,4 @@
-import { z } from "zod";
-import { ApiRequestSegments } from "./route.types";
-import { CFRouteDefinition } from "./Route";
+import { RequestURLSegments } from "../utils";
 
 /**
  * Extracts parameters from the URL based on a pattern.
@@ -9,7 +7,7 @@ import { CFRouteDefinition } from "./Route";
  * @returns An object containing the extracted parameters.
  */
 export const extractSegmentsFromURL = <
-  T extends ApiRequestSegments = ApiRequestSegments,
+  T extends RequestURLSegments = RequestURLSegments,
 >(
   url: string,
   pattern: string

@@ -1,12 +1,11 @@
-import { Env, ErrorNotFound, errorHandler } from "../../utils";
-import { CFRoute } from "../route/Route";
-import { HandlerArgs } from "../route/route.types";
+import { Env, ErrorNotFound, HandlerArgs, errorHandler } from "../utils";
+import { Route } from "../route";
 
 export type Middleware = (...args: HandlerArgs) => Promise<void>;
 
 export class App {
   name: string;
-  routes: CFRoute[];
+  routes: Route[];
   middlewares: Middleware[];
 
   constructor(name: string) {
@@ -15,7 +14,7 @@ export class App {
     this.middlewares = [];
   }
 
-  addRoute(route: CFRoute) {
+  addRoute(route: Route) {
     this.routes.push(route);
   }
 
@@ -32,7 +31,7 @@ export class App {
   run(request: Request, env: Env, context: ExecutionContext) {
     const { pathname } = new URL(request.url);
 
-    const route = this.routes.reduce<CFRoute | undefined>((accum, routeDef) => {
+    const route = this.routes.reduce<Route | undefined>((accum, routeDef) => {
       if (pathname.startsWith(routeDef.basePath)) return routeDef;
       return accum;
     }, undefined);

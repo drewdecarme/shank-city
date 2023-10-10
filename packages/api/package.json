@@ -1,5 +1,5 @@
 {
-  "name": "@flare-kit/api",
+  "name": "@shank-city/api",
   "version": "0.0.0",
   "private": true,
   "description": "A central api for ShankCity",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "deploy": "wrangler deploy",
-    "dev": "wrangler dev --port=8282",
+    "dev": "wrangler dev --port=8282 --remote",
     "db": "dotenv -e ../../.env -- yarn prisma",
     "db:generate": "yarn prisma generate --no-engine"
   },
@@ -21,18 +21,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drewdecarme/flare-kit.git"
+    "url": "git+https://github.com/drewdecarme/shank-city.git"
   },
   "bugs": {
-    "url": "https://github.com/drewdecarme/flare-kit/issues"
+    "url": "https://github.com/drewdecarme/shank-city/issues"
   },
-  "homepage": "https://github.com/drewdecarme/flare-kit#readme",
+  "homepage": "https://github.com/drewdecarme/shank-city#readme",
   "dependencies": {
     "@cfworker/jwt": "^4.0.6",
-    "@flare-kit/logger": "workspace:^",
+    "@flare-city/core": "workspace:^",
+    "@flare-city/logger": "workspace:^",
     "@prisma/client": "^5.4.1",
-    "@prisma/extension-accelerate": "^0.6.2",
-    "@types/jsonwebtoken": "^9.0.3",
     "prisma": "^5.4.1",
     "zod": "^3.22.4"
   }

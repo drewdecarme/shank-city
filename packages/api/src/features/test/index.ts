@@ -1,8 +1,8 @@
-import { CFRoute } from "../../lib";
-import { ApiResponse } from "../../lib/types";
-import { ErrorBadRequest } from "../../utils";
+import { Route } from "@flare-city/core";
+import { ApiResponse } from "../../../../flare-city/core/src/utils/util.types";
+import { ErrorBadRequest } from "../../../../flare-city/core/src/utils";
 
-export const RouteTest = new CFRoute({ basePath: "/test" });
+export const RouteTest = new Route({ basePath: "/test" });
 
 // Get all tests
 export type GetAllTestApiResponse = ApiResponse<{ message: string }>;

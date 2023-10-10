@@ -1,18 +1,19 @@
-name = "flare-kit"
+name = "shank-city"
 main = "src/index.ts"
 compatibility_date = "2023-09-22"
 node_compat = true
 
-[[hyperdrive]]
-binding = "HYPERDRIVE"
-id = "ff455766199f49dabd901ae8357c85e0"
 
 [vars]
 API_AUTH0_DOMAIN = "https://dev-stdnegw6mftqybrz.us.auth0.com/"
 API_AUTH0_CLIENT_ID = "pJi3CPHN6RQMyipajXRtq27dkfbuJjtR"
-API_AUTH0_CLIENT_AUDIENCE = "https://flare-kit-dev"
+API_AUTH0_CLIENT_AUDIENCE = "https://shank-city-dev"
 LOG_LEVEL = "debug"
 LOG_TYPE = "simple"
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "ff455766199f49dabd901ae8357c85e0"
 
 ################ Boilerplate TOML Helpers ################
 

@@ -1,4 +1,4 @@
-import { Env, ErrorUnauthorized } from "../utils";
+import { Env, ErrorUnauthorized } from "../../../flare-city/core/src/utils";
 import { parseJwt } from "@cfworker/jwt";
 
 export async function authenticateRequest(
