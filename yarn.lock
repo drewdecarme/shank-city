@@ -779,6 +779,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/extension-accelerate@npm:^0.6.2":
+  version: 0.6.2
+  resolution: "@prisma/extension-accelerate@npm:0.6.2"
+  peerDependencies:
+    "@prisma/client": ">=4.16.1"
+  checksum: bf506942660bd7cff1de0280932be3a9b4233cf6acb7cb07cdd8fcc0e0f2e30a23b261db3a7470b36eaaa1737d14ca59fc72024cab7899ddebfc4aa2056c9838
+  languageName: node
+  linkType: hard
+
 "@rushstack/eslint-patch@npm:^1.3.3":
   version: 1.5.1
   resolution: "@rushstack/eslint-patch@npm:1.5.1"
@@ -795,6 +804,7 @@ __metadata:
     "@flare-city/core": "workspace:^"
     "@flare-city/logger": "workspace:^"
     "@prisma/client": ^5.4.2
+    "@prisma/extension-accelerate": ^0.6.2
     "@types/node": ^20.8.4
     dotenv-cli: ^7.3.0
     prisma: ^5.4.2

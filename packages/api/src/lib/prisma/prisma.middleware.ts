@@ -10,7 +10,7 @@ export const middlewarePrisma: Middleware = async (request, env, context) => {
   log.setName("Middleware:Prisma");
 
   log.info("Middleware: Creating PrismaClient and adding to context...");
-  const prisma = createPrismaClient(env.HYPERDRIVE.connectionString);
+  const prisma = createPrismaClient(env);
   context.prisma = prisma;
   log.info("Middleware: Creating PrismaClient and adding to context... done.");
 };

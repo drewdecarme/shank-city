@@ -27,6 +27,7 @@
     "@flare-city/core": "workspace:^",
     "@flare-city/logger": "workspace:^",
     "@prisma/client": "^5.4.2",
+    "@prisma/extension-accelerate": "^0.6.2",
     "prisma": "^5.4.2",
     "zod": "^3.22.4"
   },
