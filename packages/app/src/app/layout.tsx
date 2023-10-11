@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import React from "react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import { link } from "fs";
 
 export const metadata: Metadata = {
   title: "Create Next App",

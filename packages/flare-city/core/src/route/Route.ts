@@ -150,8 +150,12 @@ export class Route implements RouteConstructorParams {
 
       // Run any middlewares if they exist
       if (typeof route.middleware !== "undefined") {
-        for await (const middlewareFn of route.middleware) {
-          await middlewareFn(request, env, context);
+        try {
+          for await (const middlewareFn of route.middleware) {
+            await middlewareFn(request, env, context);
+          }
+        } catch (error) {
+          errorHandler(error);
         }
       }
 

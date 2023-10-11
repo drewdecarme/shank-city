@@ -1,0 +1,97 @@
+# `@flare-city/core` - App
+
+## Overview
+
+The `App` class is a central component of the `@flare-city/core` package, designed to streamline the development of APIs on Cloudflare Workers. It serves as an orchestrator for managing routes, middleware functions, and request handling.
+
+## Key Concepts
+
+### 1. Application Initialization
+
+- **Constructor:** The `App` class is instantiated by providing a name for the application.
+
+### 2. Route and Middleware Management
+
+- **Routes:** The `addRoute` method is used to add routes to the application, allowing for organized route handling.
+- **Middleware:** Middleware functions, defined as asynchronous functions, can be added using the `addMiddleware` method. These functions are executed before the route handler.
+
+### 3. Request Handling
+
+- **Middleware Execution:** The `runMiddlewares` private method iterates through added middleware functions, executing them in sequence.
+- **Route Matching:** The `run` method matches the incoming request's pathname to registered routes based on their base paths.
+- **Error Handling:** If no matching route is found, an `ErrorNotFound` error is thrown, providing a meaningful error message.
+
+## How to Use
+
+### 1. Creating an App Instance
+
+```typescript
+import { App } from "@flare-city/core";
+
+const myApp = new App("MyApp");
+```
+
+### 2. Adding Routes and Middleware
+
+```typescript
+import { Route, Middleware } from "@flare-city/core";
+
+const myRoute = new Route({ basePath: "/api" });
+
+myApp.addRoute(myRoute);
+
+const myMiddleware: Middleware = async (request, env, context) => {
+  // Your middleware logic here
+};
+
+myApp.addMiddleware(myMiddleware);
+```
+
+### 3. Running the App
+
+```typescript
+const response = myApp.run(request, env, context);
+```
+
+## Examples
+
+### Example 1: Basic App Setup
+
+```typescript
+const myApp = new App("MyApp");
+
+const homeRoute = new Route({ basePath: "/home" });
+
+myApp.addRoute(homeRoute);
+
+const response = myApp.run(request, env, context);
+```
+
+### Example 2: App with Middleware
+
+```typescript
+const myApp = new App("MyApp");
+
+const authMiddleware: Middleware = async (request, env, context) => {
+  // Your authentication logic here
+};
+
+myApp.addMiddleware(authMiddleware);
+
+const securedRoute = new Route({
+  basePath: "/secured",
+  middleware: [authMiddleware],
+});
+
+myApp.addRoute(securedRoute);
+
+const response = myApp.run(request, env, context);
+```
+
+## Conclusion
+
+The `App` class simplifies the organization and handling of routes and middleware in Cloudflare Worker-based APIs. By following the provided examples and guidelines, developers can create robust and structured serverless applications.
+
+---
+
+Feel free to adapt and extend this documentation based on your specific requirements and audience.

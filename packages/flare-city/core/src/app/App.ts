@@ -23,8 +23,12 @@ export class App {
   }
 
   private async runMiddlewares(...args: HandlerArgs) {
-    for await (const middlewareFn of this.middlewares) {
-      await middlewareFn(...args);
+    try {
+      for await (const middlewareFn of this.middlewares) {
+        await middlewareFn(...args);
+      }
+    } catch (error) {
+      errorHandler(error);
     }
   }
 
