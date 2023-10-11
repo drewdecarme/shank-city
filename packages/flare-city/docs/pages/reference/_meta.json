@@ -1,0 +1,4 @@
+{
+  "core": "@flare-city/core",
+  "logger": "@flare-city/logger"
+}
