@@ -4,6 +4,7 @@
   "description": "Documentation for this template",
   "main": "index.js",
   "scripts": {
+    "build": "next build",
     "dev": "next dev --port 3010"
   },
   "repository": {
