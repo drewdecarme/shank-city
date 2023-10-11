@@ -1,6 +1,6 @@
 export default {
-  logo: <span>FlareKit</span>,
+  logo: <span>Flare City</span>,
   project: {
-    link: 'https://github.com/shuding/nextra'
+    link: 'https://github.com/drewdecarme/shank-city/tree/main/packages/flare-city/README.md'
   }
 }
