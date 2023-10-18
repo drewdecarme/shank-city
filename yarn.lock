@@ -74,37 +74,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-darwin-64@npm:1.20231002.0":
-  version: 1.20231002.0
-  resolution: "@cloudflare/workerd-darwin-64@npm:1.20231002.0"
+"@cloudflare/workerd-darwin-64@npm:1.20231016.0":
+  version: 1.20231016.0
+  resolution: "@cloudflare/workerd-darwin-64@npm:1.20231016.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-darwin-arm64@npm:1.20231002.0":
-  version: 1.20231002.0
-  resolution: "@cloudflare/workerd-darwin-arm64@npm:1.20231002.0"
+"@cloudflare/workerd-darwin-arm64@npm:1.20231016.0":
+  version: 1.20231016.0
+  resolution: "@cloudflare/workerd-darwin-arm64@npm:1.20231016.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-linux-64@npm:1.20231002.0":
-  version: 1.20231002.0
-  resolution: "@cloudflare/workerd-linux-64@npm:1.20231002.0"
+"@cloudflare/workerd-linux-64@npm:1.20231016.0":
+  version: 1.20231016.0
+  resolution: "@cloudflare/workerd-linux-64@npm:1.20231016.0"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-linux-arm64@npm:1.20231002.0":
-  version: 1.20231002.0
-  resolution: "@cloudflare/workerd-linux-arm64@npm:1.20231002.0"
+"@cloudflare/workerd-linux-arm64@npm:1.20231016.0":
+  version: 1.20231016.0
+  resolution: "@cloudflare/workerd-linux-arm64@npm:1.20231016.0"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-windows-64@npm:1.20231002.0":
-  version: 1.20231002.0
-  resolution: "@cloudflare/workerd-windows-64@npm:1.20231002.0"
+"@cloudflare/workerd-windows-64@npm:1.20231016.0":
+  version: 1.20231016.0
+  resolution: "@cloudflare/workerd-windows-64@npm:1.20231016.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -116,10 +116,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workers-types@npm:^4.20231002.0":
-  version: 4.20231002.0
-  resolution: "@cloudflare/workers-types@npm:4.20231002.0"
-  checksum: 066f4ef24286948de0165be9b22b842867330fcbaba520a60bae01a1ce85617364829fe50be7480f12a3fe4dc41463a9a53a8722b473493c61e0fc57dd7b21e9
+"@cloudflare/workers-types@npm:^4.20231016.0":
+  version: 4.20231016.0
+  resolution: "@cloudflare/workers-types@npm:4.20231016.0"
+  checksum: b18387fffd2000e183bccae6f1f906920b2b16c46e1f0c73524b8b7ec4740539993c3c1e105f1c7f6062c05feed2307bd3c13915ac69dce4a9a3d7bb433d17e1
   languageName: node
   linkType: hard
 
@@ -352,12 +352,12 @@ __metadata:
   resolution: "@flare-city/core@workspace:packages/flare-city/core"
   dependencies:
     "@cfworker/jwt": ^4.0.6
-    "@cloudflare/workers-types": ^4.20231002.0
+    "@cloudflare/workers-types": ^4.20231016.0
     "@flare-city/logger": "workspace:^"
-    "@types/node": ^20.8.4
+    "@types/node": ^20.8.7
     dotenv-cli: ^7.3.0
     typescript: ^5.2.2
-    wrangler: ^3.11.0
+    wrangler: ^3.13.2
     zod: ^3.22.4
   languageName: unknown
   linkType: soft
@@ -366,7 +366,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@flare-city/docs@workspace:packages/flare-city/docs"
   dependencies:
-    next: ^13.5.4
+    next: ^13.5.5
     nextra: ^2.13.2
     nextra-theme-docs: ^2.13.2
     react: ^18.2.0
@@ -615,81 +615,81 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/env@npm:13.5.4"
-  checksum: 95ec7108bc88a01fed5389fb33e4b9eb34937908859d9f0aa87930c660f4395d90dafe10e54830faae5bc0a1b799be544c6455a2c8054499569d1e9296369076
+"@next/env@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/env@npm:13.5.5"
+  checksum: 4e3a92f2bd60189d81eb0437bf8141de26dec371edc125553c2d93b1de4c40ce99e8c81f60d8450961fab5c8880a6bcfccd23d9ef9c86aceab2f5380776def9f
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/eslint-plugin-next@npm:13.5.4"
+"@next/eslint-plugin-next@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/eslint-plugin-next@npm:13.5.5"
   dependencies:
     glob: 7.1.7
-  checksum: 17a502cec987768bfa99ee42d9072a9a3bdd32b32bde04bd97a04868b56252352a5c38b571ee5ee8f86ff4c27844984a3c737461ebd91d6ca32a2ce2bd5b8af2
+  checksum: 760747343864e9edfefbed686dba2b06319a62c327f5357c44b8f66f558f4a6696712e5ce88166cc6f637b2ed5cae3b7f8261f53c074776c778308912979db88
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/swc-darwin-arm64@npm:13.5.4"
+"@next/swc-darwin-arm64@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/swc-darwin-arm64@npm:13.5.5"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/swc-darwin-x64@npm:13.5.4"
+"@next/swc-darwin-x64@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/swc-darwin-x64@npm:13.5.5"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/swc-linux-arm64-gnu@npm:13.5.4"
+"@next/swc-linux-arm64-gnu@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/swc-linux-arm64-gnu@npm:13.5.5"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/swc-linux-arm64-musl@npm:13.5.4"
+"@next/swc-linux-arm64-musl@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/swc-linux-arm64-musl@npm:13.5.5"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/swc-linux-x64-gnu@npm:13.5.4"
+"@next/swc-linux-x64-gnu@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/swc-linux-x64-gnu@npm:13.5.5"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/swc-linux-x64-musl@npm:13.5.4"
+"@next/swc-linux-x64-musl@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/swc-linux-x64-musl@npm:13.5.5"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/swc-win32-arm64-msvc@npm:13.5.4"
+"@next/swc-win32-arm64-msvc@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/swc-win32-arm64-msvc@npm:13.5.5"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/swc-win32-ia32-msvc@npm:13.5.4"
+"@next/swc-win32-ia32-msvc@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/swc-win32-ia32-msvc@npm:13.5.5"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:13.5.4":
-  version: 13.5.4
-  resolution: "@next/swc-win32-x64-msvc@npm:13.5.4"
+"@next/swc-win32-x64-msvc@npm:13.5.5":
+  version: 13.5.5
+  resolution: "@next/swc-win32-x64-msvc@npm:13.5.5"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -800,16 +800,16 @@ __metadata:
   resolution: "@shank-city/api@workspace:packages/api"
   dependencies:
     "@cfworker/jwt": ^4.0.6
-    "@cloudflare/workers-types": ^4.20231002.0
+    "@cloudflare/workers-types": ^4.20231016.0
     "@flare-city/core": "workspace:^"
     "@flare-city/logger": "workspace:^"
     "@prisma/client": ^5.4.2
     "@prisma/extension-accelerate": ^0.6.2
-    "@types/node": ^20.8.4
+    "@types/node": ^20.8.7
     dotenv-cli: ^7.3.0
     prisma: ^5.4.2
     typescript: ^5.2.2
-    wrangler: ^3.11.0
+    wrangler: ^3.13.2
     zod: ^3.22.4
   languageName: unknown
   linkType: soft
@@ -819,14 +819,14 @@ __metadata:
   resolution: "@shank-city/app@workspace:packages/app"
   dependencies:
     "@auth0/nextjs-auth0": ^3.2.0
-    "@types/node": ^20.8.4
-    "@types/react": ^18.2.27
-    "@types/react-dom": ^18.2.12
+    "@types/node": ^20.8.7
+    "@types/react": ^18.2.29
+    "@types/react-dom": ^18.2.13
     dotenv: ^16.3.1
     dotenv-cli: ^7.3.0
     eslint: ^8.51.0
-    eslint-config-next: 13.5.4
-    next: 13.5.4
+    eslint-config-next: 13.5.5
+    next: 13.5.5
     react: ^18.2.0
     react-dom: ^18.2.0
     typescript: ^5.2.2
@@ -1022,12 +1022,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.8.4":
-  version: 20.8.4
-  resolution: "@types/node@npm:20.8.4"
+"@types/node@npm:^20.8.7":
+  version: 20.8.7
+  resolution: "@types/node@npm:20.8.7"
   dependencies:
     undici-types: ~5.25.1
-  checksum: 2106b9ef9750297cac68249428d7067c4d22c26908854165b70a164e34e900f4c34bb9bf3887c9391206b500d3e87171d03b1846e25788925236a0354390d278
+  checksum: 2173c0c03daefcb60c03a61b1371b28c8fe412e7a40dc6646458b809d14a85fbc7aeb369d957d57f0aaaafd99964e77436f29b3b579232d8f2b20c58abbd1d25
   languageName: node
   linkType: hard
 
@@ -1038,12 +1038,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.2.12":
-  version: 18.2.12
-  resolution: "@types/react-dom@npm:18.2.12"
+"@types/react-dom@npm:^18.2.13":
+  version: 18.2.13
+  resolution: "@types/react-dom@npm:18.2.13"
   dependencies:
     "@types/react": "*"
-  checksum: 64eaf808e91c1d58270ea92dda0e0cbb671f7289be4a5a4e0ccbd85857dd69394970eaa403d958dfbca739735c0af9cde4cf8fe135ff34434838360beae8d306
+  checksum: 22ba066b141dca5a5a9227fae0afc7c94b470fff8e8a38ade72649da57a8ea04d0cb2ba3e22005e7d8e772d49bddd28855b1dd98e6defd033bba6afb6edff883
   languageName: node
   linkType: hard
 
@@ -1058,14 +1058,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.27":
-  version: 18.2.27
-  resolution: "@types/react@npm:18.2.27"
+"@types/react@npm:^18.2.29":
+  version: 18.2.29
+  resolution: "@types/react@npm:18.2.29"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: bb29779d4e83e30886a4a939b02812a7ae2d49a26e19eb4be48a6d4e73e8b09ca1a639c97c0ba12a7fe46711355059db7f958cbc1754fe697690656cdb9eca07
+  checksum: 3d09ac61a683fa976512a28ac175b9d823f0368adc5fb2abf53f64ab030e8ad866a201a8029f92ff48246c8e326f7517ebe165f976ecb412627c65c6f9a7c9d3
   languageName: node
   linkType: hard
 
@@ -2714,11 +2714,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:13.5.4":
-  version: 13.5.4
-  resolution: "eslint-config-next@npm:13.5.4"
+"eslint-config-next@npm:13.5.5":
+  version: 13.5.5
+  resolution: "eslint-config-next@npm:13.5.5"
   dependencies:
-    "@next/eslint-plugin-next": 13.5.4
+    "@next/eslint-plugin-next": 13.5.5
     "@rushstack/eslint-patch": ^1.3.3
     "@typescript-eslint/parser": ^5.4.2 || ^6.0.0
     eslint-import-resolver-node: ^0.3.6
@@ -2733,7 +2733,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 6eba03fed5e460981ed3fc59cf40aa210ea1d69852e0facfc02ba2cf950ab4adf09a76f162ee142eb68a4322bb8c1f128d75018f00d0e959401a6441b45f96c0
+  checksum: f108925365c43b36cf1af59078b7009b36db18ce0e077865c61049679bd264b498c838b27e568b3c45ecd52b18fd597671b31fc21344bb0ee3fa86be5798506f
   languageName: node
   linkType: hard
 
@@ -5404,9 +5404,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"miniflare@npm:3.20231002.1":
-  version: 3.20231002.1
-  resolution: "miniflare@npm:3.20231002.1"
+"miniflare@npm:3.20231016.0":
+  version: 3.20231016.0
+  resolution: "miniflare@npm:3.20231016.0"
   dependencies:
     acorn: ^8.8.0
     acorn-walk: ^8.2.0
@@ -5416,11 +5416,11 @@ __metadata:
     source-map-support: 0.5.21
     stoppable: ^1.1.0
     undici: ^5.22.1
-    workerd: 1.20231002.0
+    workerd: 1.20231016.0
     ws: ^8.11.0
     youch: ^3.2.2
     zod: ^3.20.6
-  checksum: 96105f99fc0e34f248c301279dc955fca1b12c0c2808a15954552b75df558c9d9964454cd295d37eeb92a4b564239e4912fa6b0e84359a86a62ab5f1e3399aea
+  checksum: ad4a2ce2fa9ba0c50d28376bb2069c070b24a7c7ea60fe4ee48bc70e0bb69c8a8c088cdc2c9205efd4e686bd654d854d1137891b7719e171aeded67c12632935
   languageName: node
   linkType: hard
 
@@ -5632,20 +5632,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:13.5.4, next@npm:^13.5.4":
-  version: 13.5.4
-  resolution: "next@npm:13.5.4"
+"next@npm:13.5.5, next@npm:^13.5.5":
+  version: 13.5.5
+  resolution: "next@npm:13.5.5"
   dependencies:
-    "@next/env": 13.5.4
-    "@next/swc-darwin-arm64": 13.5.4
-    "@next/swc-darwin-x64": 13.5.4
-    "@next/swc-linux-arm64-gnu": 13.5.4
-    "@next/swc-linux-arm64-musl": 13.5.4
-    "@next/swc-linux-x64-gnu": 13.5.4
-    "@next/swc-linux-x64-musl": 13.5.4
-    "@next/swc-win32-arm64-msvc": 13.5.4
-    "@next/swc-win32-ia32-msvc": 13.5.4
-    "@next/swc-win32-x64-msvc": 13.5.4
+    "@next/env": 13.5.5
+    "@next/swc-darwin-arm64": 13.5.5
+    "@next/swc-darwin-x64": 13.5.5
+    "@next/swc-linux-arm64-gnu": 13.5.5
+    "@next/swc-linux-arm64-musl": 13.5.5
+    "@next/swc-linux-x64-gnu": 13.5.5
+    "@next/swc-linux-x64-musl": 13.5.5
+    "@next/swc-win32-arm64-msvc": 13.5.5
+    "@next/swc-win32-ia32-msvc": 13.5.5
+    "@next/swc-win32-x64-msvc": 13.5.5
     "@swc/helpers": 0.5.2
     busboy: 1.6.0
     caniuse-lite: ^1.0.30001406
@@ -5683,7 +5683,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: f8e964ee9bbabd0303f9d807c9193833fcc47960be029c3721db9a5a35cc4ff690313e30fc6ee497f959a9141048957dddf6eb038b4a23c78c8762b0cd9d0ae0
+  checksum: 034a52cf9a5df79912ad67467e00ab98e6505a7544514a12d6310d67fea760764f6b04ade344d457aadecb6170dd50eb0709346fd97a9e6659fcabd5e510fb97
   languageName: node
   linkType: hard
 
@@ -7788,15 +7788,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"workerd@npm:1.20231002.0":
-  version: 1.20231002.0
-  resolution: "workerd@npm:1.20231002.0"
+"workerd@npm:1.20231016.0":
+  version: 1.20231016.0
+  resolution: "workerd@npm:1.20231016.0"
   dependencies:
-    "@cloudflare/workerd-darwin-64": 1.20231002.0
-    "@cloudflare/workerd-darwin-arm64": 1.20231002.0
-    "@cloudflare/workerd-linux-64": 1.20231002.0
-    "@cloudflare/workerd-linux-arm64": 1.20231002.0
-    "@cloudflare/workerd-windows-64": 1.20231002.0
+    "@cloudflare/workerd-darwin-64": 1.20231016.0
+    "@cloudflare/workerd-darwin-arm64": 1.20231016.0
+    "@cloudflare/workerd-linux-64": 1.20231016.0
+    "@cloudflare/workerd-linux-arm64": 1.20231016.0
+    "@cloudflare/workerd-windows-64": 1.20231016.0
   dependenciesMeta:
     "@cloudflare/workerd-darwin-64":
       optional: true
@@ -7810,13 +7810,13 @@ __metadata:
       optional: true
   bin:
     workerd: bin/workerd
-  checksum: e51c2e33a12f742ba8c04810ff309e65f9cb739fd5701f5502e50deb4c82ad85052d0e0bf3679956272013c5b024ae9165d35149730e7cbbcbfb28aea6cdafa0
+  checksum: e5bffd1e43ba45be58bd5cb83aabdca1af956d0f024803cac9016aab834cdbf4887db68eece9cb9d2a66db8af72074c660247d80d52b8c833a26d63fbc609216
   languageName: node
   linkType: hard
 
-"wrangler@npm:^3.11.0":
-  version: 3.11.0
-  resolution: "wrangler@npm:3.11.0"
+"wrangler@npm:^3.13.2":
+  version: 3.13.2
+  resolution: "wrangler@npm:3.13.2"
   dependencies:
     "@cloudflare/kv-asset-handler": ^0.2.0
     "@esbuild-plugins/node-globals-polyfill": ^0.2.3
@@ -7825,7 +7825,7 @@ __metadata:
     chokidar: ^3.5.3
     esbuild: 0.17.19
     fsevents: ~2.3.2
-    miniflare: 3.20231002.1
+    miniflare: 3.20231016.0
     nanoid: ^3.3.3
     path-to-regexp: ^6.2.0
     selfsigned: ^2.0.1
@@ -7838,7 +7838,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: 0799ab07640ada55adad1b45e5f2ebd04717c8701b2888d0e27fc21d9140680b256e676b5bef247964799ff392449e2ec2b387635ca968c1f97b8da928231385
+  checksum: 8477e7874955b558789237356c670d377aafa94f4bf09efa223f2fb4ed4b5d39b4906e11664b48f917fde5d4f8112cb1a3a2659b7e71206d0b536c5ba821c09f
   languageName: node
   linkType: hard
 

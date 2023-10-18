@@ -8,13 +8,23 @@ export type GetSingleTestApiResponse = ApiResponse<{
   id: string;
 }>;
 export type GetSingleTestApiSegments = { id: string };
+export type GetSingleTestApiSearchParams = { search: string };
 
-RouteTest.register<GetSingleTestApiResponse, GetSingleTestApiSegments>({
+RouteTest.register<
+  GetSingleTestApiResponse,
+  GetSingleTestApiSearchParams,
+  GetSingleTestApiSegments
+>({
   path: "/:id",
   method: "GET",
   middleware: [middlewareRequireAuth],
   validate: {
     segments: { id: null },
+    params: {
+      search: {
+        type: "number",
+      },
+    },
   },
   handler: async (req, env, context, res) => {
     // add type guard here

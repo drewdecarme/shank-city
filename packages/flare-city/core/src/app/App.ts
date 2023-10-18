@@ -1,7 +1,11 @@
-import { Env, ErrorNotFound, HandlerArgs, errorHandler } from "../utils";
-import { Route } from "../route";
-
-export type Middleware = (...args: HandlerArgs) => Promise<void>;
+import {
+  Env,
+  ErrorNotFound,
+  HandlerArgs,
+  Middleware,
+  errorHandler,
+} from "../utils";
+import type { Route } from "../route/Route";
 
 export class App {
   name: string;
