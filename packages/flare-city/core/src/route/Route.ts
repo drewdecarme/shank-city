@@ -1,7 +1,5 @@
-import { ZodError, z } from "zod";
 import {
   Env,
-  ErrorValidation,
   ErrorNotFound,
   errorHandler,
   ApiResponse,
@@ -11,10 +9,15 @@ import {
   RequestURLSearchParams,
 } from "../utils";
 import { log } from "../utils";
+import {
+  ValidateParamsArgs,
+  ValidateSegmentsArgs,
+  validateParams,
+  validateSegments,
+} from "../validate";
 
 interface RouteConstructorParams {
-  basePath: string;
-  authenticate?: boolean;
+  root: string;
 }
 
 export type RouteHandlerResponse<T extends Record<string, unknown>> = (
@@ -23,12 +26,13 @@ export type RouteHandlerResponse<T extends Record<string, unknown>> = (
 
 type RouteMethod = "GET" | "POST";
 type RouteHandler<
-  T extends Record<string, unknown> = Record<string, unknown>,
+  T extends Record<string, unknown>,
+  P extends RequestURLSearchParams = RequestURLSearchParams,
   S extends RequestURLSegments = RequestURLSegments,
 > = (
   request: Request,
   env: Env,
-  ctx: ExecutionContext<S>,
+  ctx: ExecutionContext<S, P>,
   res: RouteHandlerResponse<T>
 ) => Promise<Response>;
 
@@ -40,6 +44,13 @@ export type RouteDefinition<
   path: string;
   method: RouteMethod;
   middleware?: Middleware[];
+  /**
+   * A special kind of structured middleware that utilizes
+   * helper functions to validate specific attributes on
+   * the request. If the properties are defined, these will
+   * always run __after__ the defined `route.middleware` above and
+   * __before__ the `route.handler`
+   */
   validate?: {
     /**
      * ### URL Segments
@@ -47,35 +58,24 @@ export type RouteDefinition<
      * with a error message
      * @example /test/:segment
      */
-    segments?: { [key in keyof S]: string | null };
-    /**
-     * ### URLSearchParams
-     * Validation object that can validate
-     * the format of the param as well as how
-     * it should be parsed
-     */
-    params?: {
-      [key in keyof P]: {
-        type: "number" | "string" | "date";
-        format?: (value: string) => string | true;
-      };
-    };
+    segments?: ValidateSegmentsArgs<S>;
+    params?: ValidateParamsArgs<P>;
   };
-  handler: RouteHandler<T, S>;
+  handler: RouteHandler<T, P, S>;
 };
 
-type MatchedRoute = {
+export type MatchedRoute = {
   route: RouteDefinition;
   pattern: URLPatternURLPatternResult;
 };
 
 export class Route implements RouteConstructorParams {
-  basePath: string;
-  requests: RouteDefinition[];
-  matchedRoute: MatchedRoute | undefined;
+  root: string;
+  private requests: RouteDefinition[];
+  private matchedRoute: MatchedRoute | undefined;
 
   constructor(params: RouteConstructorParams) {
-    this.basePath = params.basePath;
+    this.root = params.root;
     this.requests = [];
     this.matchedRoute = undefined;
   }
@@ -84,10 +84,9 @@ export class Route implements RouteConstructorParams {
    * A simpler handler that formats a response. This is
    * passed in as the 4th parameter to any route handler
    */
-  static response: RouteHandlerResponse<Record<string, unknown>> = async ({
-    json,
-    status = 200,
-  }) => new Response(JSON.stringify(json), { status });
+  private static response: RouteHandlerResponse<Record<string, unknown>> =
+    async ({ json, status = 200 }) =>
+      new Response(JSON.stringify(json), { status });
 
   register<
     T extends ApiResponse<unknown>,
@@ -116,7 +115,7 @@ export class Route implements RouteConstructorParams {
         pattern: URLPatternURLPatternResult;
       } {
     const requestURL = new URL(request.url).toString();
-    const fullRoutePath = `${this.basePath}${routePath}`;
+    const fullRoutePath = `${this.root}${routePath}`;
     const pattern = new URLPattern({ pathname: fullRoutePath });
     const patternMatch = pattern.test(requestURL);
     log.debug(`Matching route path: '${routePath}: ${patternMatch}'`, {
@@ -139,92 +138,6 @@ export class Route implements RouteConstructorParams {
       isMatch: true,
       pattern: parsedPattern,
     };
-  }
-
-  /**
-   * This method enriches the execution context with
-   * the search params that are gathered from the request
-   */
-  private validateRequestSearchParamsAndEnrichContext(
-    request: Request,
-    context: ExecutionContext
-  ) {
-    if (!this.matchedRoute) return;
-    if (!request.url.includes("?")) return;
-
-    const { route, pattern } = this.matchedRoute;
-    const parsedSearchParams = pattern.search.groups;
-  }
-
-  /**
-   * Given a route and a Request, this method
-   */
-  private validateRequestSegmentsAndEnrichContext(
-    request: Request,
-    context: ExecutionContext
-  ) {
-    // exit early if the matched route isn't there.
-    if (!this.matchedRoute) return;
-    const { route, pattern } = this.matchedRoute;
-    const parsedSegments = pattern.pathname.groups;
-
-    // If no segments are defined, exit early
-    if (!route.path.includes(":")) {
-      log.debug("Route does not have any segments");
-      return;
-    }
-
-    if (!parsedSegments) {
-      throw new ErrorServer(
-        "Error when trying to parse the segments from the request URL."
-      );
-    }
-
-    // If there is no validation, set segments
-    // on the context and exit early
-    if (!route.validate?.segments) {
-      log.debug("No segment validation required on `route.validate.segments`");
-      context.segments = parsedSegments;
-      return;
-    }
-
-    // Construct a zod schema to validate the parsedSegments
-    const segmentSchema = z.object(
-      Object.entries(route.validate.segments).reduce(
-        (accum, [segmentProperty, segmentErrorMessage]) => {
-          return {
-            ...accum,
-            [segmentProperty]: z.string({
-              required_error:
-                segmentErrorMessage ??
-                `Missing ':${segmentProperty}' segment in the request URL.`,
-            }),
-          };
-        },
-        {}
-      )
-    );
-
-    // Parse the segments against the schema
-    // and set the validated parsed segments to the
-    // `context.segments`
-    try {
-      segmentSchema.parse(parsedSegments);
-      context.segments = parsedSegments;
-    } catch (error) {
-      if (error instanceof ZodError) {
-        throw new ErrorValidation({
-          message: `Failed to validate URL segments`,
-          data: error.issues.reduce(
-            (accum, issue) => ({
-              ...accum,
-              [issue.path.join(".")]: issue.message,
-            }),
-            {}
-          ),
-        });
-      }
-    }
   }
 
   /**
@@ -257,18 +170,21 @@ export class Route implements RouteConstructorParams {
   }
 
   /**
-   * Provided a route and the arguments of the worker
+   * Provided the arguments of the worker
    * this method checks to see if there is any middleware that
-   * was defined when the Route was instantiated. If there is
+   * was defined when the Route was instantiated.
+   *
+   * If there is
    * it will run through the middleware sequentially, waiting
    * for the previous middleware to complete before continuing on.
+   *
    * If there is no middleware defined on the route, this method
    * will return, exiting as early as possible.
    *
-   * Be sure to `await` this when running it so all
+   * **NOTE**: Be sure to `await` this when running it so all
    * middlewares run before the route handler does
    */
-  private async executeRouteMiddleware(
+  private async runMiddleware(
     request: Request,
     env: Env,
     context: ExecutionContext
@@ -278,13 +194,36 @@ export class Route implements RouteConstructorParams {
       log.debug("No middleware to run. Bypassing middleware runner.");
       return;
     }
-    try {
-      for await (const middlewareFn of this.matchedRoute.route.middleware) {
-        await middlewareFn(request, env, context);
-      }
-    } catch (error) {
-      errorHandler(error);
+    log.debug("Running route level middleware...");
+
+    // destructure middleware and validate out of the route
+    // definition to make it easier to use
+    const { validate, middleware } = this.matchedRoute.route;
+
+    // Add segment validation to middleware array if available.
+    if (validate?.segments) {
+      const segmentMiddleware = validateSegments(validate.segments)(
+        this.matchedRoute
+      );
+      middleware.push(segmentMiddleware);
     }
+
+    // Add param validation to middleware array if available
+    if (validate?.params) {
+      const paramsMiddleware = validateParams(validate.params)(
+        this.matchedRoute
+      );
+      middleware.push(paramsMiddleware);
+    }
+
+    for await (const middlewareFn of middleware) {
+      try {
+        await middlewareFn(request, env, context);
+      } catch (error) {
+        throw error;
+      }
+    }
+    log.debug("Running route level middleware... done");
   }
 
   /**
@@ -297,12 +236,7 @@ export class Route implements RouteConstructorParams {
       this.matchRouteWithRequest(request);
 
       // Run any middlewares if they exist
-      await this.executeRouteMiddleware(request, env, context);
-
-      // Enrich / validate the request against the route definitions
-      // this.validateRequestMethod(route, request);
-      this.validateRequestSegmentsAndEnrichContext(request, context);
-      this.validateRequestSearchParamsAndEnrichContext(request, context);
+      await this.runMiddleware(request, env, context);
 
       // this should never happen... this is just to appease TS
       if (!this.matchedRoute) return;
@@ -315,6 +249,7 @@ export class Route implements RouteConstructorParams {
         Route.response
       );
     } catch (error) {
+      console.log(error);
       return errorHandler(error);
     }
   }

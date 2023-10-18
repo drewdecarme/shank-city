@@ -6,7 +6,7 @@ export type ApiResponse<T, M = Record<string, unknown>> = {
 };
 
 export type RequestURLSegments = Record<string, string>;
-export type RequestURLSearchParams = Record<string, string>;
+export type RequestURLSearchParams = Record<string, string | number | boolean>;
 
 export type Middleware = (...args: HandlerArgs) => Promise<void>;
 
@@ -21,7 +21,7 @@ declare global {
     T extends RequestURLSegments = RequestURLSegments,
     P extends RequestURLSearchParams = RequestURLSearchParams,
   > {
-    segments: T | undefined;
-    params: P | undefined;
+    segments: T;
+    params: P;
   }
 }

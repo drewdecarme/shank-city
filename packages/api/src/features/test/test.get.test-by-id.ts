@@ -1,4 +1,4 @@
-import { ApiResponse, ErrorBadRequest } from "@flare-city/core";
+import { ApiResponse, ErrorBadRequest, validate } from "@flare-city/core";
 import { RouteTest } from "./test.route";
 import { middlewareRequireAuth } from "../../lib";
 
@@ -8,7 +8,10 @@ export type GetSingleTestApiResponse = ApiResponse<{
   id: string;
 }>;
 export type GetSingleTestApiSegments = { id: string };
-export type GetSingleTestApiSearchParams = { search: string };
+export type GetSingleTestApiSearchParams = {
+  search: string;
+  date__gte: number;
+};
 
 RouteTest.register<
   GetSingleTestApiResponse,
@@ -19,17 +22,16 @@ RouteTest.register<
   method: "GET",
   middleware: [middlewareRequireAuth],
   validate: {
-    segments: { id: null },
+    segments: {
+      id: true,
+    },
     params: {
       search: {
-        type: "number",
+        type: "string",
       },
     },
   },
   handler: async (req, env, context, res) => {
-    // add type guard here
-    if (!context.segments?.id) throw new ErrorBadRequest("Missing :id in URL");
-
     const query = await context.prisma.team.findMany({
       where: {
         id: "1",

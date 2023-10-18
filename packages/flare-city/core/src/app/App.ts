@@ -4,8 +4,10 @@ import {
   HandlerArgs,
   Middleware,
   errorHandler,
+  log,
 } from "../utils";
 import type { Route } from "../route/Route";
+import { LogLevel, LoggingType } from "@flare-city/logger";
 
 export class App {
   name: string;
@@ -36,11 +38,20 @@ export class App {
     }
   }
 
-  run(request: Request, env: Env, context: ExecutionContext) {
+  run(
+    request: Request,
+    env: Env,
+    context: ExecutionContext,
+    options?: { logLevel: LogLevel; logType: LoggingType }
+  ) {
     const { pathname } = new URL(request.url);
 
+    // set logging based upon some options
+    log.setLogLevel(options?.logLevel || "debug");
+    log.setLoggingType(options?.logType || "json");
+
     const route = this.routes.reduce<Route | undefined>((accum, routeDef) => {
-      if (pathname.startsWith(routeDef.basePath)) return routeDef;
+      if (pathname.startsWith(routeDef.root)) return routeDef;
       return accum;
     }, undefined);
 

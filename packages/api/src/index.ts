@@ -18,11 +18,13 @@ export default {
     env: Env,
     context: ExecutionContext
   ) {
+    const logLevel = env.LOG_LEVEL || "debug";
+    const logType = env.LOG_TYPE || "json";
     // set the log level
-    log.setLogLevel(env.LOG_LEVEL || "debug");
-    log.setLoggingType(env.LOG_TYPE || "json");
+    log.setLogLevel(logLevel);
+    log.setLoggingType(logType);
 
     // run the app
-    return API.run(request, env, context);
+    return API.run(request, env, context, { logLevel, logType });
   },
 };
