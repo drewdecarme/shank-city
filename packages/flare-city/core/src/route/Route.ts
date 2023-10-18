@@ -1,6 +1,4 @@
 import { ZodError, z } from "zod";
-// import { authenticateRequest } from "../auth";
-import { extractSegmentsFromURL, isPathnameMatch } from "./route.utils";
 import {
   Env,
   ErrorValidation,
@@ -8,8 +6,10 @@ import {
   errorHandler,
   ApiResponse,
   RequestURLSegments,
+  ErrorServer,
 } from "../utils";
 import { Middleware } from "../app";
+import { log } from "../utils";
 
 interface RouteConstructorParams {
   basePath: string;
@@ -66,6 +66,48 @@ export class Route implements RouteConstructorParams {
     this.requests.push(params);
   }
 
+  private fullRouteUrl(routePath: string) {
+    return;
+  }
+
+  private matchRequestWithRoute(
+    request: Request,
+    routePath: string
+  ):
+    | {
+        isMatch: false;
+        segments: undefined;
+      }
+    | {
+        isMatch: true;
+        segments: Record<string, string>;
+      } {
+    const requestURL = new URL(request.url).toString();
+    const fullRoutePath = `${this.basePath}${routePath}`;
+    const pattern = new URLPattern({ pathname: fullRoutePath });
+    const patternMatch = pattern.test(requestURL);
+    log.debug(`Matching route path: '${routePath}: ${patternMatch}'`, {
+      requestURL,
+      routePath,
+      patternMatch,
+    });
+    if (!patternMatch) {
+      return {
+        isMatch: false,
+        segments: undefined,
+      };
+    }
+    const parsedPattern = pattern.exec(requestURL);
+    if (!parsedPattern) {
+      throw new ErrorServer("Unable to parse segments from matched route");
+    }
+
+    return {
+      isMatch: true,
+      segments: parsedPattern.pathname.groups,
+    };
+  }
+
   private validateRequestSegments(
     route: RouteDefinition,
     request: Request,
@@ -74,11 +116,16 @@ export class Route implements RouteConstructorParams {
     // If no segments are defined, exit early
     if (!route.path.includes(":")) return;
 
-    const { pathname } = new URL(request.url);
-    const parsedSegments = extractSegmentsFromURL(
-      pathname,
-      `${this.basePath}${route.path}`
-    );
+    const urlPatternMatch = this.matchRequestWithRoute(request, route.path);
+
+    if (!urlPatternMatch.isMatch) return;
+    const parsedSegments = urlPatternMatch.segments;
+
+    if (!parsedSegments) {
+      throw new ErrorServer(
+        "Error when trying to parse the segments from the request URL."
+      );
+    }
 
     // If there is no validation, set segments to context
     // and exit early.
@@ -128,15 +175,17 @@ export class Route implements RouteConstructorParams {
       json,
       status = 200,
     }) => new Response(JSON.stringify(json), { status });
-    const { pathname: requestURL } = new URL(request.url);
 
     // Match the route with the request URL
     const route = this.requests.reduce<RouteDefinition | undefined>(
       (accum, routeDef) => {
-        const routePath = `${this.basePath}${routeDef.path}`;
-        const pathnamesMatch = isPathnameMatch(routePath, requestURL);
-
-        if (pathnamesMatch) return routeDef;
+        const urlPatternMatch = this.matchRequestWithRoute(
+          request,
+          routeDef.path
+        );
+        if (urlPatternMatch.isMatch) {
+          return routeDef;
+        }
         return accum;
       },
       undefined

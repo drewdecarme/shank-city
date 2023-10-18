@@ -36,6 +36,17 @@ export class ErrorNotFound extends AppError {
   }
 }
 
+export class ErrorServer extends AppError {
+  constructor(message?: string) {
+    super({
+      message: formatErrorMessage("Server Error", message),
+      status_code: 500,
+      status_text: "Server Error",
+    });
+    this.name = "ErrorServer";
+  }
+}
+
 export class ErrorBadRequest extends AppError {
   constructor(message?: string) {
     super({
@@ -76,7 +87,8 @@ export const errorHandler = (error: unknown) => {
     error instanceof ErrorNotFound ||
     error instanceof ErrorUnauthorized ||
     error instanceof ErrorBadRequest ||
-    error instanceof ErrorValidation
+    error instanceof ErrorValidation ||
+    error instanceof ErrorServer
   ) {
     log.setName("ErrorHandler");
     log.error(error.message);
