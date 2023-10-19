@@ -32,8 +32,7 @@
   "dependencies": {
     "@cfworker/jwt": "^4.0.6",
     "@flare-city/logger": "workspace:^",
-    "zod": "^3.22.4",
-    "zod-validation-error": "^1.5.0"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231016.0",

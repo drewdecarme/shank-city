@@ -6,7 +6,6 @@ import {
   RequestURLSegments,
   log,
 } from "../utils";
-import { fromZodError, fromZodIssue } from "zod-validation-error";
 
 /**
  * Parses, validates, and then enriches the context with
@@ -57,7 +56,19 @@ export const createMiddlewareValidate =
                 message: string;
               }[]
             >((accum, issue) => {
+              console.log(JSON.stringify(issue, null, 2));
               switch (issue.code) {
+                case "invalid_type":
+                  return [
+                    ...accum,
+                    {
+                      path: [contextKey, ...issue.path].join("."),
+                      code: issue.code,
+                      expected: issue.expected,
+                      received: issue.received,
+                      message: issue.message,
+                    },
+                  ];
                 case "invalid_union":
                   return [
                     ...accum,
