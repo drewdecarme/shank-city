@@ -1,4 +1,4 @@
-import { ApiResponse } from "@flare-city/core";
+import { ApiResponse, parse } from "@flare-city/core";
 import { RouteTest } from "./test.route";
 import { middlewareRequireAuth } from "../../lib";
 
@@ -7,10 +7,11 @@ export type GetSingleTestApiResponse = ApiResponse<{
   message: string;
   id: string;
 }>;
-export type GetSingleTestApiSegments = { id: string };
+export type GetSingleTestApiSegments = { id: string; test: string };
 export type GetSingleTestApiSearchParams = {
   search: string;
-  date__gte: number;
+  amount: number;
+  type: "test-1" | "test-2";
 };
 
 RouteTest.register<
@@ -18,17 +19,21 @@ RouteTest.register<
   GetSingleTestApiSearchParams,
   GetSingleTestApiSegments
 >({
-  path: "/:id",
+  path: "/:id/:test",
   method: "GET",
   middleware: [middlewareRequireAuth],
   validate: {
     segments: {
-      id: true,
+      id: parse("id").asString(),
+      test: parse("test").asString(),
     },
     params: {
-      search: {
-        type: "string",
-      },
+      search: parse("search").asString(),
+      amount: parse("amount").asNumber().max(5, "Has to be less than 5"),
+      type: parse("type").asArray<GetSingleTestApiSearchParams["type"]>([
+        "test-1",
+        "test-2",
+      ]),
     },
   },
   handler: async (req, env, context, res) => {

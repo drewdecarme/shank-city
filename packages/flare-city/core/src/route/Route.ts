@@ -9,12 +9,7 @@ import {
   RequestURLSearchParams,
 } from "../utils";
 import { log } from "../utils";
-import {
-  ValidateParamsArgs,
-  ValidateSegmentsArgs,
-  validateParams,
-  validateSegments,
-} from "../validate";
+import { ValidateMiddlewareArgs, createMiddlewareValidate } from "../validate";
 
 interface RouteConstructorParams {
   root: string;
@@ -46,7 +41,7 @@ export type RouteDefinition<
   middleware?: Middleware[];
   /**
    * A special kind of structured middleware that utilizes
-   * helper functions to validate specific attributes on
+   * helper a fluent api to validate specific attributes on
    * the request. If the properties are defined, these will
    * always run __after__ the defined `route.middleware` above and
    * __before__ the `route.handler`
@@ -58,8 +53,8 @@ export type RouteDefinition<
      * with a error message
      * @example /test/:segment
      */
-    segments?: ValidateSegmentsArgs<S>;
-    params?: ValidateParamsArgs<P>;
+    segments?: ValidateMiddlewareArgs<S>;
+    params?: ValidateMiddlewareArgs<P>;
   };
   handler: RouteHandler<T, P, S>;
 };
@@ -196,22 +191,28 @@ export class Route implements RouteConstructorParams {
     }
     log.debug("Running route level middleware...");
 
-    // destructure middleware and validate out of the route
+    // destructure `middleware` and `validate` out of the route
     // definition to make it easier to use
     const { validate, middleware } = this.matchedRoute.route;
 
     // Add segment validation to middleware array if available.
     if (validate?.segments) {
-      const segmentMiddleware = validateSegments(validate.segments)(
-        this.matchedRoute
+      context.segments = this.matchedRoute.pattern.pathname.groups;
+      const segmentMiddleware = createMiddlewareValidate(validate.segments)(
+        context.segments
       );
       middleware.push(segmentMiddleware);
     }
 
     // Add param validation to middleware array if available
     if (validate?.params) {
-      const paramsMiddleware = validateParams(validate.params)(
-        this.matchedRoute
+      const searchEntries = new URLSearchParams(
+        this.matchedRoute.pattern.search.input
+      ).entries();
+      const searchParams = Object.fromEntries(searchEntries);
+      context.params = searchParams;
+      const paramsMiddleware = createMiddlewareValidate(validate.params)(
+        context.params
       );
       middleware.push(paramsMiddleware);
     }

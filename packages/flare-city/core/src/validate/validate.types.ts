@@ -1,4 +1,10 @@
 import { MatchedRoute } from "../route";
-import { Middleware } from "../utils";
+import {
+  Middleware,
+  RequestURLSearchParams,
+  RequestURLSegments,
+} from "../utils";
 
-export type ValidateMiddleware = (route: MatchedRoute) => Middleware;
+export type ValidateMiddleware = (
+  data: RequestURLSegments | RequestURLSearchParams
+) => Middleware;
