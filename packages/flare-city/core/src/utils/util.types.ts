@@ -1,3 +1,4 @@
+import { MatchedRoute } from "../route";
 import { Env } from "./util.env";
 
 export type ApiResponse<T, M = Record<string, unknown>> = {
@@ -8,13 +9,19 @@ export type ApiResponse<T, M = Record<string, unknown>> = {
 export type RequestURLSegments = Record<string, string>;
 export type RequestURLSearchParams = Record<string, string | number | boolean>;
 
-export type Middleware = (...args: HandlerArgs) => Promise<void>;
+export type Middleware = <
+  S extends RequestURLSegments,
+  P extends RequestURLSearchParams,
+>(
+  request: Request,
+  env: Env,
+  context: ExecutionContext<S, P>
+) => Promise<void>;
 
-export type HandlerArgs<T extends RequestURLSegments = RequestURLSegments> = [
-  Request,
-  Env,
-  ExecutionContext<T>,
-];
+export type HandlerArgs<
+  S extends RequestURLSegments = RequestURLSegments,
+  P extends RequestURLSearchParams = RequestURLSearchParams,
+> = [Request, Env, ExecutionContext<S, P>];
 
 declare global {
   interface ExecutionContext<

@@ -1,19 +1,30 @@
-import { ApiResponse, parse } from "@flare-city/core";
+import { ApiResponse } from "@flare-city/core";
 import { RouteTest } from "./test.route";
 import { middlewareRequireAuth } from "../../lib";
+import { z } from "zod";
 
 // Get test by ID
 export type GetSingleTestApiResponse = ApiResponse<{
   message: string;
   id: string;
 }>;
-export type GetSingleTestApiSegments = { id: string; test: string };
-export type GetSingleTestApiSearchParams = {
-  search: string;
-  amount: number;
-  type: "test-1" | "test-2";
-};
+const GetSingleTestApiSegmentsSchema = z.object({
+  id: z.string(),
+  test: z.string(),
+});
+export type GetSingleTestApiSegments = z.infer<
+  typeof GetSingleTestApiSegmentsSchema
+>;
+const GetSingleTestApiSearchParamsSchema = z.object({
+  search: z.string(),
+  amount: z.coerce.number(),
+  type: z.union([z.literal("test-1"), z.literal("test-2")]),
+});
+export type GetSingleTestApiSearchParams = z.infer<
+  typeof GetSingleTestApiSearchParamsSchema
+>;
 
+// Register the route
 RouteTest.register<
   GetSingleTestApiResponse,
   GetSingleTestApiSearchParams,
@@ -23,18 +34,8 @@ RouteTest.register<
   method: "GET",
   middleware: [middlewareRequireAuth],
   validate: {
-    segments: {
-      id: parse("id").asString(),
-      test: parse("test").asString(),
-    },
-    params: {
-      search: parse("search").asString(),
-      amount: parse("amount").asNumber().max(5, "Has to be less than 5"),
-      type: parse("type").asArray<GetSingleTestApiSearchParams["type"]>([
-        "test-1",
-        "test-2",
-      ]),
-    },
+    segments: GetSingleTestApiSegmentsSchema,
+    params: GetSingleTestApiSearchParamsSchema,
   },
   handler: async (req, env, context, res) => {
     const query = await context.prisma.team.findMany({

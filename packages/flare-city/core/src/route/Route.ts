@@ -1,3 +1,4 @@
+import { ZodObject, ZodType } from "zod";
 import {
   Env,
   ErrorNotFound,
@@ -8,8 +9,7 @@ import {
   Middleware,
   RequestURLSearchParams,
 } from "../utils";
-import { log } from "../utils";
-import { ValidateMiddlewareArgs, createMiddlewareValidate } from "../validate";
+import { log, createMiddlewareValidate } from "../utils";
 
 interface RouteConstructorParams {
   root: string;
@@ -53,8 +53,8 @@ export type RouteDefinition<
      * with a error message
      * @example /test/:segment
      */
-    segments?: ValidateMiddlewareArgs<S>;
-    params?: ValidateMiddlewareArgs<P>;
+    segments?: ZodType<S>;
+    params?: ZodType<P>;
   };
   handler: RouteHandler<T, P, S>;
 };
@@ -126,7 +126,7 @@ export class Route implements RouteConstructorParams {
     }
     const parsedPattern = pattern.exec(requestURL);
     if (!parsedPattern) {
-      throw new ErrorServer("Unable to parse segments from matched route");
+      throw new ErrorServer("Unable to parse properties from route request.");
     }
 
     return {
@@ -198,9 +198,11 @@ export class Route implements RouteConstructorParams {
     // Add segment validation to middleware array if available.
     if (validate?.segments) {
       context.segments = this.matchedRoute.pattern.pathname.groups;
-      const segmentMiddleware = createMiddlewareValidate(validate.segments)(
-        context.segments
-      );
+      const segmentMiddleware = createMiddlewareValidate({
+        name: "segments",
+        schema: validate.segments,
+        contextKey: "segments",
+      });
       middleware.push(segmentMiddleware);
     }
 
@@ -211,12 +213,15 @@ export class Route implements RouteConstructorParams {
       ).entries();
       const searchParams = Object.fromEntries(searchEntries);
       context.params = searchParams;
-      const paramsMiddleware = createMiddlewareValidate(validate.params)(
-        context.params
-      );
+      const paramsMiddleware = createMiddlewareValidate({
+        name: "params",
+        schema: validate.params,
+        contextKey: "params",
+      });
       middleware.push(paramsMiddleware);
     }
 
+    // Run middlewares one at a time
     for await (const middlewareFn of middleware) {
       try {
         await middlewareFn(request, env, context);

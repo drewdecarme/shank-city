@@ -3,13 +3,13 @@ import { log } from "./util.log";
 class AppError extends Error {
   status_code: number;
   status_text: string;
-  data?: Record<string, string>;
+  data?: Record<string, unknown>;
 
   constructor(params: {
     message: string;
     status_code: number;
     status_text: string;
-    data?: Record<string, string>;
+    data?: Record<string, unknown>;
   }) {
     super(params.message);
     this.status_code = params.status_code;
@@ -70,7 +70,7 @@ export class ErrorUnauthorized extends AppError {
 }
 
 export class ErrorValidation extends AppError {
-  constructor(params: { message?: string; data?: Record<string, string> }) {
+  constructor(params: { message?: string; data?: Record<string, unknown> }) {
     super({
       message: formatErrorMessage("Invalid", params.message),
       status_code: 422,
