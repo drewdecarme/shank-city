@@ -49,6 +49,7 @@ export class App {
     // set logging based upon some options
     log.setLogLevel(options?.logLevel || "debug");
     log.setLoggingType(options?.logType || "json");
+    log.setName("FlareCity");
 
     const route = this.routes.reduce<Route | undefined>((accum, routeDef) => {
       if (pathname.startsWith(routeDef.root)) return routeDef;

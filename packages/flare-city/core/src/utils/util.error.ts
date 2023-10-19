@@ -90,7 +90,6 @@ export const errorHandler = (error: unknown) => {
     error instanceof ErrorValidation ||
     error instanceof ErrorServer
   ) {
-    log.setName("ErrorHandler");
     log.error(error.message);
 
     return new Response(

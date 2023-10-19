@@ -157,10 +157,12 @@ export class Route implements RouteConstructorParams {
         },
         undefined
       );
-      if (!matchedRoute) throw new ErrorNotFound("The route does not exist");
+      if (!matchedRoute) {
+        throw new ErrorNotFound("The route does not exist");
+      }
       this.matchedRoute = matchedRoute;
     } catch (error) {
-      errorHandler(error);
+      throw error;
     }
   }
 
@@ -255,7 +257,6 @@ export class Route implements RouteConstructorParams {
         Route.response
       );
     } catch (error) {
-      console.log(error);
       return errorHandler(error);
     }
   }
