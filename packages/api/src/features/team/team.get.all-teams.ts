@@ -6,7 +6,7 @@ import { RouteTeam } from "./team.route";
 // Get All Teams
 export type GetAllTeamsApiResponse = ApiResponse<Team[]>;
 
-RouteTeam.register<GetAllTeamsApiResponse>({
+RouteTeam.get<GetAllTeamsApiResponse>({
   path: "",
   method: "GET",
   middleware: [middlewareRequireAuth],

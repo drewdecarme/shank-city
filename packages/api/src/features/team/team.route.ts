@@ -1,3 +1,3 @@
 import { Route } from "@flare-city/core";
 
-export const RouteTeam = new Route({ basePath: "/team" });
+export const RouteTeam = new Route({ root: "/team" });

@@ -2,115 +2,170 @@
 
 ## Overview
 
-The `Route` class is a fundamental component of the `@flare-city/core` package, designed to simplify the development of APIs on Cloudflare Workers. It provides a structured approach to handling incoming requests, allowing developers to define routes, validate URL segments, and execute middleware functions.
+The `Route` class in the `@flare-city/core` package facilitates the definition and handling of routes within a web application. It allows developers to create RESTful routes, define route parameters, and specify middleware functions to be executed before the route handler.
 
 ## Key Concepts
 
-### 1. Route Definition
+### 1. Route Methods
 
-A route is defined using the `RouteDefinition` interface, encapsulating the essential properties:
+- **Definition:**
 
-- **path:** The URL path for the route.
-- **method:** The HTTP method for the route (GET or POST).
-- **middleware:** An array of middleware functions to be executed before the route handler.
-- **validate:** Optional validation for URL segments using Zod schemas.
-- **handler:** The main function handling the request and generating a response.s
+  - Routes can handle different HTTP methods such as `GET` and `POST`.
+  - Methods are defined using the `get` and `post` methods on an instance of the `Route` class.
 
-### 2. Middleware
+- **Methods:**
+  - `get`: Registers a route for handling `GET` requests.
+  - `post`: Registers a route for handling `POST` requests.
 
-Middleware functions are optional operations executed before the route handler. They can be used for authentication, logging, or any pre-processing required for a specific route.
+### 2. Middleware Execution
 
-### 3. URL Segment Validation
+- **Definition:**
 
-The `validate` property allows developers to specify URL segment validation using Zod schemas. This ensures that the expected segments are present in the request URL.
+  - Middleware functions can be defined at both the route and application levels.
+  - Middleware functions are executed sequentially before the main route handler is called.
 
-### 4. Request Handling
+- **Middleware Execution Order:**
+  - Route-level middleware is executed before the route handler.
+  - Application-level middleware is executed before any route-specific middleware.
 
-The `run` method orchestrates the entire process of handling a request. It matches the incoming request URL with registered routes, executes middleware, validates URL segments, and finally runs the route handler.
+### 3. Route Parsing
+
+- **Definition:**
+  - Routes can define parsing schemas for URL segments and search parameters.
+  - Parsing schemas use Zod Schemas for validation and extraction of data from URL components.
 
 ## How to Use
 
-### 1. Creating a Route Instance
+### Creating and Registering a Route
 
 ```typescript
 import { Route } from "@flare-city/core";
 
-const myRoute = new Route({ basePath: "/api" });
-```
+const myRoute = new Route({ root: "/api" });
 
-### 2. Registering a Route
-
-```typescript
-import { ApiResponse, Middleware } from "@flare-city/core";
-
-myRoute.register<ApiResponse<any>>({
-  path: "/example",
-  method: "GET",
+myRoute.get({
+  path: "/example/:id",
   middleware: [myMiddleware],
-  validate: {
-    segments: {
-      id: null, // 'id' segment is required
-    },
+  parse: {
+    segments: MySegmentsSchema,
+    params: MyParamsSchema,
   },
+  handler: async (req, env, context, res) => {
+    // Your route logic here
+  },
+});
+
+myRoute.post({
+  path: "/submit",
+  middleware: [anotherMiddleware],
   handler: async (req, env, context, res) => {
     // Your route logic here
   },
 });
 ```
 
-### 3. Adding the Route to an App
+### Defining Route Parsing Schemas
+
+#### Zod Schemas
+
+- **URL Segments:**
+
+  - Zod Schemas for URL segments define the expected structure and types of URL path components.
+
+  ```typescript
+  import { z } from "zod";
+
+  const MySegmentsSchema = z.object({
+    id: z.string(),
+  });
+  ```
+
+- **Search Parameters:**
+
+  - Zod Schemas for search parameters define the expected structure and types of URL query parameters.
+
+  ```typescript
+  import { z } from "zod";
+
+  const MyParamsSchema = z.object({
+    search: z.string(),
+    amount: z.coerce.number(),
+  });
+  ```
+
+### Running a Route in an Application
 
 ```typescript
 import { App } from "@flare-city/core";
+import { Route } from "@flare-city/core";
 
 const myApp = new App("MyApp");
+
+myApp.addMiddleware(myAppMiddleware);
+
+const myRoute = new Route({ root: "/api" });
+
 myApp.addRoute(myRoute);
-```
 
-### 4. Running the App
-
-```typescript
 const response = myApp.run(request, env, context);
 ```
 
-## Examples
+## Example: Using RouteTest
 
-### Example 1: Basic Route
+The following example demonstrates how to use the `RouteTest` route with specific parsing schemas for URL segments and search parameters:
 
 ```typescript
-myRoute.register<ApiResponse<any>>({
-  path: "/home",
+import { ApiResponse } from "@flare-city/core";
+import { RouteTest } from "./test.route";
+import { middlewareRequireAuth } from "../../lib";
+import { z } from "zod";
+
+// Get test by ID
+export type GetSingleTestApiResponse = ApiResponse<{
+  message: string;
+  id: string;
+}>;
+
+const GetSingleTestApiSegmentsSchema = z.object({
+  id: z.string(),
+  test: z.string(),
+});
+
+export type GetSingleTestApiSegments = z.infer<
+  typeof GetSingleTestApiSegmentsSchema
+>;
+
+const GetSingleTestApiSearchParamsSchema = z.object({
+  search: z.string(),
+  amount: z.coerce.number(),
+  type: z.union([z.literal("test-1"), z.literal("test-2")]),
+});
+
+export type GetSingleTestApiSearchParams = z.infer<
+  typeof GetSingleTestApiSearchParamsSchema
+>;
+
+// Register the route
+RouteTest.get<
+  GetSingleTestApiResponse,
+  GetSingleTestApiSegments,
+  GetSingleTestApiSearchParams
+>({
+  path: "/:id/:test",
   method: "GET",
+  middleware: [middlewareRequireAuth],
+  parse: {
+    segments: GetSingleTestApiSegmentsSchema,
+    params: GetSingleTestApiSearchParamsSchema,
+  },
   handler: async (req, env, context, res) => {
+    // Your route logic here
     return res({
-      json: { message: "Hello, World!" },
+      json: {
+        data: { message: "Hello test", id: context.segments.id },
+      },
+      status: 200,
     });
   },
 });
 ```
-
-### Example 2: Route with Middleware and Validation
-
-```typescript
-myRoute.register<ApiResponse<any>>({
-  path: "/user/:id",
-  method: "GET",
-  middleware: [authMiddleware],
-  validate: {
-    segments: {
-      id: null, // 'id' segment is required
-    },
-  },
-  handler: async (req, env, context, res) => {
-    // Your route logic here
-  },
-});
-```
-
-## Conclusion
-
-The `Route` class simplifies API development on Cloudflare Workers, offering flexibility, validation, and middleware support. By following the provided examples and guidelines, developers can create well-structured and reliable serverless APIs.
-
----
-
-Feel free to adjust and expand this documentation based on your specific needs and the intended audience.

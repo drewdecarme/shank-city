@@ -6,7 +6,7 @@ import { middlewareRequireAuth } from "../../lib";
 export type GetAllTestApiResponse = ApiResponse<{ message: string }>;
 
 // Get all tests
-RouteTest.register<GetAllTestApiResponse>({
+RouteTest.get<GetAllTestApiResponse>({
   path: "",
   method: "GET",
   middleware: [middlewareRequireAuth],

@@ -15,7 +15,7 @@ import { App, Env } from "@flare-city/core";
 const myApp = new App("myAppName");
 ```
 
-For more information on the `App` class, [check out the `App` documentation](./reference/app.md)
+For more information on the `App` class, [check out the `App` documentation](./reference/core/app.md)
 
 ### Add any middleware
 
@@ -31,13 +31,13 @@ import { middlewarePrisma } from "./lib";
 myApp.addMiddleware(middlewarePrisma);
 ```
 
-For more information on the `Middleware` type, [check out the `Middleware` documentation](./reference/middleware.md)
+For more information on the `Middleware` type, [check out the `Middleware` documentation](./reference/core/middleware.md)
 
 ### Define & add any routes
 
 Routes define the API endpoints and their corresponding handlers.
 
-For more information on the `Route` class, [check out the `Route` documentation](./reference/route.md)
+For more information on the `Route` class, [check out the `Route` documentation](./reference/core/route.md)
 
 ```ts
 import { RouteTest, RouteTeam } from "./features";
