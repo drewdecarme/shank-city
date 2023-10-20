@@ -105,7 +105,3 @@ In this case, `BodySchema` defines the expected structure of the request body, e
 ## Easy JSON Parsing and Validation
 
 Using Zod Schemas for parsing and validating JSON provides a straightforward and developer-friendly approach. With its intuitive syntax and powerful features, Zod simplifies the process of handling and ensuring the correctness of incoming data.
-
----
-
-Feel free to adjust the level of detail or add specific examples based on your audience and project requirements.
