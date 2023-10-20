@@ -1,4 +1,3 @@
-import { ZodObject, ZodType } from "zod";
 import {
   Env,
   ErrorNotFound,
@@ -6,13 +5,12 @@ import {
   ApiResponse,
   RequestURLSegments,
   ErrorServer,
-  Middleware,
   RequestURLSearchParams,
 } from "../utils";
 import { log, createMiddlewareValidate } from "../utils";
 import {
-  RouteDefinition,
   RouteGET,
+  RouteHandlerResponse,
   RouteMatch,
   RouteMethods,
   RoutePOST,
@@ -21,22 +19,6 @@ import {
 interface RouteConstructorParams {
   root: string;
 }
-
-export type RouteHandlerResponse<T extends Record<string, unknown>> = (
-  params: { json: T } & { status?: 200 | 301 }
-) => Promise<Response>;
-
-type RouteMethod = "GET" | "POST";
-type RouteHandler<
-  T extends Record<string, unknown>,
-  P extends RequestURLSearchParams = RequestURLSearchParams,
-  S extends RequestURLSegments = RequestURLSegments,
-> = (
-  request: Request,
-  env: Env,
-  ctx: ExecutionContext<S, P>,
-  res: RouteHandlerResponse<T>
-) => Promise<Response>;
 
 export class Route implements RouteConstructorParams {
   root: string;
