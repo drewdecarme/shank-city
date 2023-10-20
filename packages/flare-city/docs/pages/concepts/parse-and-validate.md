@@ -10,6 +10,8 @@ In the `@flare-city/core` package, parsing and validation are critical aspects o
 
 ## Parsing URL Segments
 
+Using Zod Schemas for parsing and validating JSON provides a straightforward and developer-friendly approach. With its intuitive syntax and powerful features, Zod simplifies the process of handling and ensuring the correctness of incoming data.
+
 ### Definition
 
 URL segments are dynamic parts of the URL path that can contain variable values, such as IDs or slugs. Parsing involves extracting and validating these values using Zod Schemas, ensuring that the received data conforms to the expected structure.
@@ -101,7 +103,3 @@ RouteMyExample.post({
 ```
 
 In this case, `BodySchema` defines the expected structure of the request body, ensuring that `username` is a string, `password` has a minimum length of 8 characters, and `email` is a valid email address.
-
-## Easy JSON Parsing and Validation
-
-Using Zod Schemas for parsing and validating JSON provides a straightforward and developer-friendly approach. With its intuitive syntax and powerful features, Zod simplifies the process of handling and ensuring the correctness of incoming data.
