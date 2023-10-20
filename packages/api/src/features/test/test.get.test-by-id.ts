@@ -25,15 +25,15 @@ export type GetSingleTestApiSearchParams = z.infer<
 >;
 
 // Register the route
-RouteTest.register<
+RouteTest.get<
   GetSingleTestApiResponse,
-  GetSingleTestApiSearchParams,
-  GetSingleTestApiSegments
+  GetSingleTestApiSegments,
+  GetSingleTestApiSearchParams
 >({
   path: "/:id/:test",
   method: "GET",
   middleware: [middlewareRequireAuth],
-  validate: {
+  parse: {
     segments: GetSingleTestApiSegmentsSchema,
     params: GetSingleTestApiSearchParamsSchema,
   },

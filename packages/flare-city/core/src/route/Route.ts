@@ -10,6 +10,13 @@ import {
   RequestURLSearchParams,
 } from "../utils";
 import { log, createMiddlewareValidate } from "../utils";
+import {
+  RouteDefinition,
+  RouteGET,
+  RouteMatch,
+  RouteMethods,
+  RoutePOST,
+} from "./route.types";
 
 interface RouteConstructorParams {
   root: string;
@@ -31,47 +38,17 @@ type RouteHandler<
   res: RouteHandlerResponse<T>
 ) => Promise<Response>;
 
-export type RouteDefinition<
-  T extends Record<string, unknown> = Record<string, unknown>,
-  P extends RequestURLSearchParams = RequestURLSearchParams,
-  S extends RequestURLSegments = RequestURLSegments,
-> = {
-  path: string;
-  method: RouteMethod;
-  middleware?: Middleware[];
-  /**
-   * A special kind of structured middleware that utilizes
-   * helper a fluent api to validate specific attributes on
-   * the request. If the properties are defined, these will
-   * always run __after__ the defined `route.middleware` above and
-   * __before__ the `route.handler`
-   */
-  validate?: {
-    /**
-     * ### URL Segments
-     * Validation object that can be customized
-     * with a error message
-     * @example /test/:segment
-     */
-    segments?: ZodType<S>;
-    params?: ZodType<P>;
-  };
-  handler: RouteHandler<T, P, S>;
-};
-
-export type MatchedRoute = {
-  route: RouteDefinition;
-  pattern: URLPatternURLPatternResult;
-};
-
 export class Route implements RouteConstructorParams {
   root: string;
-  private requests: RouteDefinition[];
-  private matchedRoute: MatchedRoute | undefined;
+  private requests: { GET: RouteGET[]; POST: RoutePOST[] };
+  private matchedRoute: RouteMatch | undefined;
 
   constructor(params: RouteConstructorParams) {
     this.root = params.root;
-    this.requests = [];
+    this.requests = {
+      GET: [],
+      POST: [],
+    };
     this.matchedRoute = undefined;
   }
 
@@ -83,18 +60,33 @@ export class Route implements RouteConstructorParams {
     async ({ json, status = 200 }) =>
       new Response(JSON.stringify(json), { status });
 
-  register<
-    T extends ApiResponse<unknown>,
-    P extends RequestURLSearchParams = RequestURLSearchParams,
+  get<
+    R extends ApiResponse<unknown>,
     S extends RequestURLSegments = RequestURLSegments,
-  >(params: RouteDefinition<T, P, S>) {
+    P extends RequestURLSearchParams = RequestURLSearchParams,
+  >(params: RouteGET<R, S, P>) {
     /**
      * RATIONALE: Don't really care about the internal
      * types of this... all we care is that it get's stored
-     * in the requests array and then can be parsed appropriately
+     * in the requests.get array and then can be parsed appropriately
      */
     // @ts-ignore
-    this.requests.push(params);
+    this.requests.GET.push(params);
+  }
+
+  post<
+    R extends ApiResponse<unknown>,
+    B extends Record<string, unknown>,
+    S extends RequestURLSegments = RequestURLSegments,
+    P extends RequestURLSearchParams = RequestURLSearchParams,
+  >(params: RoutePOST<R, B, S, P>) {
+    /**
+     * RATIONALE: Don't really care about the internal
+     * types of this... all we care is that it get's stored
+     * in the requests.get array and then can be parsed appropriately
+     */
+    // @ts-ignore
+    this.requests.POST.push(params);
   }
 
   private matchAndParseRouteRequest(
@@ -144,7 +136,18 @@ export class Route implements RouteConstructorParams {
    */
   private matchRouteWithRequest(request: Request) {
     try {
-      const matchedRoute = this.requests.reduce<MatchedRoute | undefined>(
+      log.info(
+        "Matching request method & pathname with `route.url` pattern..."
+      );
+      const method = request.method.toUpperCase() as RouteMethods;
+      const routes = this.requests[method];
+      if (!routes) {
+        throw new ErrorNotFound(
+          `The HTTP request method "${method}" is not supported.`
+        );
+      }
+
+      const matchedRoute = routes.reduce<RouteMatch | undefined>(
         (accum, routeDef) => {
           const urlPatternMatch = this.matchAndParseRouteRequest(
             request,
@@ -161,6 +164,7 @@ export class Route implements RouteConstructorParams {
         throw new ErrorNotFound("The route does not exist");
       }
       this.matchedRoute = matchedRoute;
+      log.info("Matching request pathname with `route.url` pattern... done.");
     } catch (error) {
       throw error;
     }
@@ -191,25 +195,25 @@ export class Route implements RouteConstructorParams {
       log.debug("No middleware to run. Bypassing middleware runner.");
       return;
     }
-    log.debug("Running route level middleware...");
+    log.info("Running route level middleware...");
 
-    // destructure `middleware` and `validate` out of the route
+    // destructure `middleware` and `parse` out of the route
     // definition to make it easier to use
-    const { validate, middleware } = this.matchedRoute.route;
+    const { parse, middleware } = this.matchedRoute.route;
 
     // Add segment validation to middleware array if available.
-    if (validate?.segments) {
+    if (parse?.segments) {
       context.segments = this.matchedRoute.pattern.pathname.groups;
       const segmentMiddleware = createMiddlewareValidate({
         name: "segments",
-        schema: validate.segments,
+        schema: parse.segments,
         contextKey: "segments",
       });
       middleware.push(segmentMiddleware);
     }
 
     // Add param validation to middleware array if available
-    if (validate?.params) {
+    if (parse?.params) {
       const searchEntries = new URLSearchParams(
         this.matchedRoute.pattern.search.input
       ).entries();
@@ -217,7 +221,7 @@ export class Route implements RouteConstructorParams {
       context.params = searchParams;
       const paramsMiddleware = createMiddlewareValidate({
         name: "params",
-        schema: validate.params,
+        schema: parse.params,
         contextKey: "params",
       });
       middleware.push(paramsMiddleware);
@@ -231,7 +235,7 @@ export class Route implements RouteConstructorParams {
         throw error;
       }
     }
-    log.debug("Running route level middleware... done");
+    log.info("Running route level middleware... done");
   }
 
   /**

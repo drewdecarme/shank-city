@@ -38,7 +38,7 @@ export class App {
     }
   }
 
-  run(
+  async run(
     request: Request,
     env: Env,
     context: ExecutionContext,
@@ -51,25 +51,36 @@ export class App {
     log.setLoggingType(options?.logType || "json");
     log.setName("FlareCity");
 
+    log.info("Matching base route...");
     const route = this.routes.reduce<Route | undefined>((accum, routeDef) => {
-      if (pathname.startsWith(routeDef.root)) return routeDef;
+      log.debug(
+        `Path: ${pathname} | RouteRoot: ${
+          routeDef.root
+        } | Match? ${pathname.startsWith(routeDef.root)}`
+      );
+      if (pathname.startsWith(routeDef.root)) {
+        return routeDef;
+      }
       return accum;
     }, undefined);
+    log.info("Matching base route... done");
 
     try {
       // If there isn't a route that matches the
       // pathname, then throw an error
       if (typeof route === "undefined") {
-        throw new ErrorNotFound(
-          "The route does not exist: https://www.youtube.com/watch?v=oDAKKQuBtDo"
-        );
+        throw new ErrorNotFound("The route does not exist");
       }
 
       // Run middlewares
-      this.runMiddlewares(request, env, context);
+      log.info("Running app level middleware...");
+      await this.runMiddlewares(request, env, context);
+      log.info("Running app level middleware... done");
 
       // Run the handler
-      const response = route.run(request, env, context);
+      log.info("Executing route...");
+      const response = await route.run(request, env, context);
+      log.info("Executing route... done.");
       return response;
     } catch (error) {
       return errorHandler(error);
