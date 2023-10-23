@@ -18,10 +18,10 @@
   },
   "homepage": "https://github.com/drewdecarme/flare-kit#readme",
   "dependencies": {
-    "next": "^13.5.6",
-    "nextra": "^2.13.2",
-    "nextra-theme-docs": "^2.13.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "next": "13.5.6",
+    "nextra": "2.13.2",
+    "nextra-theme-docs": "2.13.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }
