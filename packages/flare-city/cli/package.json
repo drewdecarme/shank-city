@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "description": "The FlareCity CLI exposes a few helper functions to aid with development and deployment",
   "main": "dist/index.js",
-  "directories": {
-    "doc": "docs",
-    "test": "test"
+  "type": "module",
+  "bin": {
+    "flare-city": "./bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "yarn tsc",
+    "dev": "yarn tsc --watch"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "devDependencies": {
     "@flare-city/tsconfig": "workspace:",
     "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
   }
 }

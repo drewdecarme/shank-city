@@ -20,6 +20,12 @@
       "node": "./tsconfig.library.json",
       "import": "./tsconfig.library.json",
       "require": "./tsconfig.library.json"
+    },
+    "./library/build": {
+      "default": "./tsconfig.library-build.json",
+      "node": "./tsconfig.library-build.json",
+      "import": "./tsconfig.library-build.json",
+      "require": "./tsconfig.library-build.json"
     }
   },
   "repository": {
