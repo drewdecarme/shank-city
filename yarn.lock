@@ -713,7 +713,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@flare-city/tsconfig@workspace:, @flare-city/tsconfig@workspace:packages/flare-city/tsconfig":
+"@flare-city/tsconfig@workspace:, @flare-city/tsconfig@workspace:^, @flare-city/tsconfig@workspace:packages/flare-city/tsconfig":
   version: 0.0.0-use.local
   resolution: "@flare-city/tsconfig@workspace:packages/flare-city/tsconfig"
   dependencies:
@@ -1243,6 +1243,7 @@ __metadata:
     "@cloudflare/workers-types": 4.20231016.0
     "@flare-city/core": "workspace:"
     "@flare-city/logger": "workspace:"
+    "@flare-city/tsconfig": "workspace:^"
     "@prisma/client": 5.4.2
     "@prisma/extension-accelerate": 0.6.2
     "@types/node": 20.8.7

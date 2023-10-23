@@ -1,3 +1,4 @@
 {
-  "extends": "@flare-city/tsconfig/worker"
+  "extends": "@flare-city/tsconfig/worker",
+  "include": ["./src/**/*.ts"]
 }
