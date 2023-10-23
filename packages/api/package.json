@@ -36,6 +36,6 @@
     "@types/node": "^20.8.7",
     "dotenv-cli": "^7.3.0",
     "typescript": "^5.2.2",
-    "wrangler": "^3.13.2"
+    "wrangler": "^3.14.0"
   }
 }
