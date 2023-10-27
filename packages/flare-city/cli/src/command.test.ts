@@ -2,20 +2,19 @@ import { Command } from "commander";
 import { dirname } from "path";
 
 import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+import { startVitest } from "vitest/node";
 
 export const commandTest = new Command("test").description(
   "Run the flare city testing module to execute integration tests"
 );
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+async function test() {
+  const vitest = await startVitest("test", undefined, {});
+
+  await vitest?.close();
+}
 
 commandTest
-  //   .addCommand(commandTestReset)
-  // adding options sequentially like this will enable them for commands added
-  // below it. In this case, get and seed will be able to access the options
-  // added after this comment
-  //   .addOption(optionEnv)
-  //   .action((args) => {
-  //     validateOptionEnv(args);
-  //   })
-  .parseAsync(process.argv);
+  // .addOption(optionEnv)
+  .action(test);
