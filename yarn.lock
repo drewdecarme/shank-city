@@ -710,6 +710,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@flare-city/test@workspace:packages/flare-city/test"
   dependencies:
+    "@flare-city/cli": "workspace:^"
     "@flare-city/tsconfig": "workspace:"
     typescript: 5.2.2
     vite: 4.5.0
