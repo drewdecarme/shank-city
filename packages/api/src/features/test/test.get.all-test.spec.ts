@@ -1,6 +1,6 @@
 import { WorkerTest } from "@flare-city/test";
 import { expect, test, describe } from "vitest";
-import { GetAllTestApiResponse } from "./test.get.all-test";
+import type { GetAllTestApiResponse } from "./test.get.all-test";
 
 describe("GET /test", () => {
   let worker: WorkerTest;

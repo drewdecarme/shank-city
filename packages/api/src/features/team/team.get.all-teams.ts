@@ -1,5 +1,6 @@
-import { ApiResponse, errorHandler } from "@flare-city/core";
-import { Team } from "@prisma/client";
+import type { ApiResponse } from "@flare-city/core";
+import { errorHandler } from "@flare-city/core";
+import type { Team } from "@prisma/client";
 import { log, middlewareRequireAuth } from "../../lib";
 import { RouteTeam } from "./team.route";
 

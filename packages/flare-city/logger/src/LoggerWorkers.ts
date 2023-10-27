@@ -43,7 +43,11 @@ export class WorkersLogger {
     this.loggingType = loggingType;
   }
 
-  log(level: string, message: string, data: Record<string, any> = {}): void {
+  log(
+    level: string,
+    message: string,
+    data: Record<string, unknown> = {}
+  ): void {
     if (this.isLogLevelEnabled(level)) {
       const color = this.logColors[level] || "";
       const logMessage =
@@ -67,19 +71,19 @@ export class WorkersLogger {
     return levels.indexOf(level) >= levels.indexOf(this.level);
   }
 
-  debug(message: string, data: Record<string, any> = {}): void {
+  debug(message: string, data: Record<string, unknown> = {}): void {
     this.log("debug", message, data);
   }
 
-  info(message: string, data: Record<string, any> = {}): void {
+  info(message: string, data: Record<string, unknown> = {}): void {
     this.log("info", message, data);
   }
 
-  warn(message: string, data: Record<string, any> = {}): void {
+  warn(message: string, data: Record<string, unknown> = {}): void {
     this.log("warn", message, data);
   }
 
-  error(message: string, data: Record<string, any> = {}): void {
+  error(message: string, data: Record<string, unknown> = {}): void {
     this.log("error", message, data);
   }
 

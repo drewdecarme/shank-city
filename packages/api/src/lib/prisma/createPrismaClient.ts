@@ -1,4 +1,4 @@
-import { Env } from "@flare-city/core";
+import type { Env } from "@flare-city/core";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 

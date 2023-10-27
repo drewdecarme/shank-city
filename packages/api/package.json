@@ -14,7 +14,8 @@
     "db:generate": "yarn prisma generate --no-engine",
     "build:types": "tsc --project tsconfig.types.json",
     "build": "yarn db:generate & yarn build:types",
-    "test": "yarn flare-city test"
+    "test": "yarn flare-city test",
+    "lint": "npx eslint ./src/**/* --fix"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "4.20231016.0",
     "@flare-city/cli": "workspace:^",
+    "@flare-city/eslint-config": "workspace:^",
     "@flare-city/tsconfig": "workspace:^",
     "@types/node": "20.8.7",
     "dotenv-cli": "7.3.0",

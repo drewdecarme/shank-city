@@ -1,4 +1,4 @@
-import { ApiResponse } from "@flare-city/core";
+import type { ApiResponse } from "@flare-city/core";
 import { RouteTest } from "./test.route";
 import { middlewareRequireAuth } from "../../lib";
 

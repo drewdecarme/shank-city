@@ -1,5 +1,6 @@
 import { log, middlewarePrisma } from "./lib";
-import { App, Env } from "@flare-city/core";
+import type { Env } from "@flare-city/core";
+import { App } from "@flare-city/core";
 import { RouteTest, RouteTeam } from "./features";
 
 // Declare a new application

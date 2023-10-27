@@ -1,4 +1,4 @@
-import { RequestURLSearchParams } from "@flare-city/core";
+import type { RequestURLSearchParams } from "@flare-city/core";
 
 export class WorkerTest {
   #worker: typeof global.worker;
@@ -33,21 +33,19 @@ export class WorkerTest {
     const search = this.paramsToString(params);
     const url = endpoint.concat(search);
     const worker = this.getWorker();
-    try {
-      /**
-       * RATIONALE: RequestInit_2 is not exported. However
-       * it is the same Api as the RequestInit
-       */
-      // @ts-ignore
-      const response = await worker.fetch(url, requestInit);
-      const json = (await response.json()) as R;
-      /**
-       * RATIONALE: Same as above but with Response_2
-       */
-      // @ts-ignore
-      return { json, raw_response: response };
-    } catch (error) {
-      throw error;
-    }
+    /**
+     * RATIONALE: RequestInit_2 is not exported. However
+     * it is the same Api as the RequestInit
+     */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const response = await worker.fetch(url, requestInit);
+    const json = (await response.json()) as R;
+    /**
+     * RATIONALE: Same as above but with Response_2
+     */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return { json, raw_response: response };
   }
 }

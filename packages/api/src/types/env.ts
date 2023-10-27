@@ -1,6 +1,6 @@
-import { User } from "@prisma/client";
-import { createPrismaClient } from "../lib";
-import { RequestURLSearchParams, RequestURLSegments } from "@flare-city/core";
+import type { User } from "@prisma/client";
+import type { createPrismaClient } from "../lib";
+import type { RequestURLSearchParams, RequestURLSegments } from "@flare-city/core";
 
 declare global {
   interface ExecutionContext<

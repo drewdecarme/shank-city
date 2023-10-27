@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
       "default": "./dist/index.js",
@@ -16,9 +17,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "yarn build --watch"
+    "dev": "yarn build --watch",
+    "lint": "npx eslint ./src/**/* --fix"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/drewdecarme/shank-city.git"
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20231016.0",
+    "@flare-city/eslint-config": "workspace:^",
     "@flare-city/tsconfig": "workspace:",
     "@types/node": "20.8.7",
     "dotenv-cli": "7.3.0",

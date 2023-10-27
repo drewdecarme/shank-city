@@ -31,7 +31,8 @@
   },
   "scripts": {
     "build": "yarn tsc",
-    "dev": "yarn build --watch"
+    "dev": "yarn build --watch",
+    "lint": "npx eslint ./src/**/* --fix"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "wrangler": "3.14.0"
   },
   "devDependencies": {
+    "@flare-city/eslint-config": "workspace:^",
     "@flare-city/tsconfig": "workspace:",
     "typescript": "5.2.2"
   }

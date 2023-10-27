@@ -1,4 +1,4 @@
-import { Env } from "./util.env";
+import type { Env } from "./util.env";
 
 export type ApiResponse<T, M = Record<string, unknown>> = {
   data: T;

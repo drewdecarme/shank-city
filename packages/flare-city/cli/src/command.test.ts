@@ -1,8 +1,8 @@
 import { Command } from "commander";
-import { dirname } from "path";
+// import { dirname } from "path";
 
-import { fileURLToPath } from "url";
-const __dirname = dirname(fileURLToPath(import.meta.url));
+// import { fileURLToPath } from "url";
+// const __dirname = dirname(fileURLToPath(import.meta.url));
 import { startVitest } from "vitest/node";
 
 export const commandTest = new Command("test").description(

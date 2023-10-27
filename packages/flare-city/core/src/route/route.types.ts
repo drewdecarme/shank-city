@@ -1,5 +1,5 @@
-import { ZodType } from "zod";
-import {
+import type { ZodType } from "zod";
+import type {
   RequestURLSearchParams,
   RequestURLSegments,
   Middleware,

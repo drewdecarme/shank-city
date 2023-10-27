@@ -1,4 +1,4 @@
-import { ApiResponse } from "@flare-city/core";
+import type { ApiResponse } from "@flare-city/core";
 import { RouteTest } from "./test.route";
 import { middlewareRequireAuth } from "../../lib";
 import { z } from "zod";
@@ -43,6 +43,7 @@ RouteTest.get<
         id: "1",
       },
     });
+    console.log(query);
 
     return res({
       json: {
