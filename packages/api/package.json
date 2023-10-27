@@ -4,6 +4,7 @@
   "private": true,
   "description": "A central api for ShankCity",
   "main": "index.js",
+  "type": "module",
   "author": "Drew DeCarme (drewdecarme@gmail.com)",
   "license": "MIT",
   "scripts": {
@@ -27,6 +28,7 @@
     "@cfworker/jwt": "4.0.6",
     "@flare-city/core": "workspace:",
     "@flare-city/logger": "workspace:",
+    "@flare-city/test": "workspace:^",
     "@prisma/client": "5.4.2",
     "@prisma/extension-accelerate": "0.6.2",
     "prisma": "5.4.2",
