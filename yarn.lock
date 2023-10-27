@@ -669,7 +669,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@flare-city/core@workspace:, @flare-city/core@workspace:packages/flare-city/core":
+"@flare-city/core@workspace:^, @flare-city/core@workspace:packages/flare-city/core":
   version: 0.0.0-use.local
   resolution: "@flare-city/core@workspace:packages/flare-city/core"
   dependencies:
@@ -711,6 +711,7 @@ __metadata:
   resolution: "@flare-city/test@workspace:packages/flare-city/test"
   dependencies:
     "@flare-city/cli": "workspace:^"
+    "@flare-city/core": "workspace:^"
     "@flare-city/tsconfig": "workspace:"
     typescript: 5.2.2
     vite: ^4.5.0
@@ -1248,7 +1249,7 @@ __metadata:
     "@cfworker/jwt": 4.0.6
     "@cloudflare/workers-types": 4.20231016.0
     "@flare-city/cli": "workspace:^"
-    "@flare-city/core": "workspace:"
+    "@flare-city/core": "workspace:^"
     "@flare-city/logger": "workspace:"
     "@flare-city/test": "workspace:^"
     "@flare-city/tsconfig": "workspace:^"

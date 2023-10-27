@@ -1,4 +1,4 @@
-import { beforeAll, afterAll } from "vitest";
+import { beforeAll } from "vitest";
 import { unstable_dev } from "wrangler";
 import { resolve } from "path";
 
@@ -10,10 +10,10 @@ beforeAll(async () => {
     experimental: { disableExperimentalWarning: true },
   });
   global.worker = worker;
-});
 
-afterAll(async () => {
-  if (!global.worker) return;
-  await global.worker.stop();
-  delete global.worker;
+  return async () => {
+    if (!global.worker) return;
+    await global.worker.stop();
+    delete global.worker;
+  };
 });
