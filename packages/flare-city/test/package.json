@@ -20,6 +20,13 @@
       "node": "./dist/setup.js",
       "require": "./dist/setup.js",
       "types": "./dist/setup.d.ts"
+    },
+    "./types": {
+      "default": "./dist/types.js",
+      "import": "./dist/types.js",
+      "node": "./dist/types.js",
+      "require": "./dist/types.js",
+      "types": "./dist/types.d.ts"
     }
   },
   "scripts": {
