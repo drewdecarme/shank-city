@@ -1,1 +1,1 @@
-# @flare-city/core
+# `@flare-city/core`
