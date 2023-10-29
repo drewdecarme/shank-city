@@ -1,14 +1,12 @@
-import {
+import type {
   Env,
-  ErrorNotFound,
-  errorHandler,
   ApiResponse,
   RequestURLSegments,
-  ErrorServer,
   RequestURLSearchParams,
 } from "../utils";
+import { ErrorNotFound, errorHandler, ErrorServer } from "../utils";
 import { log, createMiddlewareValidate } from "../utils";
-import {
+import type {
   RouteGET,
   RouteHandlerResponse,
   RouteMatch,
@@ -52,6 +50,7 @@ export class Route implements RouteConstructorParams {
      * types of this... all we care is that it get's stored
      * in the requests.get array and then can be parsed appropriately
      */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.requests.GET.push(params);
   }
@@ -67,6 +66,7 @@ export class Route implements RouteConstructorParams {
      * types of this... all we care is that it get's stored
      * in the requests.get array and then can be parsed appropriately
      */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.requests.POST.push(params);
   }
@@ -117,39 +117,33 @@ export class Route implements RouteConstructorParams {
    * definitions, it will throw a ErrorNotFound error.
    */
   private matchRouteWithRequest(request: Request) {
-    try {
-      log.info(
-        "Matching request method & pathname with `route.url` pattern..."
+    log.info("Matching request method & pathname with `route.url` pattern...");
+    const method = request.method.toUpperCase() as RouteMethods;
+    const routes = this.requests[method];
+    if (!routes) {
+      throw new ErrorNotFound(
+        `The HTTP request method "${method}" is not supported.`
       );
-      const method = request.method.toUpperCase() as RouteMethods;
-      const routes = this.requests[method];
-      if (!routes) {
-        throw new ErrorNotFound(
-          `The HTTP request method "${method}" is not supported.`
-        );
-      }
-
-      const matchedRoute = routes.reduce<RouteMatch | undefined>(
-        (accum, routeDef) => {
-          const urlPatternMatch = this.matchAndParseRouteRequest(
-            request,
-            routeDef.path
-          );
-          if (urlPatternMatch.isMatch) {
-            return { route: routeDef, pattern: urlPatternMatch.pattern };
-          }
-          return accum;
-        },
-        undefined
-      );
-      if (!matchedRoute) {
-        throw new ErrorNotFound("The route does not exist");
-      }
-      this.matchedRoute = matchedRoute;
-      log.info("Matching request pathname with `route.url` pattern... done.");
-    } catch (error) {
-      throw error;
     }
+
+    const matchedRoute = routes.reduce<RouteMatch | undefined>(
+      (accum, routeDef) => {
+        const urlPatternMatch = this.matchAndParseRouteRequest(
+          request,
+          routeDef.path
+        );
+        if (urlPatternMatch.isMatch) {
+          return { route: routeDef, pattern: urlPatternMatch.pattern };
+        }
+        return accum;
+      },
+      undefined
+    );
+    if (!matchedRoute) {
+      throw new ErrorNotFound("The route does not exist");
+    }
+    this.matchedRoute = matchedRoute;
+    log.info("Matching request pathname with `route.url` pattern... done.");
   }
 
   /**
@@ -211,11 +205,7 @@ export class Route implements RouteConstructorParams {
 
     // Run middlewares one at a time
     for await (const middlewareFn of middleware) {
-      try {
-        await middlewareFn(request, env, context);
-      } catch (error) {
-        throw error;
-      }
+      await middlewareFn(request, env, context);
     }
     log.info("Running route level middleware... done");
   }

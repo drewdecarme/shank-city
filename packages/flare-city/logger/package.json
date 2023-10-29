@@ -6,8 +6,9 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "yarn tsc --project tsconfig.build.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "yarn tsc",
+    "dev": "yarn build --watch",
+    "lint": "npx eslint ./src/**/* --fix"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,8 @@
   },
   "homepage": "https://github.com/drewdecarme/flare-kit#readme",
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "@flare-city/eslint-config": "workspace:^",
+    "@flare-city/tsconfig": "workspace:",
+    "typescript": "5.2.2"
   }
 }

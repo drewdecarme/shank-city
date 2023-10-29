@@ -1,4 +1,5 @@
-import { Env, ErrorUnauthorized, Middleware } from "@flare-city/core";
+import type { Middleware } from "@flare-city/core";
+import { ErrorUnauthorized } from "@flare-city/core";
 import { parseJwt } from "@cfworker/jwt";
 import { log } from "../logger";
 

@@ -1,4 +1,4 @@
-import { Middleware } from "@flare-city/core";
+import type { Middleware } from "@flare-city/core";
 import { createPrismaClient } from "./createPrismaClient";
 import { log } from "../logger";
 

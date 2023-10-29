@@ -1,13 +1,7 @@
-import {
-  Env,
-  ErrorNotFound,
-  HandlerArgs,
-  Middleware,
-  errorHandler,
-  log,
-} from "../utils";
+import type { Env, HandlerArgs, Middleware } from "../utils";
+import { ErrorNotFound, errorHandler, log } from "../utils";
 import type { Route } from "../route/Route";
-import { LogLevel, LoggingType } from "@flare-city/logger";
+import type { LogLevel, LoggingType } from "@flare-city/logger";
 
 export class App {
   name: string;
