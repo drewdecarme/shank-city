@@ -22,7 +22,20 @@ export default defineConfig({
 });
 ```
 
-## 3. Create WorkerTest Instance:
+## 3. Add types to your `tsconfig.json`
+
+```json
+{
+  "extends": "@flare-city/tsconfig/worker",
+  "compilerOptions": {
+    // ...other options
+    "types": ["@flare-city/test/types"]
+  },
+  "include": ["./src/**/*.ts"]
+}
+```
+
+## 4. Create WorkerTest Instance:
 
 In your test files, create an instance of `WorkerTest` by passing the Cloudflare worker instance.
 
@@ -33,7 +46,7 @@ import { WorkerTest } from "@flare-city/test";
 const worker = new WorkerTest(global.worker);
 ```
 
-## 4. Write Tests:
+## 5. Write Tests:
 
 Use the `WorkerTest` instance to write tests for your Cloudflare Worker.
 
@@ -58,7 +71,7 @@ describe("GET /test", () => {
 });
 ```
 
-## 5. Run Tests:
+## 6. Run Tests:
 
 Execute your tests using `@flare-city/cli`. This CLI is a wrapper around the node executable of Vitest. We do this since there are a few configuration options that we mandate for the Vitest config. However, you can always use the options in the [Vitest CLI configurations](https://vitest.dev/guide/cli.html)
 
