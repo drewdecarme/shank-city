@@ -1,11 +1,11 @@
-import { ZodError, ZodType } from "zod";
-import {
-  ErrorValidation,
+import type { ZodType } from "zod";
+import { ZodError } from "zod";
+import type {
   Middleware,
   RequestURLSearchParams,
   RequestURLSegments,
-  log,
 } from "../utils";
+import { ErrorValidation, log } from "../utils";
 
 /**
  * Parses, validates, and then enriches the context with
@@ -36,10 +36,11 @@ export const createMiddlewareValidate =
       const data = context[contextKey];
       const parsedData = schema.parse(data);
       /**
-       * Not really interested in type perseveration here
+       * RATIONALE: Not really interested in type perseveration here
        * since we're providing a key that was added
        * in context to when this function is called.
        */
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       context[contextKey] = parsedData;
     } catch (error) {
@@ -56,7 +57,6 @@ export const createMiddlewareValidate =
                 message: string;
               }[]
             >((accum, issue) => {
-              console.log(JSON.stringify(issue, null, 2));
               switch (issue.code) {
                 case "invalid_type":
                   return [
@@ -72,9 +72,10 @@ export const createMiddlewareValidate =
                 case "invalid_union":
                   return [
                     ...accum,
-                    ...issue.unionErrors.flatMap(({ issues, name }) => {
+                    ...issue.unionErrors.flatMap(({ issues, name: _ }) => {
                       return issues.map(
                         // these are here
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         ({ received, expected, path, code }) => {
                           const message = `Received: ${received}, Expected: ${expected}`;

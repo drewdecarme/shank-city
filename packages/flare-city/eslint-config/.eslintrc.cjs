@@ -19,5 +19,11 @@ module.exports = {
   ],
   rules: {
     "@typescript-eslint/consistent-type-imports": "error",
+    // https://typescript-eslint.io/rules/no-unused-vars/#how-to-use
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { argsIgnorePattern: "^_", ignoreRestSiblings: true },
+    ],
   },
 };
