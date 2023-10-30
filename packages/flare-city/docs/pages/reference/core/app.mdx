@@ -1,8 +1,11 @@
+import { Steps } from "nextra/components";
+
 # `@flare-city/core` - App
 
 ## Overview
 
 The `App` class is a central component of the `@flare-city/core` package, designed to streamline the development of APIs on Cloudflare Workers. It serves as an orchestrator for managing routes, middleware functions, and request handling.
+The `App` class simplifies the organization and handling of routes and middleware in Cloudflare Worker-based APIs. By following the provided examples and guidelines, developers can create robust and structured serverless applications.
 
 ## Key Concepts
 
@@ -23,7 +26,9 @@ The `App` class is a central component of the `@flare-city/core` package, design
 
 ## How to Use
 
-### 1. Creating an App Instance
+<Steps>
+
+### Creating an App Instance
 
 ```typescript
 import { App } from "@flare-city/core";
@@ -31,7 +36,7 @@ import { App } from "@flare-city/core";
 const myApp = new App("MyApp");
 ```
 
-### 2. Adding Routes and Middleware
+### Adding Routes and Middleware
 
 ```typescript
 import { Route, Middleware } from "@flare-city/core";
@@ -47,29 +52,36 @@ const myMiddleware: Middleware = async (request, env, context) => {
 myApp.addMiddleware(myMiddleware);
 ```
 
-### 3. Running the App
+### Running the App
 
 ```typescript
-const response = myApp.run(request, env, context);
+// src/index.ts
+export default myApp.start();
 ```
+
+</Steps>
 
 ## Examples
 
 ### Example 1: Basic App Setup
 
 ```typescript
+// src/index.ts
+
 const myApp = new App("MyApp");
 
 const homeRoute = new Route({ basePath: "/home" });
 
 myApp.addRoute(homeRoute);
 
-const response = myApp.run(request, env, context);
+export default myApp.start();
 ```
 
 ### Example 2: App with Middleware
 
 ```typescript
+// src/index.ts
+
 const myApp = new App("MyApp");
 
 const authMiddleware: Middleware = async (request, env, context) => {
@@ -85,13 +97,5 @@ const securedRoute = new Route({
 
 myApp.addRoute(securedRoute);
 
-const response = myApp.run(request, env, context);
+export default myApp.start();
 ```
-
-## Conclusion
-
-The `App` class simplifies the organization and handling of routes and middleware in Cloudflare Worker-based APIs. By following the provided examples and guidelines, developers can create robust and structured serverless applications.
-
----
-
-Feel free to adapt and extend this documentation based on your specific requirements and audience.
