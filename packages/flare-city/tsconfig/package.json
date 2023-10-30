@@ -15,6 +15,12 @@
       "import": "./tsconfig.worker.json",
       "require": "./tsconfig.worker.json"
     },
+    "./worker/build": {
+      "default": "./tsconfig.worker-build.json",
+      "node": "./tsconfig.worker-build.json",
+      "import": "./tsconfig.worker-build.json",
+      "require": "./tsconfig.worker-build.json"
+    },
     "./library": {
       "default": "./tsconfig.library.json",
       "node": "./tsconfig.library.json",

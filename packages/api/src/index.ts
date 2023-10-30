@@ -1,5 +1,4 @@
-import { log, middlewarePrisma } from "./lib";
-import type { Env } from "@flare-city/core";
+import { middlewarePrisma } from "./lib";
 import { App } from "@flare-city/core";
 import { RouteTest, RouteTeam } from "./features";
 
@@ -13,19 +12,5 @@ API.addMiddleware(middlewarePrisma);
 API.addRoute(RouteTest);
 API.addRoute(RouteTeam);
 
-export default {
-  fetch: async function (
-    request: Request,
-    env: Env,
-    context: ExecutionContext
-  ) {
-    const logLevel = env.LOG_LEVEL || "debug";
-    const logType = env.LOG_TYPE || "json";
-    // set the log level
-    log.setLogLevel(logLevel);
-    log.setLoggingType(logType);
-
-    // run the app
-    return API.run(request, env, context, { logLevel, logType });
-  },
-};
+// Start the API
+export default API.start();
