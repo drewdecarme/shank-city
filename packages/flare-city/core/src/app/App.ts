@@ -63,7 +63,6 @@ export class App {
     log.setName("FlareCity");
 
     log.info("Matching base route...");
-    console.log(this);
     const route = this.routes.reduce<Route | undefined>((accum, routeDef) => {
       log.debug(
         `Path: ${pathname} | RouteRoot: ${
