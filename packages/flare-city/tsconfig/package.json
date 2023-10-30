@@ -15,6 +15,12 @@
       "import": "./tsconfig.worker.json",
       "require": "./tsconfig.worker.json"
     },
+    "./worker/build": {
+      "default": "./tsconfig.worker-build.json",
+      "node": "./tsconfig.worker-build.json",
+      "import": "./tsconfig.worker-build.json",
+      "require": "./tsconfig.worker-build.json"
+    },
     "./library": {
       "default": "./tsconfig.library.json",
       "node": "./tsconfig.library.json",
@@ -39,7 +45,7 @@
   },
   "homepage": "https://github.com/drewdecarme/shank-city#readme",
   "dependencies": {
-    "@cloudflare/workers-types": "4.20231016.0",
+    "@cloudflare/workers-types": "4.20231025.0",
     "typescript": "5.2.2"
   }
 }
