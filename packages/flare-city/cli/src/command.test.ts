@@ -15,6 +15,4 @@ async function test() {
   await vitest?.close();
 }
 
-commandTest
-  // .addOption(optionEnv)
-  .action(test);
+commandTest.action(test);
