@@ -24,14 +24,17 @@
   "homepage": "https://github.com/drewdecarme/shank-city#readme",
   "devDependencies": {
     "@flare-city/tsconfig": "workspace:",
+    "@types/find-node-modules": "^2.1.1",
     "@types/fs-extra": "^11.0.3",
     "@types/inquirer": "^9.0.6",
     "typescript": "5.2.2"
   },
   "dependencies": {
     "@flare-city/eslint-config": "workspace:",
+    "@flare-city/example-with-sample-route": "workspace:^",
     "@inquirer/prompts": "^3.2.0",
     "commander": "11.1.0",
+    "find-node-modules": "^2.1.3",
     "fs-extra": "^11.1.1",
     "glob": "^10.3.10",
     "handlebars": "^4.7.8",

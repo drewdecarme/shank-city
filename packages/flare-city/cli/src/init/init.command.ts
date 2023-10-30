@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { input, select } from "@inquirer/prompts";
 import { resolve, dirname, join } from "path";
 import fs from "fs-extra";
+import findNodeModules from "find-node-modules";
 
 import { fileURLToPath } from "url";
 import type { InitOptions } from "./init.options.js";
@@ -51,7 +52,23 @@ async function init(params: InitOptions) {
     ],
   });
 
-  const srcDir = resolve(__dirname, `../../examples/${template}`);
+  const nodeModulesDirs = findNodeModules({ cwd: __dirname });
+  const packageDir = `@flare-city/example-${template}`;
+
+  const srcDir = nodeModulesDirs.reduce((accum, nodeModuleDir) => {
+    const fullNodeModuleDirPath = resolve(__dirname, nodeModuleDir);
+    const packagePath = fullNodeModuleDirPath.concat(`/${packageDir}`);
+    const doesPathExist = fs.existsSync(packagePath);
+
+    if (doesPathExist) {
+      return packagePath;
+    }
+    return accum;
+  }, "");
+
+  if (!srcDir) {
+    throw new Error(`Cannot locate "${packageDir}"`);
+  }
 
   const filesTs = resolve(srcDir, `./**/*.ts`);
   const filesLint = resolve(srcDir, `./.eslintrc.cjs`);
@@ -77,12 +94,20 @@ async function init(params: InitOptions) {
 
     let existingContent = fs.readFileSync(sourcePath, "utf-8");
     existingContent = existingContent.replace(
-      new RegExp(`${template}-project-name`, "g"),
+      new RegExp(`@flare-city/example-${template}`, "g"),
       `{{projectName}}`
     );
     existingContent = existingContent.replace(
-      new RegExp(`${template}-project-description`, "g"),
+      new RegExp(`example-${template}-project-name`, "g"),
+      `{{projectName}}`
+    );
+    existingContent = existingContent.replace(
+      new RegExp(`example-${template}-project-description`, "g"),
       `{{projectDescription}}`
+    );
+    existingContent = existingContent.replace(
+      new RegExp(`workspace:`, "g"),
+      `latest`
     );
 
     // Compile the Handlebars template if it exists

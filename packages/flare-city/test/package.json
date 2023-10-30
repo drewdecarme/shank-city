@@ -1,0 +1,59 @@
+{
+  "name": "@flare-city/test",
+  "version": "0.0.1",
+  "description": "Integration testing utilities for FlareCity applications",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "import": "./dist/index.js",
+      "node": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./setup": {
+      "default": "./dist/setup.js",
+      "import": "./dist/setup.js",
+      "node": "./dist/setup.js",
+      "require": "./dist/setup.js",
+      "types": "./dist/setup.d.ts"
+    },
+    "./types": {
+      "default": "./dist/types.js",
+      "import": "./dist/types.js",
+      "node": "./dist/types.js",
+      "require": "./dist/types.js",
+      "types": "./dist/types.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "yarn tsc",
+    "dev": "yarn build --watch",
+    "lint": "npx eslint ./src/**/* --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/drewdecarme/shank-city.git"
+  },
+  "author": "Drew DeCarme (drewdecarme@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drewdecarme/shank-city/issues"
+  },
+  "homepage": "https://github.com/drewdecarme/shank-city#readme",
+  "dependencies": {
+    "@flare-city/cli": "workspace:^",
+    "@flare-city/core": "workspace:^",
+    "vite": "4.5.0",
+    "vitest": "0.34.6",
+    "wrangler": "3.15.0"
+  },
+  "devDependencies": {
+    "@flare-city/eslint-config": "workspace:^",
+    "@flare-city/tsconfig": "workspace:",
+    "typescript": "5.2.2"
+  }
+}

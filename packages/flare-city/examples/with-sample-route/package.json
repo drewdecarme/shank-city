@@ -1,8 +1,8 @@
 {
-  "name": "with-sample-route-project-name",
+  "name": "@flare-city/example-with-sample-route",
   "version": "0.0.0",
   "private": true,
-  "description": "with-sample-route-project-description",
+  "description": "example-with-sample-route-project-description",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
