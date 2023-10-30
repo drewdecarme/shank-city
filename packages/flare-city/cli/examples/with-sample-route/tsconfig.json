@@ -1,0 +1,7 @@
+{
+  "extends": "@flare-city/tsconfig/worker",
+  "compilerOptions": {
+    "types": ["@flare-city/test/types"]
+  },
+  "include": ["./src/**/*.ts"]
+}
