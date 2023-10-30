@@ -16,8 +16,8 @@
   },
   "homepage": "https://github.com/drewdecarme/shank-city#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "latest",
-    "@typescript-eslint/parser": "latest",
-    "eslint": "latest"
+    "@typescript-eslint/eslint-plugin": "6.9.0",
+    "@typescript-eslint/parser": "6.9.0",
+    "eslint": "8.52.0"
   }
 }

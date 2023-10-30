@@ -74,45 +74,45 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-darwin-64@npm:1.20231016.0":
-  version: 1.20231016.0
-  resolution: "@cloudflare/workerd-darwin-64@npm:1.20231016.0"
+"@cloudflare/workerd-darwin-64@npm:1.20231025.0":
+  version: 1.20231025.0
+  resolution: "@cloudflare/workerd-darwin-64@npm:1.20231025.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-darwin-arm64@npm:1.20231016.0":
-  version: 1.20231016.0
-  resolution: "@cloudflare/workerd-darwin-arm64@npm:1.20231016.0"
+"@cloudflare/workerd-darwin-arm64@npm:1.20231025.0":
+  version: 1.20231025.0
+  resolution: "@cloudflare/workerd-darwin-arm64@npm:1.20231025.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-linux-64@npm:1.20231016.0":
-  version: 1.20231016.0
-  resolution: "@cloudflare/workerd-linux-64@npm:1.20231016.0"
+"@cloudflare/workerd-linux-64@npm:1.20231025.0":
+  version: 1.20231025.0
+  resolution: "@cloudflare/workerd-linux-64@npm:1.20231025.0"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-linux-arm64@npm:1.20231016.0":
-  version: 1.20231016.0
-  resolution: "@cloudflare/workerd-linux-arm64@npm:1.20231016.0"
+"@cloudflare/workerd-linux-arm64@npm:1.20231025.0":
+  version: 1.20231025.0
+  resolution: "@cloudflare/workerd-linux-arm64@npm:1.20231025.0"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-windows-64@npm:1.20231016.0":
-  version: 1.20231016.0
-  resolution: "@cloudflare/workerd-windows-64@npm:1.20231016.0"
+"@cloudflare/workerd-windows-64@npm:1.20231025.0":
+  version: 1.20231025.0
+  resolution: "@cloudflare/workerd-windows-64@npm:1.20231025.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@cloudflare/workers-types@npm:4.20231016.0":
-  version: 4.20231016.0
-  resolution: "@cloudflare/workers-types@npm:4.20231016.0"
-  checksum: b18387fffd2000e183bccae6f1f906920b2b16c46e1f0c73524b8b7ec4740539993c3c1e105f1c7f6062c05feed2307bd3c13915ac69dce4a9a3d7bb433d17e1
+"@cloudflare/workers-types@npm:4.20231025.0":
+  version: 4.20231025.0
+  resolution: "@cloudflare/workers-types@npm:4.20231025.0"
+  checksum: 74aa5c62f7bd82d78c38bcc7aceed898e8d6bab6569323d6424e816686d9bd324fc8e841c35699ec13b1dc72909884e152191caf09ba377d814b2cc6b1800fa5
   languageName: node
   linkType: hard
 
@@ -662,34 +662,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flare-city/cli@workspace:^, @flare-city/cli@workspace:packages/flare-city/cli":
+"@flare-city/cli@workspace:, @flare-city/cli@workspace:^, @flare-city/cli@workspace:packages/flare-city/cli":
   version: 0.0.0-use.local
   resolution: "@flare-city/cli@workspace:packages/flare-city/cli"
   dependencies:
-    "@flare-city/eslint-config": "workspace:^"
+    "@flare-city/eslint-config": "workspace:"
     "@flare-city/tsconfig": "workspace:"
-    commander: ^11.1.0
+    commander: 11.1.0
     typescript: 5.2.2
-    vite: ^4.5.0
-    vitest: ^0.34.6
+    vite: 4.5.0
+    vitest: 0.34.6
   bin:
     flare-city: ./bin/index.js
   languageName: unknown
   linkType: soft
 
-"@flare-city/core@workspace:^, @flare-city/core@workspace:packages/flare-city/core":
+"@flare-city/core@workspace:, @flare-city/core@workspace:^, @flare-city/core@workspace:packages/flare-city/core":
   version: 0.0.0-use.local
   resolution: "@flare-city/core@workspace:packages/flare-city/core"
   dependencies:
     "@cfworker/jwt": 4.0.6
-    "@cloudflare/workers-types": 4.20231016.0
+    "@cloudflare/workers-types": 4.20231025.0
     "@flare-city/eslint-config": "workspace:^"
     "@flare-city/logger": "workspace:"
     "@flare-city/tsconfig": "workspace:"
-    "@types/node": 20.8.7
+    "@types/node": 20.8.9
     dotenv-cli: 7.3.0
     typescript: 5.2.2
-    wrangler: 3.14.0
+    wrangler: 3.15.0
     zod: 3.22.4
   languageName: unknown
   linkType: soft
@@ -698,7 +698,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@flare-city/docs@workspace:packages/flare-city/docs"
   dependencies:
-    next: 13.5.6
+    next: 14.0.0
     nextra: 2.13.2
     nextra-theme-docs: 2.13.2
     react: 18.2.0
@@ -706,13 +706,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@flare-city/eslint-config@workspace:^, @flare-city/eslint-config@workspace:packages/flare-city/eslint-config":
+"@flare-city/eslint-config@workspace:, @flare-city/eslint-config@workspace:^, @flare-city/eslint-config@workspace:packages/flare-city/eslint-config":
   version: 0.0.0-use.local
   resolution: "@flare-city/eslint-config@workspace:packages/flare-city/eslint-config"
   dependencies:
-    "@typescript-eslint/eslint-plugin": latest
-    "@typescript-eslint/parser": latest
-    eslint: latest
+    "@typescript-eslint/eslint-plugin": 6.9.0
+    "@typescript-eslint/parser": 6.9.0
+    eslint: 8.52.0
   languageName: unknown
   linkType: soft
 
@@ -726,7 +726,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@flare-city/test@workspace:^, @flare-city/test@workspace:packages/flare-city/test":
+"@flare-city/test@workspace:, @flare-city/test@workspace:packages/flare-city/test":
   version: 0.0.0-use.local
   resolution: "@flare-city/test@workspace:packages/flare-city/test"
   dependencies:
@@ -735,17 +735,17 @@ __metadata:
     "@flare-city/eslint-config": "workspace:^"
     "@flare-city/tsconfig": "workspace:"
     typescript: 5.2.2
-    vite: ^4.5.0
-    vitest: ^0.34.6
-    wrangler: 3.14.0
+    vite: 4.5.0
+    vitest: 0.34.6
+    wrangler: 3.15.0
   languageName: unknown
   linkType: soft
 
-"@flare-city/tsconfig@workspace:, @flare-city/tsconfig@workspace:^, @flare-city/tsconfig@workspace:packages/flare-city/tsconfig":
+"@flare-city/tsconfig@workspace:, @flare-city/tsconfig@workspace:packages/flare-city/tsconfig":
   version: 0.0.0-use.local
   resolution: "@flare-city/tsconfig@workspace:packages/flare-city/tsconfig"
   dependencies:
-    "@cloudflare/workers-types": 4.20231016.0
+    "@cloudflare/workers-types": 4.20231025.0
     typescript: 5.2.2
   languageName: unknown
   linkType: soft
@@ -999,81 +999,81 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/env@npm:13.5.6"
-  checksum: 5e8f3f6f987a15dad3cd7b2bcac64a6382c2ec372d95d0ce6ab295eb59c9731222017eebf71ff3005932de2571f7543bce7e5c6a8c90030207fb819404138dc2
+"@next/env@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/env@npm:14.0.0"
+  checksum: fdeb7373dd91c694eaa42d1cd0f89e1ee275b11aa07363a5bf9471e0c98424c8998ef3f55db411d52cd264079f926afb0e0168df5d6b3c7f11ea4bf8256584ec
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/eslint-plugin-next@npm:13.5.6"
+"@next/eslint-plugin-next@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/eslint-plugin-next@npm:14.0.0"
   dependencies:
     glob: 7.1.7
-  checksum: 58b5ef15d8298c112c72bbbc34a7a5f63637b5a02af7937d86f26223d370c6bd7c8de0eab737851a17dff52c620068a72179eb72b565add071841b720110490f
+  checksum: f61c4223d7e4a125a86336bcd739ff07fe88d09d40ff76635e6c8c31bbcec79e8851a258da9271c7fbb942b465b7921669183bfd1cf8af9d90b5090c794aac1f
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/swc-darwin-arm64@npm:13.5.6"
+"@next/swc-darwin-arm64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/swc-darwin-arm64@npm:14.0.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/swc-darwin-x64@npm:13.5.6"
+"@next/swc-darwin-x64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/swc-darwin-x64@npm:14.0.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/swc-linux-arm64-gnu@npm:13.5.6"
+"@next/swc-linux-arm64-gnu@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/swc-linux-arm64-gnu@npm:14.0.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/swc-linux-arm64-musl@npm:13.5.6"
+"@next/swc-linux-arm64-musl@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/swc-linux-arm64-musl@npm:14.0.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/swc-linux-x64-gnu@npm:13.5.6"
+"@next/swc-linux-x64-gnu@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/swc-linux-x64-gnu@npm:14.0.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/swc-linux-x64-musl@npm:13.5.6"
+"@next/swc-linux-x64-musl@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/swc-linux-x64-musl@npm:14.0.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/swc-win32-arm64-msvc@npm:13.5.6"
+"@next/swc-win32-arm64-msvc@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/swc-win32-arm64-msvc@npm:14.0.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/swc-win32-ia32-msvc@npm:13.5.6"
+"@next/swc-win32-ia32-msvc@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/swc-win32-ia32-msvc@npm:14.0.0"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:13.5.6":
-  version: 13.5.6
-  resolution: "@next/swc-win32-x64-msvc@npm:13.5.6"
+"@next/swc-win32-x64-msvc@npm:14.0.0":
+  version: 14.0.0
+  resolution: "@next/swc-win32-x64-msvc@npm:14.0.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -1135,31 +1135,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:5.4.2":
-  version: 5.4.2
-  resolution: "@prisma/client@npm:5.4.2"
+"@prisma/client@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@prisma/client@npm:5.5.2"
   dependencies:
-    "@prisma/engines-version": 5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574
+    "@prisma/engines-version": 5.5.1-1.aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
   peerDependencies:
     prisma: "*"
   peerDependenciesMeta:
     prisma:
       optional: true
-  checksum: e01aebad95a6168668a214784e036ba4d6c6ac2c7eff35c7c3b1b729d2fc70b7f1addfce8a8550b24ffadf9be45538f2bd8a2257dfac9ec18d1d900437bf6660
+  checksum: 71ac5830041106070744645b882aa3270b8fb2d4a6bdf844c5e936543b2fccc3a6939e2ce47a5aad07f5c958e97ade06b7843a6664d8c9038403a357d04c5f88
   languageName: node
   linkType: hard
 
-"@prisma/engines-version@npm:5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574":
-  version: 5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574
-  resolution: "@prisma/engines-version@npm:5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574"
-  checksum: 493f84e8856bf214c64177f879f7009740156492a3e1b42cd02e91eec273a5d290bfdde9ca32c361cd8a0616a33d903163582a51e44a79a6b6b318f72130517f
+"@prisma/engines-version@npm:5.5.1-1.aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a":
+  version: 5.5.1-1.aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
+  resolution: "@prisma/engines-version@npm:5.5.1-1.aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a"
+  checksum: bd0a1dd20f9c69526099800a9b1870ab5969ad8da728e3cec676b826f5d7e8751e118486901bde2f14f4edce02e98a26da1ad93560c4b51ec38be3356b1b6913
   languageName: node
   linkType: hard
 
-"@prisma/engines@npm:5.4.2":
-  version: 5.4.2
-  resolution: "@prisma/engines@npm:5.4.2"
-  checksum: 90bec53c85e800291a3cf9f02f4979bd8177225077178fb292ea100b47af0e6d5c9a31bf3630f1dcfd23829299fe7685e386fc57a3d7ff3bf0c25c3704ce971f
+"@prisma/engines@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@prisma/engines@npm:5.5.2"
+  checksum: 45c74bd3db7ae3c6544e0d5303d7750a59b2fbc6cd9b33898ef3680fdbcfdb112a3058c2dfda03b0605156b8051624c2b85de8ccad25b7d859043ecf51a7cac3
   languageName: node
   linkType: hard
 
@@ -1268,20 +1268,20 @@ __metadata:
   resolution: "@shank-city/api@workspace:packages/api"
   dependencies:
     "@cfworker/jwt": 4.0.6
-    "@cloudflare/workers-types": 4.20231016.0
-    "@flare-city/cli": "workspace:^"
-    "@flare-city/core": "workspace:^"
-    "@flare-city/eslint-config": "workspace:^"
+    "@cloudflare/workers-types": 4.20231025.0
+    "@flare-city/cli": "workspace:"
+    "@flare-city/core": "workspace:"
+    "@flare-city/eslint-config": "workspace:"
     "@flare-city/logger": "workspace:"
-    "@flare-city/test": "workspace:^"
-    "@flare-city/tsconfig": "workspace:^"
-    "@prisma/client": 5.4.2
+    "@flare-city/test": "workspace:"
+    "@flare-city/tsconfig": "workspace:"
+    "@prisma/client": 5.5.2
     "@prisma/extension-accelerate": 0.6.2
-    "@types/node": 20.8.7
+    "@types/node": 20.8.9
     dotenv-cli: 7.3.0
-    prisma: 5.4.2
+    prisma: 5.5.2
     typescript: 5.2.2
-    wrangler: 3.14.0
+    wrangler: 3.15.0
     zod: 3.22.4
   languageName: unknown
   linkType: soft
@@ -1291,14 +1291,14 @@ __metadata:
   resolution: "@shank-city/app@workspace:packages/app"
   dependencies:
     "@auth0/nextjs-auth0": 3.2.0
-    "@types/node": 20.8.7
-    "@types/react": 18.2.31
+    "@types/node": 20.8.9
+    "@types/react": 18.2.33
     "@types/react-dom": 18.2.14
     dotenv: 16.3.1
     dotenv-cli: 7.3.0
     eslint: 8.52.0
-    eslint-config-next: 13.5.6
-    next: 13.5.6
+    eslint-config-next: 14.0.0
+    next: 14.0.0
     react: 18.2.0
     react-dom: 18.2.0
     typescript: 5.2.2
@@ -1524,12 +1524,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20.8.7":
+"@types/node@npm:*":
   version: 20.8.7
   resolution: "@types/node@npm:20.8.7"
   dependencies:
     undici-types: ~5.25.1
   checksum: 2173c0c03daefcb60c03a61b1371b28c8fe412e7a40dc6646458b809d14a85fbc7aeb369d957d57f0aaaafd99964e77436f29b3b579232d8f2b20c58abbd1d25
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:20.8.9":
+  version: 20.8.9
+  resolution: "@types/node@npm:20.8.9"
+  dependencies:
+    undici-types: ~5.26.4
+  checksum: 0c05f3502a9507ff27e91dd6fd574fa6f391b3fafedcfe8e0c8d33351fb22d02c0121f854e5b6b3ecb9a8a468407ddf6e7ac0029fb236d4c7e1361ffc758a01f
   languageName: node
   linkType: hard
 
@@ -1560,14 +1569,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.2.31":
-  version: 18.2.31
-  resolution: "@types/react@npm:18.2.31"
+"@types/react@npm:18.2.33":
+  version: 18.2.33
+  resolution: "@types/react@npm:18.2.33"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: b11be8e39174d3303e308461400889e353e422d22b01d09795b2c35b7b99d5351716503d9ec5c58e4c2c871249603fa52840d45a34fb5901dd7a26e06129c716
+  checksum: 75903c4d53898c69dd23d0b2730eac4676dc5ade15c25c793dec855f0d7c650cb823832bb1dd881efe8895724f15b06d4bf7081ea0b82391aa3059512ad49ccf
   languageName: node
   linkType: hard
 
@@ -1599,7 +1608,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:latest":
+"@typescript-eslint/eslint-plugin@npm:6.9.0":
   version: 6.9.0
   resolution: "@typescript-eslint/eslint-plugin@npm:6.9.0"
   dependencies:
@@ -1624,6 +1633,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/parser@npm:6.9.0":
+  version: 6.9.0
+  resolution: "@typescript-eslint/parser@npm:6.9.0"
+  dependencies:
+    "@typescript-eslint/scope-manager": 6.9.0
+    "@typescript-eslint/types": 6.9.0
+    "@typescript-eslint/typescript-estree": 6.9.0
+    "@typescript-eslint/visitor-keys": 6.9.0
+    debug: ^4.3.4
+  peerDependencies:
+    eslint: ^7.0.0 || ^8.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: d8ff69d236d6495474ab93c67e2785cc94bf9c098f25c33f1c5958a4b2b5af2b70edf1cdd0c23ee3436df454a769e80eb47d2d34df8382a826fcdb79bac4382d
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/parser@npm:^5.4.2 || ^6.0.0":
   version: 6.7.4
   resolution: "@typescript-eslint/parser@npm:6.7.4"
@@ -1639,24 +1666,6 @@ __metadata:
     typescript:
       optional: true
   checksum: 60e7c01a69c1a67577f031cd6ef3c7980a9aedf2045b9950e339836acb2fe9d7bf0c8909fa95d713a8270f19dead43d82beb27dcf8705f81fe35b14b737e8fe0
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/parser@npm:latest":
-  version: 6.9.0
-  resolution: "@typescript-eslint/parser@npm:6.9.0"
-  dependencies:
-    "@typescript-eslint/scope-manager": 6.9.0
-    "@typescript-eslint/types": 6.9.0
-    "@typescript-eslint/typescript-estree": 6.9.0
-    "@typescript-eslint/visitor-keys": 6.9.0
-    debug: ^4.3.4
-  peerDependencies:
-    eslint: ^7.0.0 || ^8.0.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: d8ff69d236d6495474ab93c67e2785cc94bf9c098f25c33f1c5958a4b2b5af2b70edf1cdd0c23ee3436df454a769e80eb47d2d34df8382a826fcdb79bac4382d
   languageName: node
   linkType: hard
 
@@ -2512,17 +2521,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:11.1.0":
+  version: 11.1.0
+  resolution: "commander@npm:11.1.0"
+  checksum: fd1a8557c6b5b622c89ecdfde703242ab7db3b628ea5d1755784c79b8e7cb0d74d65b4a262289b533359cd58e1bfc0bf50245dfbcd2954682a6f367c828b79ef
+  languageName: node
+  linkType: hard
+
 "commander@npm:7":
   version: 7.2.0
   resolution: "commander@npm:7.2.0"
   checksum: 53501cbeee61d5157546c0bef0fedb6cdfc763a882136284bed9a07225f09a14b82d2a84e7637edfd1a679fb35ed9502fd58ef1d091e6287f60d790147f68ddc
-  languageName: node
-  linkType: hard
-
-"commander@npm:^11.1.0":
-  version: 11.1.0
-  resolution: "commander@npm:11.1.0"
-  checksum: fd1a8557c6b5b622c89ecdfde703242ab7db3b628ea5d1755784c79b8e7cb0d74d65b4a262289b533359cd58e1bfc0bf50245dfbcd2954682a6f367c828b79ef
   languageName: node
   linkType: hard
 
@@ -3620,11 +3629,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:13.5.6":
-  version: 13.5.6
-  resolution: "eslint-config-next@npm:13.5.6"
+"eslint-config-next@npm:14.0.0":
+  version: 14.0.0
+  resolution: "eslint-config-next@npm:14.0.0"
   dependencies:
-    "@next/eslint-plugin-next": 13.5.6
+    "@next/eslint-plugin-next": 14.0.0
     "@rushstack/eslint-patch": ^1.3.3
     "@typescript-eslint/parser": ^5.4.2 || ^6.0.0
     eslint-import-resolver-node: ^0.3.6
@@ -3639,7 +3648,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 3399d3c18d48d01a2e662b9da699d36641d32b859d5bc7541f9fb063de49f5fbefb8cb2226d3906c268cc667bc536e353fce6c7334953961eb030c73547fa0f9
+  checksum: 69aff489962cc045ca2c58ab3394b5be43b77da1902627fad55168b650540e665c0bec7a19437f923910fb657f9778fddefb073a48ffacefc2fe60d45184756c
   languageName: node
   linkType: hard
 
@@ -3789,7 +3798,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:8.52.0, eslint@npm:latest":
+"eslint@npm:8.52.0":
   version: 8.52.0
   resolution: "eslint@npm:8.52.0"
   dependencies:
@@ -6343,9 +6352,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"miniflare@npm:3.20231016.0":
-  version: 3.20231016.0
-  resolution: "miniflare@npm:3.20231016.0"
+"miniflare@npm:3.20231025.0":
+  version: 3.20231025.0
+  resolution: "miniflare@npm:3.20231025.0"
   dependencies:
     acorn: ^8.8.0
     acorn-walk: ^8.2.0
@@ -6355,11 +6364,11 @@ __metadata:
     source-map-support: 0.5.21
     stoppable: ^1.1.0
     undici: ^5.22.1
-    workerd: 1.20231016.0
+    workerd: 1.20231025.0
     ws: ^8.11.0
     youch: ^3.2.2
     zod: ^3.20.6
-  checksum: ad4a2ce2fa9ba0c50d28376bb2069c070b24a7c7ea60fe4ee48bc70e0bb69c8a8c088cdc2c9205efd4e686bd654d854d1137891b7719e171aeded67c12632935
+  checksum: 7c931dbbb883b0aee7f6dba51cc4eeeb0f6e4534da842eafec0319c4391536579d50d273a637bca10b0da40fdb5ca6e06f1e071b0bdbcd01b6c0b99973f3e0e4
   languageName: node
   linkType: hard
 
@@ -6583,20 +6592,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:13.5.6":
-  version: 13.5.6
-  resolution: "next@npm:13.5.6"
+"next@npm:14.0.0":
+  version: 14.0.0
+  resolution: "next@npm:14.0.0"
   dependencies:
-    "@next/env": 13.5.6
-    "@next/swc-darwin-arm64": 13.5.6
-    "@next/swc-darwin-x64": 13.5.6
-    "@next/swc-linux-arm64-gnu": 13.5.6
-    "@next/swc-linux-arm64-musl": 13.5.6
-    "@next/swc-linux-x64-gnu": 13.5.6
-    "@next/swc-linux-x64-musl": 13.5.6
-    "@next/swc-win32-arm64-msvc": 13.5.6
-    "@next/swc-win32-ia32-msvc": 13.5.6
-    "@next/swc-win32-x64-msvc": 13.5.6
+    "@next/env": 14.0.0
+    "@next/swc-darwin-arm64": 14.0.0
+    "@next/swc-darwin-x64": 14.0.0
+    "@next/swc-linux-arm64-gnu": 14.0.0
+    "@next/swc-linux-arm64-musl": 14.0.0
+    "@next/swc-linux-x64-gnu": 14.0.0
+    "@next/swc-linux-x64-musl": 14.0.0
+    "@next/swc-win32-arm64-msvc": 14.0.0
+    "@next/swc-win32-ia32-msvc": 14.0.0
+    "@next/swc-win32-x64-msvc": 14.0.0
     "@swc/helpers": 0.5.2
     busboy: 1.6.0
     caniuse-lite: ^1.0.30001406
@@ -6634,7 +6643,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: c869b0014ae921ada3bf22301985027ec320aebcd6aa9c16e8afbded68bb8def5874cca034c680e8c351a79578f1e514971d02777f6f0a5a1d7290f25970ac0d
+  checksum: 57fb661292229a5fd8fefe7ea43e4c255d7c032f5834ee85fae549f1569982c8545a98a2b100187207d611ef715bc50352fb7c67e62e42af4f06b138d4bd5b2e
   languageName: node
   linkType: hard
 
@@ -7183,14 +7192,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prisma@npm:5.4.2":
-  version: 5.4.2
-  resolution: "prisma@npm:5.4.2"
+"prisma@npm:5.5.2":
+  version: 5.5.2
+  resolution: "prisma@npm:5.5.2"
   dependencies:
-    "@prisma/engines": 5.4.2
+    "@prisma/engines": 5.5.2
   bin:
     prisma: build/index.js
-  checksum: 863b34fb16960b533a3ec0e8d1e32f6a9caf99849ade9157beea74ef708695281b318b9d2afac0a12953b1ff27df111a8fdb37324a6e6b060d255ae51a53c8c5
+  checksum: 0f728d5953f8acb136708021da909ae9b22068bd19952378b545520ce6ce4e43f38db53fc3002866ff44dd0372b19460cc7b8c8558664492b26de6687da8680b
   languageName: node
   linkType: hard
 
@@ -7470,6 +7479,13 @@ __metadata:
   version: 1.0.0
   resolution: "resolve-pkg-maps@npm:1.0.0"
   checksum: 1012afc566b3fdb190a6309cc37ef3b2dcc35dff5fa6683a9d00cd25c3247edfbc4691b91078c97adc82a29b77a2660c30d791d65dab4fc78bfc473f60289977
+  languageName: node
+  linkType: hard
+
+"resolve.exports@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "resolve.exports@npm:2.0.2"
+  checksum: 1c7778ca1b86a94f8ab4055d196c7d87d1874b96df4d7c3e67bbf793140f0717fd506dcafd62785b079cd6086b9264424ad634fb904409764c3509c3df1653f2
   languageName: node
   linkType: hard
 
@@ -8467,6 +8483,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~5.26.4":
+  version: 5.26.5
+  resolution: "undici-types@npm:5.26.5"
+  checksum: 3192ef6f3fd5df652f2dc1cd782b49d6ff14dc98e5dced492aa8a8c65425227da5da6aafe22523c67f035a272c599bb89cfe803c1db6311e44bed3042fc25487
+  languageName: node
+  linkType: hard
+
 "undici@npm:^5.22.1":
   version: 5.25.4
   resolution: "undici@npm:5.25.4"
@@ -8809,6 +8832,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vite@npm:4.5.0":
+  version: 4.5.0
+  resolution: "vite@npm:4.5.0"
+  dependencies:
+    esbuild: ^0.18.10
+    fsevents: ~2.3.2
+    postcss: ^8.4.27
+    rollup: ^3.27.1
+  peerDependencies:
+    "@types/node": ">= 14"
+    less: "*"
+    lightningcss: ^1.21.0
+    sass: "*"
+    stylus: "*"
+    sugarss: "*"
+    terser: ^5.4.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+    less:
+      optional: true
+    lightningcss:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    sugarss:
+      optional: true
+    terser:
+      optional: true
+  bin:
+    vite: bin/vite.js
+  checksum: 06f1a4c858e4dc4c04a10466f4ccacea30c5a9f8574e5ba3deb9d03fa20e80ca6797f02dad97a988da7cdef96238dbc69c3b6a538156585c74722d996223619e
+  languageName: node
+  linkType: hard
+
 "vite@npm:^3.0.0 || ^4.0.0 || ^5.0.0-0, vite@npm:^3.1.0 || ^4.0.0 || ^5.0.0-0":
   version: 5.0.0-beta.11
   resolution: "vite@npm:5.0.0-beta.11"
@@ -8849,47 +8912,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "vite@npm:4.5.0"
-  dependencies:
-    esbuild: ^0.18.10
-    fsevents: ~2.3.2
-    postcss: ^8.4.27
-    rollup: ^3.27.1
-  peerDependencies:
-    "@types/node": ">= 14"
-    less: "*"
-    lightningcss: ^1.21.0
-    sass: "*"
-    stylus: "*"
-    sugarss: "*"
-    terser: ^5.4.0
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  peerDependenciesMeta:
-    "@types/node":
-      optional: true
-    less:
-      optional: true
-    lightningcss:
-      optional: true
-    sass:
-      optional: true
-    stylus:
-      optional: true
-    sugarss:
-      optional: true
-    terser:
-      optional: true
-  bin:
-    vite: bin/vite.js
-  checksum: 06f1a4c858e4dc4c04a10466f4ccacea30c5a9f8574e5ba3deb9d03fa20e80ca6797f02dad97a988da7cdef96238dbc69c3b6a538156585c74722d996223619e
-  languageName: node
-  linkType: hard
-
-"vitest@npm:^0.34.6":
+"vitest@npm:0.34.6":
   version: 0.34.6
   resolution: "vitest@npm:0.34.6"
   dependencies:
@@ -9088,15 +9111,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"workerd@npm:1.20231016.0":
-  version: 1.20231016.0
-  resolution: "workerd@npm:1.20231016.0"
+"workerd@npm:1.20231025.0":
+  version: 1.20231025.0
+  resolution: "workerd@npm:1.20231025.0"
   dependencies:
-    "@cloudflare/workerd-darwin-64": 1.20231016.0
-    "@cloudflare/workerd-darwin-arm64": 1.20231016.0
-    "@cloudflare/workerd-linux-64": 1.20231016.0
-    "@cloudflare/workerd-linux-arm64": 1.20231016.0
-    "@cloudflare/workerd-windows-64": 1.20231016.0
+    "@cloudflare/workerd-darwin-64": 1.20231025.0
+    "@cloudflare/workerd-darwin-arm64": 1.20231025.0
+    "@cloudflare/workerd-linux-64": 1.20231025.0
+    "@cloudflare/workerd-linux-arm64": 1.20231025.0
+    "@cloudflare/workerd-windows-64": 1.20231025.0
   dependenciesMeta:
     "@cloudflare/workerd-darwin-64":
       optional: true
@@ -9110,13 +9133,13 @@ __metadata:
       optional: true
   bin:
     workerd: bin/workerd
-  checksum: e5bffd1e43ba45be58bd5cb83aabdca1af956d0f024803cac9016aab834cdbf4887db68eece9cb9d2a66db8af72074c660247d80d52b8c833a26d63fbc609216
+  checksum: ca9c119f51ab3ecdaa7a5dc917138e40d97a960101e98018307d224153677ef364229d6f5566927276ac8ef4af7e6734a44e029c7469c4b2cd9e6b9423a71a16
   languageName: node
   linkType: hard
 
-"wrangler@npm:3.14.0":
-  version: 3.14.0
-  resolution: "wrangler@npm:3.14.0"
+"wrangler@npm:3.15.0":
+  version: 3.15.0
+  resolution: "wrangler@npm:3.15.0"
   dependencies:
     "@cloudflare/kv-asset-handler": ^0.2.0
     "@esbuild-plugins/node-globals-polyfill": ^0.2.3
@@ -9125,9 +9148,10 @@ __metadata:
     chokidar: ^3.5.3
     esbuild: 0.17.19
     fsevents: ~2.3.2
-    miniflare: 3.20231016.0
+    miniflare: 3.20231025.0
     nanoid: ^3.3.3
     path-to-regexp: ^6.2.0
+    resolve.exports: ^2.0.2
     selfsigned: ^2.0.1
     source-map: 0.6.1
     source-map-support: 0.5.21
@@ -9138,7 +9162,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: bc96f8eb758fd484471b581454149cef3878b09278bd8257c5187d40c0f288d962f902173c08b09bb564b6dff6b927d9fb9c58b8e92606099a4002b7aff032c9
+  checksum: 058c505c58bce8387bfd8fe051a8a9e50e5f7b564db15c07c33fcd7137f3dcc67f5bf507db1acb054ad54044d0e8756e08264e70c04722dd2be19f1e03d18a01
   languageName: node
   linkType: hard
 
