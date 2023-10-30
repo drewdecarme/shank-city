@@ -46,11 +46,17 @@ myApp.addRoute(RouteTest);
 myApp.addRoute(RouteTeam);
 ```
 
-### Run the application
+### Start the application
 
-The `run` method executes the app logic, including middleware and route handling.
+The `start` method exports a static object with a `fetch` property on it that is cast to
+the `myApp.run` method. You can either export the `myApp.start()` method or manually default export
+the fetch key yourself and run the `myApp.run` method
 
 ```ts
+export default API.start();
+
+// -- OR --
+
 export default {
   fetch: async function (
     request: Request,
@@ -83,18 +89,6 @@ API.addMiddleware(middlewarePrisma);
 API.addRoute(RouteTest);
 API.addRoute(RouteTeam);
 
-export default {
-  fetch: async function (
-    request: Request,
-    env: Env,
-    context: ExecutionContext
-  ) {
-    // set the log level
-    log.setLogLevel(env.LOG_LEVEL || "debug");
-    log.setLoggingType(env.LOG_TYPE || "json");
-
-    // run the app
-    return API.run(request, env, context);
-  },
-};
+// Start the API
+export default API.start();
 ```

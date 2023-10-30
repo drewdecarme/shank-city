@@ -1,0 +1,101 @@
+import { Steps } from "nextra/components";
+
+# `@flare-city/eslint-config`
+
+## Installation
+
+To use `@flare-city/eslint-config` in your project, follow these steps:
+
+1. Install the package using your preferred package manager:
+
+   ```bash
+   npm install @flare-city/eslint-config --save-dev
+   ```
+
+   or
+
+   ```bash
+   yarn add @flare-city/eslint-config --dev
+   ```
+
+## Configuration
+
+Create an `.eslintrc.js` file in the root of your project and extend `@flare-city/eslint-config`:
+
+```javascript
+module.exports = {
+  extends: ["@flare-city/eslint-config"],
+  // Your project-specific configurations can be added here
+};
+```
+
+### Using with a TypeScript Project
+
+If you are using TypeScript, you can include additional parser options in your `.eslintrc.js` file:
+
+```javascript
+const path = require("path");
+
+module.exports = {
+  extends: ["@flare-city/eslint-config"],
+  parserOptions: {
+    project: path.resolve(__dirname, "./tsconfig.json"),
+    // Add any other parser options specific to your project
+  },
+  // Your project-specific configurations can be added here
+};
+```
+
+## Example Usage in a `@flare-city` Project
+
+If you are working on a `@flare-city` project, here's how you can integrate the ESLint configuration:
+
+<Steps>
+
+### Install the Package
+
+```bash
+npm install @flare-city/eslint-config --save-dev
+```
+
+or
+
+```bash
+yarn add @flare-city/eslint-config --dev
+```
+
+### Create an `.eslintrc.js` file in your project's root directory
+
+```javascript
+module.exports = {
+  extends: ["@flare-city/eslint-config"],
+  // Your project-specific configurations can be added here
+};
+```
+
+### Using with TypeScript:
+
+If your project is using TypeScript, extend the configuration and provide the path to your `tsconfig.json` file:
+
+```javascript
+const path = require("path");
+
+module.exports = {
+  extends: ["@flare-city/eslint-config"],
+  parserOptions: {
+    project: path.resolve(__dirname, "./tsconfig.json"),
+    // Add any other parser options specific to your project
+  },
+  // Your project-specific configurations can be added here
+};
+```
+
+### Run ESLint:
+
+You can now run ESLint in your project:
+
+```bash
+npx eslint .
+```
+
+</Steps>

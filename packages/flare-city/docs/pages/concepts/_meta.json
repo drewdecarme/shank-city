@@ -1,4 +1,5 @@
 {
   "parse-and-validate": "Route parsing and validation with Zod",
-  "zod-types": "Using inferred types"
+  "zod-types": "Using inferred types",
+  "paradigms": "Paradigms"
 }

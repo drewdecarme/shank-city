@@ -1,6 +1,10 @@
+import { Steps } from "nextra/components";
+
 # `@flare-city/test` - Getting Started
 
-## 1. Install Dependencies:
+<Steps>
+
+### Install Dependencies:
 
 Make sure to install the necessary dependencies for your project:
 
@@ -8,7 +12,7 @@ Make sure to install the necessary dependencies for your project:
 npm install @flare-city/test vitest wrangler
 ```
 
-## 2. Create a `vitest.config.ts`
+### Create a `vitest.config.ts`
 
 Create the config file at the root of your repository.
 
@@ -22,7 +26,7 @@ export default defineConfig({
 });
 ```
 
-## 3. Add types to your `tsconfig.json`
+### Add types to your `tsconfig.json`
 
 ```json
 {
@@ -35,7 +39,7 @@ export default defineConfig({
 }
 ```
 
-## 4. Create WorkerTest Instance:
+### Create WorkerTest Instance:
 
 In your test files, create an instance of `WorkerTest` by passing the Cloudflare worker instance.
 
@@ -46,7 +50,7 @@ import { WorkerTest } from "@flare-city/test";
 const worker = new WorkerTest(global.worker);
 ```
 
-## 5. Write Tests:
+### Write Tests
 
 Use the `WorkerTest` instance to write tests for your Cloudflare Worker.
 
@@ -71,12 +75,14 @@ describe("GET /test", () => {
 });
 ```
 
-## 6. Run Tests:
+### Run Tests
 
 Execute your tests using `@flare-city/cli`. This CLI is a wrapper around the node executable of Vitest. We do this since there are a few configuration options that we mandate for the Vitest config. However, you can always use the options in the [Vitest CLI configurations](https://vitest.dev/guide/cli.html)
 
 ```bash
 yarn flare-city test
 ```
+
+</Steps>
 
 This setup allows you to easily integrate and run tests for your Cloudflare Worker using the `WorkerTest` class and the Vitest framework. Customize the configuration as needed for your specific project requirements.
