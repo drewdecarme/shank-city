@@ -27,9 +27,9 @@
   "homepage": "https://github.com/drewdecarme/shank-city#readme",
   "dependencies": {
     "@cfworker/jwt": "4.0.6",
-    "@flare-city/core": "workspace:",
-    "@flare-city/logger": "workspace:",
-    "@flare-city/test": "workspace:",
+    "@flare-city/core": "0.3.0",
+    "@flare-city/logger": "0.2.0",
+    "@flare-city/test": "0.3.0",
     "@prisma/client": "5.5.2",
     "@prisma/extension-accelerate": "0.6.2",
     "prisma": "5.5.2",
@@ -37,10 +37,10 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20231025.0",
-    "@flare-city/cli": "workspace:",
-    "@flare-city/eslint-config": "workspace:",
-    "@flare-city/tsconfig": "workspace:",
-    "@types/node": "20.8.9",
+    "@flare-city/cli": "0.3.0",
+    "@flare-city/eslint-config": "0.3.0",
+    "@flare-city/tsconfig": "0.3.0",
+    "@types/node": "20.8.10",
     "dotenv-cli": "7.3.0",
     "typescript": "5.2.2",
     "wrangler": "3.15.0"
