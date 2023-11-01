@@ -16,7 +16,7 @@ RouteTeam.get<GetAllTeamsApiResponse>({
       log.setName("Feature:Teams");
       log.info("Fetching all teams");
       const data = await context.prisma.team.findMany();
-      log.info("Fetching all teams... successful", data);
+      log.info("Fetching all teams... successful");
       return res({
         json: {
           data,
