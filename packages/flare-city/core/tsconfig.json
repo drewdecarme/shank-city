@@ -1,8 +1,0 @@
-{
-  "extends": "@flare-city/tsconfig/worker/build",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "declarationDir": "./dist"
-  },
-  "include": ["./src/**/*.ts"]
-}

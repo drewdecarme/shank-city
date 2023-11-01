@@ -1,8 +1,0 @@
-{
-  "extends": "./tsconfig.worker.json",
-  "compilerOptions": {
-    "noEmit": false,
-    "declaration": true,
-    "declarationMap": true
-  }
-}

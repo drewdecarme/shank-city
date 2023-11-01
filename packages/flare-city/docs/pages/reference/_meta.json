@@ -1,6 +1,0 @@
-{
-  "core": "@flare-city/core",
-  "logger": "@flare-city/logger",
-  "eslint-config": "@flare-city/eslint-config",
-  "test": "@flare-city/test"
-}
