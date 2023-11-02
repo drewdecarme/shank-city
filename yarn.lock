@@ -112,7 +112,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workers-types@npm:4.20231025.0":
+"@cloudflare/workers-types@npm:4.20231025.0, @cloudflare/workers-types@npm:^4.20230404.0":
   version: 4.20231025.0
   resolution: "@cloudflare/workers-types@npm:4.20231025.0"
   checksum: 9c1b68611fd3eb1a2a56b401bfb6400009ebf0422799228c0f1620e2b10f1e828fda350ce04e961bd91ef27b3087b64e977418f6e3c337955ba03b0b735aee3c
@@ -1297,6 +1297,7 @@ __metadata:
   dependencies:
     "@playwright/test": "npm:^1.28.1"
     "@sveltejs/adapter-auto": "npm:^2.0.0"
+    "@sveltejs/adapter-cloudflare": "npm:^2.3.3"
     "@sveltejs/kit": "npm:^1.20.4"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
     "@typescript-eslint/parser": "npm:^6.0.0"
@@ -1381,6 +1382,19 @@ __metadata:
   peerDependencies:
     "@sveltejs/kit": ^1.0.0
   checksum: 93cfc5e1e35f1ef3733f15e312b643fd9a79a6af2da8f41065523d0e486779292bde88af1d923e0342f4990fd5a5bf9439725b68b62640e3497460db8135bcb1
+  languageName: node
+  linkType: hard
+
+"@sveltejs/adapter-cloudflare@npm:^2.3.3":
+  version: 2.3.3
+  resolution: "@sveltejs/adapter-cloudflare@npm:2.3.3"
+  dependencies:
+    "@cloudflare/workers-types": "npm:^4.20230404.0"
+    esbuild: "npm:^0.18.11"
+    worktop: "npm:0.8.0-next.15"
+  peerDependencies:
+    "@sveltejs/kit": ^1.0.0
+  checksum: 8944b564f4c5411f12f8ada52c6f47fefdb99eabed72ac382f931224b96f07210e6605f95cf4ebf75debc482f54c89f7a1a2cfe2f97aff2a89098ae1cbc31d96
   languageName: node
   linkType: hard
 
@@ -2873,7 +2887,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.18.10":
+"esbuild@npm:^0.18.10, esbuild@npm:^0.18.11":
   version: 0.18.20
   resolution: "esbuild@npm:0.18.20"
   dependencies:
@@ -5606,6 +5620,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"regexparam@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "regexparam@npm:2.0.1"
+  checksum: 1b090d572da92b8950e5c4a49ed691e13032c863e9f1b1e776cd3c8a244e5ee03faca59141c9a52c5cd43781eb9752d79cc5031c242826640fdb2aedca465186
+  languageName: node
+  linkType: hard
+
 "resolve-from@npm:^4.0.0":
   version: 4.0.0
   resolution: "resolve-from@npm:4.0.0"
@@ -7142,6 +7163,16 @@ __metadata:
   bin:
     workerd: bin/workerd
   checksum: 1ad3b1399d17da8a0cbe0b76165c34ac0c396641e8a5e886b2a44c8881eef7dc2a771cf28994b2334fd048414cb8a06cb2c74108c774b0ef37c44cadfc2dbbf7
+  languageName: node
+  linkType: hard
+
+"worktop@npm:0.8.0-next.15":
+  version: 0.8.0-next.15
+  resolution: "worktop@npm:0.8.0-next.15"
+  dependencies:
+    mrmime: "npm:^1.0.0"
+    regexparam: "npm:^2.0.0"
+  checksum: 0add2cb702cabbb24d5923e198f4218fdfac38a45cc022f0c69fec1b32a57cace38f5f18d661855d47ae86bd92bafd55170bc55da84ce300bec07b6518db996d
   languageName: node
   linkType: hard
 

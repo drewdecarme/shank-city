@@ -46,5 +46,8 @@
   "bugs": {
     "url": "https://github.com/drewdecarme/shank-city/issues"
   },
-  "homepage": "https://github.com/drewdecarme/shank-city#readme"
+  "homepage": "https://github.com/drewdecarme/shank-city#readme",
+  "dependencies": {
+    "@sveltejs/adapter-cloudflare": "^2.3.3"
+  }
 }

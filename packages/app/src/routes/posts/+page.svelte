@@ -2,11 +2,11 @@
   import { onDestroy, onMount } from "svelte";
 
   onMount(() => {
-    console.log("Mounted HOME page");
+    console.log("Mounted POST page");
   });
   onDestroy(() => {
-    console.log("Destroying HOME page");
+    console.log("Destroying POST page");
   });
 </script>
 
-<h1>Home</h1>
+<h1>Posts</h1>
