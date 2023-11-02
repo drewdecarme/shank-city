@@ -14,3 +14,5 @@ bin
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+.svelte-kit
